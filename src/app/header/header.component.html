@@ -1,0 +1,92 @@
+<header class="header-custom">
+  <app-navbar></app-navbar>
+  <div
+    class="relative h-[710px] flex flex-col items-center justify-center text-white"
+  >
+    <!-- Phần thông tin giới thiệu -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-bold">
+        Du lịch dễ dàng khắp mọi nơi cùng OH!Travel
+      </h1>
+      <p class="mt-4 max-w-2xl mx-auto">
+        Với nguồn lực dồi dào, kinh nghiệm và uy tín trong lĩnh vực dịch vụ du
+        lịch, OH!Travel luôn nỗ lực mang đến cho khách hàng những dịch vụ du
+        lịch giá trị nhất.
+      </p>
+    </div>
+
+    <!-- Phần tabs và form tìm kiếm -->
+    <div class="p-6 w-full max-w-[1200px]">
+      <!-- Tabs -->
+      <div class="flex px-[270px]">
+        <button
+          class="bg-white font-medium text-[15px] px-3 py-4 text-black focus:text-blue-600 focus:border-b-2 focus:border-blue-600 w-[200px] rounded-tl-lg"
+        >
+          DU LỊCH TRONG NƯỚC
+        </button>
+        <button
+          class="bg-white font-medium text-[15px] px-3 py-4 text-black w-[200px]"
+        >
+          DU LỊCH NƯỚC NGOÀI
+        </button>
+        <button
+          class="bg-white font-medium text-[15px] px-3 py-4 text-black w-[200px] rounded-tr-lg"
+        >
+          TRA CỨU BOOKING
+        </button>
+      </div>
+
+      <!-- Form tìm kiếm -->
+      <form
+        class="bg-white rounded-lg shadow-lg flex flex-row gap-4 items-center py-6 px-8 text-black"
+      >
+        <div class="flex items-center justify-center space-x-4">
+          <!-- Từ khóa -->
+          <div class="flex-1">
+            <input
+              type="text"
+              placeholder="Từ khóa (Hà Nội, HCM)..."
+              class="w-full border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- Điểm đi -->
+          <div class="flex-1">
+            <input
+              type="text"
+              placeholder="Chọn điểm đi"
+              class="w-full border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- Điểm đến -->
+          <div class="flex-1">
+            <input
+              type="text"
+              placeholder="Chọn điểm đến"
+              class="w-full border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- Ngày đi -->
+          <div class="flex-1">
+            <input
+              type="date"
+              value="2026-04-07"
+              class="w-full border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- Tìm kiếm button -->
+          <div class="flex-none">
+            <button
+              class="bg-blue-500 text-white font-bold py-4 px-14 text-center rounded-lg hover:bg-blue-600 focus:outline-none"
+            >
+              Tìm kiếm
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</header>

@@ -1,12 +1,15 @@
 .footer-custom {
-  
-
   border-bottom: 0.1px dashed rgb(168, 158, 158);
 }
 
 .footer-color {
-  background-color: #006CAA;background-image: url('../../assets/images/bg_footer.webp');
+  background-color: #006CAA;
+  background-image: url('../../assets/images/bg_footer.webp');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: 100% 100%;
+}
+
+.copyright {
+  border-top: 0.1px solid rgb(168, 158, 158);
 }
