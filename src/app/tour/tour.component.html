@@ -1,0 +1,121 @@
+<div class="container mx-auto p-4">
+    <div class="text-sm breadcrumbs mb-4">
+        <ul>
+            <li><a>Trang chủ</a></li>
+            <li>Tất cả tour</li>
+        </ul>
+    </div>
+
+    <div class="flex">
+        <!-- Left sidebar for filters -->
+        <div class="w-1/4 pr-4">
+            <div class="bg-gray-100 p-4 rounded-lg">
+                <h3 class="font-bold mb-2">Thương hiệu</h3>
+                <select aria-label="Chọn thương hiệu" class="w-full p-2 border rounded mb-4">
+                    <option>Chọn thương hiệu</option>
+                    <option *ngFor="let brand of brands">{{ brand }}</option>
+                </select>
+
+                <h3 class="font-bold mb-2">Loại hình tour</h3>
+                <select aria-label="Chọn loại hình tour" class="w-full p-2 border rounded mb-4">
+                    <option>Chọn loại hình tour</option>
+                    <option *ngFor="let type of tourTypes">{{ type }}</option>
+                </select>
+
+                <h3 class="font-bold mb-2">Điểm đi</h3>
+                <select aria-label="Chọn điểm đi" class="w-full p-2 border rounded mb-4">
+                    <option>Chọn điểm đi</option>
+                    <option *ngFor="let type of tourTypes1">{{ type }}</option>
+                </select>
+
+                <h3 class="font-bold mb-2">Điểm đến trong nước</h3>
+                <select aria-label="Điểm đến trong nước" class="w-full p-2 border rounded mb-4">
+                    <option>Chọn điểm đến trong nước</option>
+                    <option *ngFor="let type of tourTypes2">{{ type }}</option>
+                </select>
+
+                <h3 class="font-bold mb-2">Loại đến nước ngoài</h3>
+
+                <select aria-label="Điểm đến trong nước" class="w-full p-2 border rounded mb-4">
+                    <option>Chọn điểm đến nước ngoài</option>
+                    <option *ngFor="let type of tourTypes3">{{ type }}</option>
+                </select>
+
+                <h3 class="font-bold mb-2">Dòng tour</h3>
+                <div class="grid grid-cols-2 gap-2 mb-4">
+                    <button class="p-2 bg-gray-200 hover:bg-blue-500 hover:text-white rounded">
+                        Cao cấp
+                    </button>
+                    <button class="p-2 bg-gray-200 hover:bg-blue-500 hover:text-white rounded">
+                        Tiêu chuẩn
+                    </button>
+                    <button class="p-2 bg-gray-200 hover:bg-blue-500 hover:text-white rounded">
+                        Tiết kiệm
+                    </button>
+                    <button class="p-2 bg-gray-200 hover:bg-blue-500 hover:text-white rounded">
+                        Giá tốt
+                    </button>
+                </div>
+
+                <!-- Add more filter options here -->
+
+                <h3 class="font-bold mb-2">Chọn mức giá</h3>
+                <div class="space-y-2">
+                    <label *ngFor="let range of priceRanges" class="flex items-center">
+                        <input type="checkbox" [value]="range.value" class="form-checkbox" />
+                        <span class="ml-2">{{ range.label }}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side for tour list -->
+        <div class="w-3/4">
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="relative">
+                    <img src="./assets/images/2.webp" alt="Du lịch trong nước"
+                        class="w-full h-40 object-cover rounded-lg" />
+                    <div class="absolute bottom-0 left-0 bg-blue-600 text-white p-2 rounded-tr-lg">
+                        Du lịch trong nước
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="path_to_international_image.jpg" alt="Du lịch nước ngoài"
+                        class="w-full h-40 object-cover rounded-lg" />
+                    <div class="absolute bottom-0 left-0 bg-blue-600 text-white p-2 rounded-tr-lg">
+                        Du lịch nước ngoài
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end mb-4">
+                <select aria-label="Chọn thứ tự" class="p-2 border rounded">
+                    <option>Thứ tự</option>
+                    <option *ngFor="let option of sortOptions">{{ option }}</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <div *ngFor="let tour of tours" class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img [src]="tour.image" [alt]="tour.name" class="w-full h-48 object-cover" />
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">{{ tour.name }}</h3>
+                        <p class="text-sm text-gray-600 mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>Khởi hành:
+                            {{ tour.startDate }}
+                        </p>
+                        <p class="text-sm text-gray-600 mb-2">
+                            <i class="fas fa-clock mr-2"></i>Thời gian: {{ tour.duration }}
+                        </p>
+                        <p class="text-xl font-bold text-red-600 mb-4">
+                            {{ formatPrice(tour.price) }}
+                        </p>
+                        <button
+                            class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition duration-300">
+                            Đặt ngay
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
