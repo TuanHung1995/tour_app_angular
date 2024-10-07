@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
+import { TourComponent } from './tour/tour.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { HeaderComponent } from "./header/header.component";
     RouterOutlet,
     NavbarComponent,
     FooterComponent,
-    HeaderComponent
+    TourComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
