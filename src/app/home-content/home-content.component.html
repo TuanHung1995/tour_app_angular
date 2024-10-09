@@ -1,0 +1,162 @@
+<div class="bg-white py-12">
+  <!-- Section Title -->
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold text-blue-600">Ưu đãi</h2>
+    <p class="text-gray-500 mt-2">
+      Khuyến mãi, giảm giá và ưu đãi đặc biệt dành riêng cho bạn
+    </p>
+    <!-- Divider -->
+    <div class="flex justify-center mt-4">
+      <div class="w-16 h-1 bg-gray-300 rounded-full"></div>
+    </div>
+  </div>
+
+  <!-- Promotions Grid -->
+  <div
+    class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4"
+  >
+    <!-- Promotion 1 -->
+    <a
+      href="#"
+      class="block rounded-xl overflow-hidden shadow-lg transition hover:shadow-xl hover:scale-105 duration-300"
+    >
+      <img
+        [src]="sale[0]"
+        alt="Welcome to Quang Binh"
+        class="w-full h-64 object-cover"
+      />
+    </a>
+
+    <!-- Promotion 2 -->
+    <a
+      href="#"
+      class="block rounded-xl overflow-hidden shadow-lg transition hover:shadow-xl hover:scale-105 duration-300"
+    >
+      <img
+        [src]="sale[1]"
+        alt="Hello Hong Kong"
+        class="w-full h-64 object-cover"
+      />
+    </a>
+
+    <!-- Promotion 3 -->
+    <a
+      href="#"
+      class="block rounded-xl overflow-hidden shadow-lg transition hover:shadow-xl hover:scale-105 duration-300"
+    >
+      <img
+        [src]="sale[2]"
+        alt="Khám phá Tây Bắc"
+        class="w-full h-64 object-cover"
+      />
+    </a>
+  </div>
+</div>
+
+<div class="mx-auto px-4 py-8 bg-white">
+  <!-- Tiêu đề -->
+  <h2 class="text-3xl font-bold text-center text-blue-600 mb-4">
+    Điểm đến yêu thích
+  </h2>
+  <p class="text-center text-gray-500 mb-4">
+    Tour du lịch Trong nước với OH!Travel. Hành hương đầu xuân - Tận hưởng bản
+    sắc Việt.
+  </p>
+  <div class="flex justify-center mb-8">
+    <div class="w-16 h-1 bg-gray-300 rounded-full"></div>
+  </div>
+
+  <!-- Lưới điểm đến -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-[115px]"
+  >
+    <!-- Mỗi item trong grid là một link -->
+    <a
+      *ngFor="let tour of bestTours"
+      href="#"
+      class="relative overflow-hidden rounded-lg shadow-lg group"
+    >
+      <!-- Image -->
+      <img
+        [src]="tour.image"
+        [alt]="tour.name"
+        class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+      <!-- Background overlay & Text -->
+      <div
+        class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end text-center pb-2 p-4 transition-colors duration-500 group-hover:bg-opacity-70"
+      >
+        <h3 class="text-lg font-semibold text-white mb-1">{{ tour.name }}</h3>
+        <p class="text-sm text-white">
+          Đã có {{ tour.total_customer }} lượt khách
+        </p>
+      </div>
+      <!-- Overlay hiệu ứng radial gradient khi hover -->
+      <div
+        class="absolute inset-0 bg-gray-400 opacity-0 transition-opacity duration-500 group-hover:opacity-70 group-hover:bg-opacity-50"
+        style="
+          background: radial-gradient(
+            circle,
+            rgba(180, 173, 173, 0.6) 10%,
+            transparent 100%
+          );
+        "
+      ></div>
+    </a>
+  </div>
+</div>
+
+<div class="container mx-auto py-8 bg-white px-[115px]">
+  <h2 class="text-[32px] font-bold text-blue-600 text-center mb-2">
+    Ưu đãi tour giờ chót
+  </h2>
+  <p class="text-center text-gray-500 mb-2">
+    Cùng OH!Travel nhanh tay đặt ngay tour ngay hôm nay!
+  </p>
+  <div class="flex justify-center mb-5">
+    <div class="w-16 h-1 bg-gray-300 rounded-full"></div>
+  </div>
+
+  <!-- Grid layout -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <!-- Tour Item 1 -->
+    <div 
+      *ngFor="let tour of tours"
+      class="border rounded-lg overflow-hidden shadow-lg transition hover:shadow-2xl duration-300"
+      >
+      <img
+        [src]="tour.image"
+        [alt]="tour.name"
+        class="w-full h-48 object-cover"
+      />
+      <div class="p-4">
+        <h3 class="font-semibold text-lg hover:text-blue-600">{{tour.name}}</h3>
+        <p class="text-sm text-gray-600">
+          Hồ Tràm - Phan Thiết - Mũi Né - Công Viên Tropicana
+        </p>
+        <div class="flex items-center text-sm text-gray-500 mt-2">
+          <span class="mr-2">Khởi hành: 01/07/2023</span>
+          <span class="flex items-center">
+            <svg class="w-4 h-4 mr-1 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 110 16 8 8 0 010-16zm-1 3v6l5 2 .75-1.5-4.25-1.75V7h-1.5z"/>
+            </svg>
+            Thời gian: 3 ngày
+          </span>
+        </div>
+        <div class="flex items-center mt-2">
+          <span class="line-through text-gray-500 text-sm">{{tour.price + 100000}}</span>
+          <span class="text-red-500 font-semibold text-lg ml-2">{{tour.price}}₫</span>
+          <span class="ml-2 text-red-600 text-sm">-9%</span>
+        </div>
+        <div class="flex items-center justify-between mt-2 mb-4 text-sm text-gray-500">
+          <span>Hết ưu đãi</span>
+          <span>Còn lại 6 chỗ</span>
+        </div>
+        <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-[162px] py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+          Đặt ngay
+        </a> 
+      </div>
+    </div>
+  </div>
+</div>
+

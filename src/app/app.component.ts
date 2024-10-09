@@ -12,7 +12,8 @@ import { TourComponent } from './tour/tour.component';
     RouterOutlet,
     NavbarComponent,
     FooterComponent,
-    TourComponent
+    TourComponent,
+    HeaderComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
