@@ -1,20 +1,22 @@
-<nav class="flex items-center gap-7 justify-between px-40 py-3 bg-white shadow-md">
+<nav
+  class="flex items-center gap-7 justify-between px-40 bg-white shadow-md"
+>
   <!-- Logo -->
-  <div class="flex items-center space-x-2">
-    <img src="logo.png" alt="Logo" class="h-10" />
-    <span class="text-xl font-bold text-blue-600">OH!travel</span>
+  <div class="flex items-center space-x-2 h-20">
+    <img src="" alt="Logo" class="h-10" />
+    <!-- <span class="text-xl font-bold text-blue-600">OH!travel</span> -->
   </div>
 
   <!-- Menu Links -->
-  <div class="flex items-center space-x-6">
+  <div class="flex items-center space-x-6 h-20">
     <a href="#" class="text-gray-700 hover:text-blue-600">Trang chủ</a>
     <a href="#" class="text-gray-700 hover:text-blue-600">Giới thiệu</a>
 
     <!-- Dropdown Du lịch -->
     <div class="relative group">
       <a
-        href="#"
-        class="text-gray-700 hover:text-blue-600 inline-flex items-center"
+        routerLink="/tour"
+        class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20"
         >Du lịch
         <span class="ml-1"
           ><svg
@@ -31,15 +33,15 @@
           </svg> </span
       ></a>
       <div
-        class="absolute left-0 mt-2 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block"
+        class="absolute left-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-2xl group-hover:block"
       >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
           >Tour trong nước</a
         >
         <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
           >Tour quốc tế</a
         >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
           >Dịch vụ khác</a
         >
       </div>
@@ -49,7 +51,7 @@
     <div class="relative group">
       <a
         href="#"
-        class="text-gray-700 hover:text-blue-600 inline-flex items-center"
+        class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20"
         >Cẩm nang du lịch
         <span class="ml-1"
           ><svg
@@ -117,7 +119,7 @@
   </div>
 
   <!-- User Account and Contact -->
-  <div class="flex items-center space-x-6">
+  <div class="flex items-center space-x-6 h-20">
     <!-- Account Dropdown -->
     <div class="relative group">
       <button
@@ -143,12 +145,18 @@
         </span>
       </button>
       <div
-        class="absolute right-0 mt-2 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block"
+        class="absolute right-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block"
       >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
           >Thông tin tài khoản</a
         >
         <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
+          >Giỏ hàng <span>()</span></a
+        >
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
+          >Tour yêu thích</a
+        >
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
           >Đăng xuất</a
         >
       </div>
