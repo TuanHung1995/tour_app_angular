@@ -4,6 +4,7 @@ import { TourComponent } from './tour/tour.component';
 import { TravelComponent } from './travel/travel.component';
 import { Travel1Component } from './travel1/travel1.component';
 import { PhoneComponent } from './phone/phone.component';
+import { SystemComponent } from './system/system.component';
 
 
 export const routes: Routes = [
@@ -13,6 +14,7 @@ export const routes: Routes = [
   {path: 'travel', component: TravelComponent},
   {path: 'travel1',  component: Travel1Component},
   {path: 'phone', component: PhoneComponent},
+  {path: 'system', component: SystemComponent},
 
 
 ];

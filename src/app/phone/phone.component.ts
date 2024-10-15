@@ -15,7 +15,7 @@ interface FAQ {
     <div class="bg-gray-100 min-h-screen p-4">
       <div class="container mx-auto">
         <div class="flex items-center text-gray-500 text-sm mb-4">
-          <a href="#" class="hover:text-blue-500">Trang chủ</a>
+          <a href="/home" class="hover:text-blue-500">Trang chủ</a>
           <span class="mx-2">›</span>
           <span>Liên hệ</span>
         </div>
