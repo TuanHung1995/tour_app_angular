@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TourService } from '../services/tour.service';
+import { Tour } from '../models/tour';
 
 interface BestTour {
   id: number;
@@ -9,15 +11,6 @@ interface BestTour {
   duration: string;
   price: number;
   total_customer: number;
-}
-
-interface Tour {
-  id: number;
-  name: string;
-  image: string;
-  startDate: string;
-  duration: string;
-  price: number;
 }
 
 interface News {
@@ -34,7 +27,7 @@ interface News {
   templateUrl: './home-content.component.html',
   styleUrl: './home-content.component.css',
 })
-export class HomeContentComponent {
+export class HomeContentComponent implements OnInit {
 
 
   mockNews: News[] = [
@@ -58,26 +51,26 @@ export class HomeContentComponent {
     },
   ];
 
-  tours: Tour[] = [
-    { id: 1, name: 'Tour Châu Âu 9N8Đ: Đức - Hà Lan - Bỉ - Pháp - Thụy Sỹ', image: 'assets/images/photo1.webp', startDate: '28/08/2023', duration: '9N8Đ', price: 136800000 },
-    { id: 2, name: 'Tour Bờ Đông Hoa Kỳ 10N9Đ: New York - Philadelphia -...', image: 'path_to_usa_image.jpg', startDate: '28/08/2023', duration: '10N9Đ', price: 160000000 },
-    { id: 3, name: 'Tour Hoa Kỳ 6N5Đ: Hawaii - Honolulu - Đảo Thiên Đường', image: 'path_to_hawaii_image.jpg', startDate: '27/08/2023', duration: '6N5Đ', price: 193000000 },
-    { id: 4, name: 'Tour Cao Cấp Indonesia 4N3Đ: Thiên Đường Biển Đảo Bali', image: 'path_to_danang_image.jpg', startDate: '27/08/2023', duration: '4N3DD', price:2798000},
-    { id: 5, name: 'Tour Đà Lạt 4N3Đ: Đà Lạt - Nha Trang - Thành Phố Hoa Biển', image: 'path_to_danang_image.jpg', startDate: '25/08/2023', duration: '4N3Đ', price:8600000},
-    { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
-    { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
-    { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
-    { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
-    { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
+  // tours: Tour[] = [
+  //   { id: 1, name: 'Tour Châu Âu 9N8Đ: Đức - Hà Lan - Bỉ - Pháp - Thụy Sỹ', image: 'assets/images/photo1.webp', startDate: '28/08/2023', duration: '9N8Đ', price: 136800000 },
+  //   { id: 2, name: 'Tour Bờ Đông Hoa Kỳ 10N9Đ: New York - Philadelphia -...', image: 'path_to_usa_image.jpg', startDate: '28/08/2023', duration: '10N9Đ', price: 160000000 },
+  //   { id: 3, name: 'Tour Hoa Kỳ 6N5Đ: Hawaii - Honolulu - Đảo Thiên Đường', image: 'path_to_hawaii_image.jpg', startDate: '27/08/2023', duration: '6N5Đ', price: 193000000 },
+  //   { id: 4, name: 'Tour Cao Cấp Indonesia 4N3Đ: Thiên Đường Biển Đảo Bali', image: 'path_to_danang_image.jpg', startDate: '27/08/2023', duration: '4N3DD', price:2798000},
+  //   { id: 5, name: 'Tour Đà Lạt 4N3Đ: Đà Lạt - Nha Trang - Thành Phố Hoa Biển', image: 'path_to_danang_image.jpg', startDate: '25/08/2023', duration: '4N3Đ', price:8600000},
+  //   { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
+  //   { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
+  //   { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
+  //   { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
+  //   { id: 6, name: 'Tour Đà Lạt 3N2Đ : Đà Lạt - Thành Phố Ngàn Hoa', image: 'path_to_danang_image.jpg', startDate: '29/08/2023', duration: '3N2Đ', price:6600000},
 
-  ];
+  // ];
 
-  vietnamTours: Tour[] = [
-      { id: 1, name: 'Tour Châu Âu 9N8Đ: Đức - Hà Lan - Bỉ - Pháp - Thụy Sỹ', image: 'assets/images/photo1.webp', startDate: '28/08/2023', duration: '9N8Đ', price: 136800000 },
-      { id: 2, name: 'Tour Bờ Đông Hoa Kỳ 10N9Đ: New York - Philadelphia -...', image: 'path_to_usa_image.jpg', startDate: '28/08/2023', duration: '10N9Đ', price: 160000000 },
-      { id: 3, name: 'Tour Hoa Kỳ 6N5Đ: Hawaii - Honolulu - Đảo Thiên Đường', image: 'path_to_hawaii_image.jpg', startDate: '27/08/2023', duration: '6N5Đ', price: 193000000 },
-      { id: 4, name: 'Tour Cao Cấp Indonesia 4N3Đ: Thiên Đường Biển Đảo Bali', image: 'path_to_danang_image.jpg', startDate: '27/08/2023', duration: '4N3DD', price:2798000},
-    ];
+  // vietnamTours: Tour[] = [
+  //     { id: 1, name: 'Tour Châu Âu 9N8Đ: Đức - Hà Lan - Bỉ - Pháp - Thụy Sỹ', image: 'assets/images/photo1.webp', startDate: '28/08/2023', duration: '9N8Đ', price: 136800000 },
+  //     { id: 2, name: 'Tour Bờ Đông Hoa Kỳ 10N9Đ: New York - Philadelphia -...', image: 'path_to_usa_image.jpg', startDate: '28/08/2023', duration: '10N9Đ', price: 160000000 },
+  //     { id: 3, name: 'Tour Hoa Kỳ 6N5Đ: Hawaii - Honolulu - Đảo Thiên Đường', image: 'path_to_hawaii_image.jpg', startDate: '27/08/2023', duration: '6N5Đ', price: 193000000 },
+  //     { id: 4, name: 'Tour Cao Cấp Indonesia 4N3Đ: Thiên Đường Biển Đảo Bali', image: 'path_to_danang_image.jpg', startDate: '27/08/2023', duration: '4N3DD', price:2798000},
+  //   ];
 
   bestTours: BestTour[] = [
     {
@@ -174,5 +167,31 @@ export class HomeContentComponent {
       this.currentSlide--;
     }
   }
+
+  tours: Tour[] = [];
+  vietnamTours: Tour[] = [];
+  overseaTours: Tour[] = [];
+
+  constructor(private tourService: TourService) { }
+
+  ngOnInit(): void {
+    this.loadTours();
+  }
+
+  loadTours(): void {
+    this.tourService.getAllTours().subscribe({
+      next: (data) => {
+        this.tours = data;
+        console.log(data);
+        this.vietnamTours = this.tours.filter(tour => tour.category === 'VIETNAM');
+        this.overseaTours = this.tours.filter(tour => tour.category === 'OVERSEA');
+      },
+      error: (error) => {
+        console.error('Error loading tours', error);
+      }
+    });
+  }
+
+
 
 }
