@@ -6,6 +6,7 @@ import { Travel1Component } from './travel1/travel1.component';
 import { PhoneComponent } from './phone/phone.component';
 import { SystemComponent } from './system/system.component';
 import { Tour1Component } from './tour1/tour1.component';
+import { Tour2Component } from './tour2/tour2.component';
 
 
 export const routes: Routes = [
@@ -17,6 +18,7 @@ export const routes: Routes = [
   {path: 'phone', component: PhoneComponent},
   {path: 'system', component: SystemComponent},
   {path: 'tour1', component: Tour1Component},
+  {path: 'tour2', component: Tour2Component},
 
 
 ];
