@@ -1,0 +1,10 @@
+:host {
+    display: block;
+    font-family: Arial, sans-serif;
+  }
+  .bg-white {
+    background-color: white;
+  }
+  .min-h-screen {
+    min-height: 100vh;
+  }
