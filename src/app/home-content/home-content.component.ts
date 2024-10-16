@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TourService } from '../services/tour.service';
+import { NewsService } from '../services/news.service';
 import { Tour } from '../models/tour';
+import { News } from '../models/news';
 
 interface BestTour {
   id: number;
@@ -13,12 +15,6 @@ interface BestTour {
   total_customer: number;
 }
 
-interface News {
-  id: number;
-  title: string;
-  image: string;
-  content: string;
-}
 
 @Component({
   selector: 'app-home-content',
@@ -30,26 +26,26 @@ interface News {
 export class HomeContentComponent implements OnInit {
 
 
-  mockNews: News[] = [
-    {
-      id: 1,
-      title: 'Tin tức 1',
-      image: 'assets/images/photo1.webp',
-      content: 'Với lịch sử gần 700 năm, ngôi làng pháo đài Naganeupseong của Hàn Quốc khiến người ta ngỡ ngàng bởi thời gian dường như ngừng lại ở nơi đây..',
-    },
-    {
-      id: 2,
-      title: 'Tin tức 2',
-      image: 'assets/images/photo2.webp',
-      content: 'Với lịch sử gần 700 năm, ngôi làng pháo đài Naganeupseong của Hàn Quốc khiến người ta ngỡ ngàng bởi thời gian dường như ngừng lại ở nơi đây..',
-    },
-    {
-      id: 3,
-      title: 'Tin tức 3',
-      image: 'assets/images/photo3.webp',
-      content: 'Với lịch sử gần 700 năm, ngôi làng pháo đài Naganeupseong của Hàn Quốc khiến người ta ngỡ ngàng bởi thời gian dường như ngừng lại ở nơi đây..',
-    },
-  ];
+  // mockNews: News[] = [
+  //   {
+  //     id: 1,
+  //     title: 'Tin tức 1',
+  //     image: 'assets/images/photo1.webp',
+  //     content: 'Với lịch sử gần 700 năm, ngôi làng pháo đài Naganeupseong của Hàn Quốc khiến người ta ngỡ ngàng bởi thời gian dường như ngừng lại ở nơi đây..',
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Tin tức 2',
+  //     image: 'assets/images/photo2.webp',
+  //     content: 'Với lịch sử gần 700 năm, ngôi làng pháo đài Naganeupseong của Hàn Quốc khiến người ta ngỡ ngàng bởi thời gian dường như ngừng lại ở nơi đây..',
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'Tin tức 3',
+  //     image: 'assets/images/photo3.webp',
+  //     content: 'Với lịch sử gần 700 năm, ngôi làng pháo đài Naganeupseong của Hàn Quốc khiến người ta ngỡ ngàng bởi thời gian dường như ngừng lại ở nơi đây..',
+  //   },
+  // ];
 
   // tours: Tour[] = [
   //   { id: 1, name: 'Tour Châu Âu 9N8Đ: Đức - Hà Lan - Bỉ - Pháp - Thụy Sỹ', image: 'assets/images/photo1.webp', startDate: '28/08/2023', duration: '9N8Đ', price: 136800000 },
@@ -171,11 +167,15 @@ export class HomeContentComponent implements OnInit {
   tours: Tour[] = [];
   vietnamTours: Tour[] = [];
   overseaTours: Tour[] = [];
+  latestNews: News[] = [];
 
-  constructor(private tourService: TourService) { }
+  constructor(private tourService: TourService,
+    private newsService: NewsService
+  ) { }
 
   ngOnInit(): void {
     this.loadTours();
+    this.loadNews();
   }
 
   loadTours(): void {
@@ -188,6 +188,18 @@ export class HomeContentComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error loading tours', error);
+      }
+    });
+  }
+
+  loadNews(): void {
+    this.newsService.getAllNews().subscribe({
+      next: (data) => {
+        this.latestNews = data;
+        console.log(data);
+      },
+      error: (error) => {
+        console.error('Error loading news', error);
       }
     });
   }
