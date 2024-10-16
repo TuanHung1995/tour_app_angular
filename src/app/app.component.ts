@@ -5,6 +5,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { TourComponent } from './tour/tour.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,7 +14,8 @@ import { TourComponent } from './tour/tour.component';
     NavbarComponent,
     FooterComponent,
     TourComponent,
-    HeaderComponent
+    HeaderComponent,
+
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

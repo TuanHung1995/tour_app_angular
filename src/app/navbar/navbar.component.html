@@ -10,7 +10,7 @@
   <!-- Menu Links -->
   <div class="flex items-center space-x-6 h-20">
     <a href="#" class="text-gray-700 hover:text-blue-600">Trang chủ</a>
-    <a href="#" class="text-gray-700 hover:text-blue-600">Giới thiệu</a>
+    <a routerLink="/introduce" class="text-gray-700 hover:text-blue-600">Giới thiệu</a>
 
     <!-- Dropdown Du lịch -->
     <div class="relative group">
@@ -35,10 +35,10 @@
       <div
         class="absolute left-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-2xl group-hover:block"
       >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
+        <a href="/tour3" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
           >Tour trong nước</a
         >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
+        <a href="/tour4" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
           >Tour quốc tế</a
         >
         <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
@@ -50,7 +50,7 @@
     <!-- Dropdown Cẩm nang du lịch -->
     <div class="relative group">
       <a
-        href="#"
+        routerLink="/travel"
         class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20"
         >Cẩm nang du lịch
         <span class="ml-1"
@@ -82,8 +82,8 @@
       </div>
     </div>
 
-    <a href="#" class="text-gray-700 hover:text-blue-600">Liên hệ</a>
-    <a href="#" class="text-gray-700 hover:text-blue-600">Hệ thống</a>
+    <a routerLink="/phone" class="text-gray-700 hover:text-blue-600">Liên hệ</a>
+    <a routerLink="/system" class="text-gray-700 hover:text-blue-600">Hệ thống</a>
     <!-- <div class="flex items-center space-x-2">
       <button class="text-gray-400">
         <span class="material-icons"
