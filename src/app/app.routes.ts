@@ -7,6 +7,10 @@ import { PhoneComponent } from './phone/phone.component';
 import { SystemComponent } from './system/system.component';
 import { Tour1Component } from './tour1/tour1.component';
 import { Tour2Component } from './tour2/tour2.component';
+import { IntroduceComponent } from './introduce/introduce.component';
+import { Tour3Component } from './tour3/tour3.component';
+import { Tour4Component } from './tour4/tour4.component';
+
 
 
 export const routes: Routes = [
@@ -19,6 +23,12 @@ export const routes: Routes = [
   {path: 'system', component: SystemComponent},
   {path: 'tour1', component: Tour1Component},
   {path: 'tour2', component: Tour2Component},
+  {path: 'introduce', component: IntroduceComponent},
+  {path: 'tour3',  component: Tour3Component},
+  {path: 'tour4',  component: Tour4Component}
+
+
+
 
 
 ];
