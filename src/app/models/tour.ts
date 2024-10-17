@@ -15,4 +15,8 @@ export interface Tour {
   // createdAt: string;
   // updatedAt: string;
   category: string;
+  originalPrice: number;
+  discountedPrice: number;
+  discount: number
+
 }
