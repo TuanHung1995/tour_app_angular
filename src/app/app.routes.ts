@@ -24,6 +24,6 @@ export const routes: Routes = [
   {path: 'tour2', component: Tour2Component},
   {path: 'introduce', component: IntroduceComponent},
   {path: 'tour3',  component: Tour3Component},
-  {path: 'tour4',  component: Tour4Component}
+  {path: 'tour4',  component: Tour4Component},
   {path: 'login', component: LoginComponent}
 ];

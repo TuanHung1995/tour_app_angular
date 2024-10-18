@@ -1,5 +1,7 @@
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { TourService } from '../services/tour.service';
+
 interface Tour {
   id: number;
   name: string;
@@ -31,7 +33,8 @@ interface  TourDetail {
   styleUrl: './tour.component.css'
 })
 export class TourComponent {
- 
+
+
 
   tours: Tour[] = [
     { id: 1, name: 'Tour Châu Âu 9N8Đ: Đức - Hà Lan - Bỉ - Pháp - Thụy Sỹ', image: '../../assets/images/photo1.webp', startDate: '28/08/2023', duration: '9N8Đ', originalPrice: 0,  discountedPrice: 136800000, discount: 0 },
@@ -70,8 +73,8 @@ export class TourComponent {
 
   sortOptions: string[] = ['Giá tăng dần', 'Giá giảm dần', 'Ngày khởi hành'];
 
-  ngOnInit() {
-    
+  ngOnInit():void {
+    this.loadTours(); // Gọi hàm để lấy dữ liệu khi component khởi tạo
     // Initialize data or fetch from service
   }
   
@@ -87,6 +90,47 @@ export class TourComponent {
     
   ];
   
+  constructor(private tourService: TourService) { }
 
+ 
+  loadTours(sortBy: string = 'discountedPrice', sortOrder: string = 'asc'): void {
+    this.tourService.sortTours(sortBy, sortOrder).subscribe(
+      (data: Tour[]) => {
+        this.tours = data;
+        // Implement pagination logic here if needed
+        this.paginatedTours = this.tours.slice(0, 10); // Example: show first 10 tours
+      },
+      error => {
+        console.error('Error fetching tours:', error);
+      }
+    );
+  }
+
+  onSortChange(event: any): void {
+    const selectedOption = event.target.value;
+    let sortBy: string;
+    let sortOrder: string;
+
+    switch (selectedOption) {
+      case 'Giá tăng dần':
+        sortBy = 'discountedPrice';
+        sortOrder = 'asc';
+        break;
+      case 'Giá giảm dần':
+        sortBy = 'discountedPrice';
+        sortOrder = 'desc';
+        break;
+      case 'Ngày khởi hành':
+        sortBy = 'startDate';
+        sortOrder = 'asc';
+        break;
+      default:
+        sortBy = 'discountedPrice';
+        sortOrder = 'asc';
+    }
+
+    this.loadTours(sortBy, sortOrder);
+  }
+ 
 
 }
