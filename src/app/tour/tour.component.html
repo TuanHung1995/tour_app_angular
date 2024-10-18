@@ -116,9 +116,9 @@
 
       <div class="flex justify-end mb-6">
         <select aria-label="Chọn thứ tự"
-          class="p-2 border rounded hover:border-blue-500 transition duration-300 focus:ring focus:ring-blue-200">
-          <option>Thứ tự</option>
-          <option *ngFor="let option of sortOptions">{{ option }}</option>
+          class="p-2 border rounded hover:border-blue-500 transition duration-300 focus:ring focus:ring-blue-200" (change)="onSortChange($event)">
+          <option value="">Thứ tự</option>
+          <option *ngFor="let option of sortOptions"[value]="option">{{ option }}</option>
         </select>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -141,7 +141,7 @@
             <div class="flex justify-between items-center mb-4">
               <p class="text-gray-500 line-through">{{ tour.originalPrice | currency:'VND':'symbol':'1.0-0' }}</p>
               <p class="text-xl font-bold text-red-600">{{ tour.discountedPrice | currency:'VND':'symbol':'1.0-0' }}</p>
-              <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">-{{ tour.discount }}%</span>
+              <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded" *ngIf="tour.discount > 0">-{{ tour.discount }}%</span>
             </div>
             <button
               class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring focus:ring-blue-200">

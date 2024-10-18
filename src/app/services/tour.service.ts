@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { Tour } from '../models/tour';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -59,4 +60,11 @@ export class TourService {
     });
   }
 
+  sortTours(sortBy: string, sortOrder: string): Observable<Tour[]> {
+    let params = new HttpParams()
+      .set('sortBy', sortBy)
+      .set('sortOrder', sortOrder);
+
+    return this.http.get<Tour[]>(`${this.apiUrl}/tours`, { params });
+  }
 }
