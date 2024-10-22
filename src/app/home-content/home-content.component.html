@@ -122,7 +122,7 @@
     <!-- Tour Item 1 -->
     <div
       *ngFor="let tour of tours"
-      class="border rounded-lg overflow-hidden shadow-lg transition hover:shadow-2xl duration-300"
+      class="border rounded-lg overflow-hidden shadow-lg transition hover:shadow-3xl tour duration-300"
     >
       <img
         [src]="tour.image"
@@ -193,7 +193,7 @@
     <!-- Tour Item 1 -->
     <div
       *ngFor="let tour of vietnamTours"
-      class="border rounded-lg overflow-hidden shadow-lg transition hover:shadow-2xl duration-300"
+      class="border rounded-lg overflow-hidden shadow-lg transition hover:shadow-3xl tour duration-300"
     >
       <img
         [src]="tour.image"
@@ -209,7 +209,7 @@
             ><i class="fas fa-calendar-alt mr-2"></i>Khởi hành:<span
               class="text-black"
             >
-              01/07/2023</span
+              {{tour.startDate | date: 'dd/MM/yyyy'}}</span
             ></span
           >
           <span class="flex items-center text-gray-400">
@@ -218,7 +218,7 @@
                 d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 110 16 8 8 0 010-16zm-1 3v6l5 2 .75-1.5-4.25-1.75V7h-1.5z"
               />
             </svg>
-            Thời gian: <span class="text-black">3 ngày</span>
+            Thời gian: <span class="text-black">{{tour.duration}} ngày</span>
           </span>
         </div>
         <div class="flex items-center mt-2">
@@ -263,7 +263,7 @@
     <!-- Tour Item 1 -->
     <div
       *ngFor="let tour of overseaTours"
-      class="border rounded-lg overflow-hidden shadow-lg transition hover:shadow-2xl duration-300"
+      class="border rounded-lg overflow-hidden shadow-lg transition hover:shadow-3xl tour duration-300"
     >
       <img
         [src]="tour.image"
@@ -279,7 +279,7 @@
             ><i class="fas fa-calendar-alt mr-2"></i>Khởi hành:<span
               class="text-black"
             >
-              {{tour.startDate}}</span
+              {{tour.startDate | date: 'dd/MM/yyyy'}}</span
             ></span
           >
           <span class="flex items-center text-gray-400">
@@ -288,7 +288,7 @@
                 d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 110 16 8 8 0 010-16zm-1 3v6l5 2 .75-1.5-4.25-1.75V7h-1.5z"
               />
             </svg>
-            Thời gian: <span class="text-black">{{tour.duration}}</span>
+            Thời gian: <span class="text-black">{{tour.duration}} ngày</span>
           </span>
         </div>
         <div class="flex items-center mt-2">

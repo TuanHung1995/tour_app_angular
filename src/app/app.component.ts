@@ -4,6 +4,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { TourComponent } from './tour/tour.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -15,7 +16,8 @@ import { TourComponent } from './tour/tour.component';
     FooterComponent,
     TourComponent,
     HeaderComponent,
-
+    ReactiveFormsModule,
+    FormsModule
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

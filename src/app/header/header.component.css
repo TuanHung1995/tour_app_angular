@@ -20,3 +20,9 @@
 .tab-button:focus::before {
   background-color: #2563eb; /* Tailwind's blue-600 */
 }
+
+/* src/app/header/header.component.css */
+.header-custom {
+  position: relative;
+  z-index: 1; /* Ensure the header is below the navbar */
+}
