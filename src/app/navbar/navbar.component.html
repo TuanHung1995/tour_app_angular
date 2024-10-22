@@ -14,39 +14,46 @@
 
     <!-- Dropdown Du lịch -->
     <div class="relative group">
-      <a
-        routerLink="/tour"
-        class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20"
-        >Du lịch
-        <span class="ml-1"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="size-4"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd"
-            />
-          </svg> </span
-      ></a>
-      <div
-        class="absolute left-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-2xl group-hover:block"
-      >
-        <a href="/tour3" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
-          >Tour trong nước</a
-        >
-        <a href="/tour4" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
-          >Tour quốc tế</a
-        >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
-          >Dịch vụ khác</a
-        >
+      <a routerLink="/tour" class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20">
+        Du lịch
+        <span class="ml-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+            <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+          </svg>
+        </span>
+      </a>
+      <div class="absolute left-0 hidden w-[350px] bg-white border border-blue-600 rounded-lg shadow-lg group-hover:block p-3">
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Du lịch trong nước -->
+          <div class="travel-option">
+            <div class="relative">
+              <img src="../../assets/images/2.webp" alt="Du lịch trong nước" class="w-full h-22 object-cover rounded-lg">
+              <h3 class="absolute bottom-2 left-2 text-white text-base font-bold">Du lịch trong nước</h3>
+            </div>
+            <div class="mt-2">
+              <a href="/tour/ha-noi" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600">Hà Nội</a>
+              <a href="/tour/da-nang" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600">Đà Nẵng</a>
+              <a href="/tour/da-lat" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600">Đà Lạt</a>
+              <a href="/tour/phu-quoc" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600">Phú Quốc</a>
+            </div>
+          </div>
+
+          <!-- Du lịch nước ngoài -->
+          <div class="travel-option">
+            <div class="relative">
+              <img src="../../assets/images/3.webp" alt="Du lịch nước ngoài" class="w-full h-22 object-cover rounded-lg">
+              <h3 class="absolute bottom-2 left-2 text-white text-base font-bold">Du lịch nước ngoài</h3>
+            </div>
+            <div class="mt-2">
+              <a href="/tour/chau-a" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600">Châu Á</a>
+              <a href="/tour/chau-my" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600">Châu Mỹ</a>
+              <a href="/tour/chau-au" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600">Châu Âu</a>
+              <a href="/tour/chau-uc" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600">Châu Úc</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
     <!-- Dropdown Cẩm nang du lịch -->
     <div class="relative group">
       <a
