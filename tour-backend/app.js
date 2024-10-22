@@ -1,7 +1,7 @@
 app.get('/tours/sort', (req, res) => {
     const { sortBy, sortOrder } = req.query;
   
-    // Ví dụ về cách sắp xếp các tour theo tham số
+  // cách sắp xếp các tour theo tham số
     let sortedTours = tours.sort((a, b) => {
       if (sortBy === 'Tên') {
         return sortOrder === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
