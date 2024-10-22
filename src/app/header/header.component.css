@@ -2,21 +2,30 @@
   background-image: url('../../assets/images/header_bg.webp');
   background-repeat: no-repeat;
   background-size: 101% 100%;
+  position: relative;
+  animation: backgroundChange 30s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-.tab-button::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 66%; /* 2/3 width */
-  height: 2px;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
-}
-
-.tab-button:hover::before,
-.tab-button:focus::before {
-  background-color: #2563eb; /* Tailwind's blue-600 */
+@keyframes backgroundChange {
+  0%, 28% {
+    background-image: url('../../assets/images/slider_2.webp');
+    opacity: 1;
+  }
+  30%, 33% {
+    opacity: 0.9;
+  }
+  35%, 61% {
+    background-image: url('../../assets/images/p-13.webp');
+    opacity: 1;
+  }
+  63%, 66% {
+    opacity: 0.9;
+  }
+  68%, 94% {
+    background-image: url('../../assets/images/t-1.webp');
+    opacity: 1;
+  }
+  96%, 100% {
+    opacity: 0.9;
+  }
 }
