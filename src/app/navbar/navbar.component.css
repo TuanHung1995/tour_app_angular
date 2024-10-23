@@ -138,4 +138,17 @@
 }
 .travel-option:hover img {
   transform: scale(1.05);
+  :host {
+    display: block;
+    position: relative;
+  }
+  
+  .header-custom {
+    position: relative;
+    z-index: 40;
+  }
+  
+  .dropdown-menu {
+    z-index: 50;
+  }
 }
