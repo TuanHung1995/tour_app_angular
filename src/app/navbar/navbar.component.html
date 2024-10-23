@@ -1,10 +1,7 @@
-<nav
-  class="flex items-center gap-7 justify-between px-40 bg-white shadow-md"
->
-  <!-- Logo -->
-  <div class="flex items-center space-x-2 h-20">
-    <img src="" alt="Logo" class="h-10" />
-    <!-- <span class="text-xl font-bold text-blue-600">OH!travel</span> -->
+<nav class="flex items-center gap-7 justify-between px-40 bg-white shadow-md relative z-40">
+   <!-- Logo -->
+   <div class="flex items-center space-x-2 h-20">
+    <img src="../../assets/images/logo.webp" alt="Logo" class="h-24" />
   </div>
 
   <!-- Menu Links -->
@@ -13,170 +10,98 @@
     <a routerLink="/introduce" class="text-gray-700 hover:text-blue-600">Giới thiệu</a>
 
     <!-- Dropdown Du lịch -->
-    <div class="relative group">
-      <a
-        routerLink="/tour"
-        class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20"
-        >Du lịch
-        <span class="ml-1"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="size-4"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd"
-            />
-          </svg> </span
-      ></a>
-      <div
-        class="absolute left-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-2xl group-hover:block"
-      >
-        <a href="/tour3" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
-          >Tour trong nước</a
-        >
-        <a href="/tour4" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
-          >Tour quốc tế</a
-        >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
-          >Dịch vụ khác</a
-        >
+    <div class="relative group" [ngStyle]="{'z-index': '50'}">
+      <a routerLink="/tour" class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20 group-hover:border-b-2 group-hover:border-blue-600">
+        Du lịch
+        <span class="ml-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+            <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+          </svg>
+        </span>
+      </a>
+      <div class="absolute left-1/2 transform -translate-x-1/2 hidden w-[350px] bg-white border border-blue-600 rounded-lg shadow-lg group-hover:block p-3 z-50">
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Du lịch trong nước -->
+          <div class="travel-option">
+            <div class="relative">
+              <img src="../../assets/images/2.webp" alt="Du lịch trong nước" class="w-full h-22 object-cover rounded-lg">
+              <h3 class="absolute bottom-2 left-2 text-white text-base font-bold">Du lịch trong nước</h3>
+            </div>
+            <div class="mt-2">
+              <a href="/tour/ha-noi" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600 hover:border-b hover:border-blue-600">Hà Nội</a>
+              <a href="/tour/da-nang" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600 hover:border-b hover:border-blue-600">Đà Nẵng</a>
+              <a href="/tour/da-lat" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600 hover:border-b hover:border-blue-600">Đà Lạt</a>
+              <a href="/tour/phu-quoc" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600 hover:border-b hover:border-blue-600">Phú Quốc</a>
+            </div>
+          </div>
+
+          <!-- Du lịch nước ngoài -->
+          <div class="travel-option">
+            <div class="relative">
+              <img src="../../assets/images/3.webp" alt="Du lịch nước ngoài" class="w-full h-22 object-cover rounded-lg">
+              <h3 class="absolute bottom-2 left-2 text-white text-base font-bold">Du lịch nước ngoài</h3>
+            </div>
+            <div class="mt-2">
+              <a href="/tour/chau-a" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600 hover:border-b hover:border-blue-600">Châu Á</a>
+              <a href="/tour/chau-my" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600 hover:border-b hover:border-blue-600">Châu Mỹ</a>
+              <a href="/tour/chau-au" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600 hover:border-b hover:border-blue-600">Châu Âu</a>
+              <a href="/tour/chau-uc" class="block px-2 py-1 text-sm text-gray-700 hover:text-blue-600 hover:border-b hover:border-blue-600">Châu Úc</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
     <!-- Dropdown Cẩm nang du lịch -->
-    <div class="relative group">
-      <a
-        routerLink="/travel"
-        class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20"
-        >Cẩm nang du lịch
-        <span class="ml-1"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="size-4"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd"
-            />
-          </svg> </span
-      ></a>
-      <div
-        class="absolute left-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block"
-      >
-        <a href="/info" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
-          >Chi phí dịch vụ làm visa đi nước ngoài cho người Việt</a
-        >
-       
+    <div class="relative group" [ngStyle]="{'z-index': '50'}">
+      <a routerLink="/travel" class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20">
+        Cẩm nang du lịch
+        <span class="ml-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+            <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+          </svg>
+        </span>
+      </a>
+      <div class="absolute left-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block z-50">
+        <a href="/info" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">
+          Chi phí dịch vụ làm visa đi nước ngoài cho người Việt
+        </a>
       </div>
     </div>
 
     <a routerLink="/phone" class="text-gray-700 hover:text-blue-600">Liên hệ</a>
     <a routerLink="/system" class="text-gray-700 hover:text-blue-600">Hệ thống</a>
-    <!-- <div class="flex items-center space-x-2">
-      <button class="text-gray-400">
-        <span class="material-icons"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="size-4"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.47 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.75.75 0 0 1 1.06 0Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </span>
-        <span class="material-icons"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="size-4"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </span>
-      </button>
-    </div> -->
   </div>
 
   <!-- User Account and Contact -->
   <div class="flex items-center space-x-6 h-20">
-    <!-- Account Dropdown -->
-    <div class="relative group">
-      <button
-        class="flex items-center space-x-1 text-gray-700 hover:text-blue-600"
-      >
-        <img
-          class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-        />
+    <div class="relative group" [ngStyle]="{'z-index': '50'}">
+      <button class="flex items-center space-x-1 text-gray-700 hover:text-blue-600">
+        <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" />
         <span>Tài khoản</span>
-        <span
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="size-4"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd"
-            />
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+            <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
           </svg>
         </span>
       </button>
-      <div
-        class="absolute right-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block"
-      >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
-          >Thông tin tài khoản</a
-        >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
-          >Giỏ hàng <span>()</span></a
-        >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
-          >Tour yêu thích</a
-        >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
-          >Đăng xuất</a
-        >
+      <div class="absolute right-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block z-50">
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Thông tin tài khoản</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Giỏ hàng <span>()</span></a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Tour yêu thích</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Đăng xuất</a>
       </div>
     </div>
 
     <!-- Contact -->
     <div class="flex w-36 flex-col items-center space-x-2 text-orange-600">
       <div class="flex">
-        <span class="material-icons"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="size-6"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
-              clip-rule="evenodd"
-            />
+        <span class="material-icons">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>
           </svg>
         </span>
         <span class="text-lg font-bold">1900.6750</span>
       </div>
-
       <span class="text-gray-500">7h30 → 21h</span>
     </div>
   </div>
