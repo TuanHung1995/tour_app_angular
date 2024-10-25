@@ -60,10 +60,11 @@ export class TourService {
     });
   }
 
-  sortTours(status: string, location: string, minPrice: number, maxPrice: number, direction: string, sortBy: string, page: number, size: number): Observable<Tour[]> {
+  sortTours(status: string, location: string, destination: string, minPrice: number, maxPrice: number, direction: string, sortBy: string, page: number, size: number): Observable<Tour[]> {
     let params = new HttpParams()
       .set('status', status)
       .set('location', location)
+      .set('destination', destination)
       .set('minPrice', minPrice.toString())
       .set('maxPrice', maxPrice.toString())
       .set('direction', direction)
