@@ -150,3 +150,19 @@
     z-index: 50;
   }
 }
+
+/* src/app/navbar/navbar.component.css */
+.navbar {
+  position: relative;
+  z-index: 10; /* Ensure the navbar is above other elements */
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 20; /* Ensure the dropdown menu is above the navbar */
+  display: none; /* Initially hidden */
+}
+
+.dropdown-menu.show {
+  display: block; /* Show the dropdown menu when needed */
+}
