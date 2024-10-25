@@ -1,5 +1,3 @@
-/* Modern styling cho dropdown menu */
-
 /* Menu item chính */
 .relative.group:has(a[routerLink="/travel"]) > a {
   position: relative;
