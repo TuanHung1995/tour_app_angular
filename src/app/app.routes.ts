@@ -16,7 +16,7 @@ import { InfoComponent } from './info/info.component';
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomePageComponent},
-  {path: 'tour', component: TourComponent},
+  {path: 'tours', component: TourComponent},
   {path: 'travel', component: TravelComponent},
   {path: 'travel1',  component: Travel1Component},
   {path: 'phone', component: PhoneComponent},

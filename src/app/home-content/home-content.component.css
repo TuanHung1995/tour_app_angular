@@ -1,0 +1,10 @@
+.tour:hover {
+  box-shadow: 0 0 10px #898989;
+}
+
+.tour {
+  box-shadow: 0 0 10px #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all .3s;
+}

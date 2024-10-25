@@ -38,3 +38,13 @@
     opacity: 0.9;
   }
 }
+
+.tab-button:hover::before,
+.tab-button:focus::before {
+  background-color: #2563eb; /* Tailwind's blue-600 */
+}
+
+.header-custom {
+  position: relative;
+  z-index: 1; /* Ensure the header is below the navbar */
+}

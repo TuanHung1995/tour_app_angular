@@ -60,11 +60,18 @@ export class TourService {
     });
   }
 
-  sortTours(sortBy: string, sortOrder: string): Observable<Tour[]> {
+  sortTours(status: string, location: string, destination: string, minPrice: number, maxPrice: number, direction: string, sortBy: string, page: number, size: number): Observable<Tour[]> {
     let params = new HttpParams()
+      .set('status', status)
+      .set('location', location)
+      .set('destination', destination)
+      .set('minPrice', minPrice.toString())
+      .set('maxPrice', maxPrice.toString())
+      .set('direction', direction)
       .set('sortBy', sortBy)
-      .set('sortOrder', sortOrder);
+      .set('page', page.toString())
+      .set('size', size.toString());
 
-    return this.http.get<Tour[]>(`${this.apiUrl}/tours`, { params });
+    return this.http.get<Tour[]>(`${this.apiUrl}/sort`, { params });
   }
 }
