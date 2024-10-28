@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { Jwt } from '../models/jwt';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,16 +16,21 @@ export class AuthService {
 
   private user: any; // User data
 
-  login(credentials: { email: string; password: string }): Observable<Jwt> {
-    return this.http.post<Jwt>(`${this.apiUrl}/login`, credentials);
+  login(credentials: { usernameOrEmail: string; password: string }): Observable<Jwt> {
+    return this.http.post<Jwt>(`${this.apiUrl}/login`, credentials).pipe(
+      catchError((error) => {
+        console.error('Login request failed', error);
+        return throwError(() => new Error('Login failed'));
+      })
+    );
   }
 
   saveToken(token: string) {
-    localStorage.setItem('jwtToken', token);
+    localStorage.setItem('token', token);
   }
 
   getToken() {
-    return localStorage.getItem('jwtToken');
+    return localStorage.getItem('token');
   }
 
   // Store user data after login
