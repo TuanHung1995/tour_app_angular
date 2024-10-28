@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      usernameOrEmail: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           // Success, save token to local storage and redirect to home page
           if (typeof window !== 'undefined') {
-            localStorage.setItem('token', response.token);
+            localStorage.setItem('token', response.accessToken);
             this.router.navigate(['/home']);
           }
         },
