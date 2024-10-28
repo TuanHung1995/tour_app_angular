@@ -3,7 +3,7 @@
 >
   <!-- Logo -->
   <div class="flex items-center space-x-2 h-20">
-    <img src="" alt="Logo" class="h-10" />
+    <img src="../../assets/images/logo.webp" alt="Logo" class="h-24" />
     <!-- <span class="text-xl font-bold text-blue-600">OH!travel</span> -->
   </div>
 
@@ -12,40 +12,59 @@
     <a href="#" class="text-gray-700 hover:text-blue-600">Trang chủ</a>
     <a routerLink="/introduce" class="text-gray-700 hover:text-blue-600">Giới thiệu</a>
 
-    <!-- Dropdown Du lịch -->
-    <div class="relative group">
-      <a
-        routerLink="/tour"
-        class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20"
-        >Du lịch
-        <span class="ml-1"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="size-4"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd"
-            />
-          </svg> </span
-      ></a>
-      <div
-        class="dropdown-menu absolute left-0 w-48 bg-white border border-gray-200 rounded-lg shadow-2xl group-hover:block"
-      >
-        <a href="/tour3" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
-          >Tour trong nước</a
-        >
-        <a href="/tour4" class="block px-4 py-2 text-gray-700 hover:bg-blue-100"
-          >Tour quốc tế</a
-        >
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:rounded-lg"
-          >Dịch vụ khác</a
-        >
+  <!-- Dropdown du lịch -->
+<div class="relative group">
+  <button class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20 cursor-pointer group-hover:text-blue-600 group-hover:underline transition-all duration-200">
+    Du lịch
+    <span class="ml-1">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+        <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+      </svg>
+    </span>
+  </button>
+
+  <div class="dropdown-menu absolute right-3 hidden w-[350px] bg-gray-300 border border-x-blue-400 rounded-lg shadow-lg group-hover:block p-2 transition-all duration-200">
+    <div class="grid grid-cols-2 gap-4">
+      <!-- Du lịch trong nước -->
+      <div>
+        <div class="relative mb-4 overflow-hidden group/image">
+          <img src="../../assets/images/2.webp" alt="Du lịch trong nước" 
+               class="w-full h-32 object-cover rounded-lg transition-transform duration-300 group-hover/image:scale-110">
+          <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent rounded-b-lg">
+            <h3 class="text-white text-center font-bold">Du lịch trong nước</h3>
+          </div>
+        </div>
+        <ul class="space-y-2">
+          <li *ngFor="let dest of domesticDestinations">
+            <a [routerLink]="dest.link" 
+               class="text-gray-700 hover:text-blue-600 hover:underline block transition-all duration-200 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:bottom-0 hover:after:w-full after:transition-all after:duration-300">
+              {{dest.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Du lịch nước ngoài -->
+      <div>
+        <div class="relative mb-4 overflow-hidden group/image">
+          <img src="../../assets/images/3.webp" alt="Du lịch nước ngoài" 
+               class="w-full h-32 object-cover rounded-lg transition-transform duration-300 group-hover/image:scale-110">
+          <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent rounded-b-lg">
+            <h3 class="text-white text-base font-bold">Du lịch nước ngoài</h3>
+          </div>
+        </div>
+        <ul class="space-y-2">
+          <li *ngFor="let dest of internationalDestinations">
+            <a [routerLink]="dest.link" 
+               class="text-gray-700 hover:text-blue-600 hover:underline block transition-all duration-200 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-600 after:left-0 after:bottom-0 hover:after:w-full after:transition-all after:duration-300">
+              {{dest.name}}
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
+  </div>
+</div>
     <!-- Dropdown Cẩm nang du lịch -->
     <div class="relative group">
       <a

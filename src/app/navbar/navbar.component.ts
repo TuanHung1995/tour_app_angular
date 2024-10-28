@@ -4,6 +4,12 @@ import { RouterLink } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NgStyle } from '@angular/common';
+import { CommonModule } from '@angular/common';
+ interface Destination{
+  name: string;
+  link: string;
+ }
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -11,7 +17,8 @@ import { NgStyle } from '@angular/common';
     NgIf,
     RouterLink,
     RouterOutlet,
-    NgStyle
+    NgStyle,
+    CommonModule
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
@@ -43,5 +50,20 @@ export class NavbarComponent implements OnInit {
   }
 
   // link to another page when click span in mobile view
+  domesticDestinations:  Destination[] = [
+
+    { name: 'Hà Nội', link: '#' },
+    { name: 'Đà Nẵng', link: '#' },
+    { name: 'Đà Lạt', link: '#' },
+    { name: 'Phú Quốc', link: '#' }
+  ];
+
+  internationalDestinations: Destination[] = [
+
+    { name: 'Châu Á', link: '#' },
+    { name: 'Châu Mỹ', link: '#' },
+    { name: 'Châu Âu', link: '#' },
+    { name: 'Châu Úc', link: '#' }
+  ];
 
 }
