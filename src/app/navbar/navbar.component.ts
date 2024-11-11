@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NgStyle } from '@angular/common';
 import { CommonModule } from '@angular/common';
+
  interface Destination{
   name: string;
   link: string;
@@ -50,9 +51,10 @@ export class NavbarComponent implements OnInit {
   }
 
   // link to another page when click span in mobile view
+  
   domesticDestinations:  Destination[] = [
 
-    { name: 'Hà Nội', link: '#' },
+    { name: 'Hà Nội', link: 'tour4' },
     { name: 'Đà Nẵng', link: '#' },
     { name: 'Đà Lạt', link: '#' },
     { name: 'Phú Quốc', link: '#' }

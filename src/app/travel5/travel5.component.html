@@ -1,0 +1,652 @@
+<div class="min-h-screen bg-gray-50">
+  <!-- Hero Section -->
+  <div class="relative h-96">
+    <img
+      src="../../assets/images/t-7.webp"
+      alt="Istanbul cityscape"
+      class="w-full h-full object-cover"
+      onerror="this.src='https://via.placeholder.com/1200x400'"
+    />
+    <div class="absolute inset-0 bg-black/40"></div>
+    <nav class="absolute top-0 w-full p-4">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <h1 class="text-white text-xl font-bold">Phú Quốc</h1>
+        <div class="flex gap-6 text-white"></div>
+      </div>
+    </nav>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div
+        class="absolute bottom-8 left-8 flex items-center text-white text-sm"
+      >
+        <a href="/home" class="hover:text-blue-300">Trang chủ</a>
+        <span class="mx-2">›</span>
+        <a href="/travel" class="hover:text-blue-300">Tin tức</a>
+        <span class="mx-2">›</span>
+        <span>
+          Kỳ nghỉ ấn tượng bên bãi Khem xinh đẹp tại Premier Residences Phú Quốc
+          Emerald Bay</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Introduction -->
+    <section id="intro" class="content-section mb-16">
+      <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">
+          Kỳ nghỉ ấn tượng bên bãi Khem xinh đẹp tại Premier Residences Phú Quốc
+          Emerald Bay
+        </h2>
+        <div class="space-y-4">
+          <p class="text-gray-600 leading-relaxed">
+            Bãi Khem là một trong những bãi tắm đẹp nhất Phú Quốc, từng được
+            vinh danh trong top 100 bãi biển đẹp nhất thế giới 2018 do Flight
+            Network bình chọn. Tọa lạc tại bãi Khem xinh đẹp, Premier Residences
+            Phú Quốc Emerald Bay nằm trong quần thể khu nghỉ dưỡng Phú Quốc sang
+            trọng của tập đoàn Sun Group và được quản lý bởi tập đoàn khách sạn
+            hàng đầu thế giới AccorHotels.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Premier Residences Phú Quốc Emerald Bay mang nét độc đáo với các căn
+            hộ nghỉ dưỡng được thiết kế theo hình bậc thang, hướng tầm nhìn ra
+            đại dương xanh mát tạo không gian thư giãn. Khu nghỉ dưỡng có đa
+            dạng hạng phòng, các phòng đều có thiết kế hiện đại và trang bị đầy
+            đủ tiện nghi cho bạn tận hưởng kỳ nghỉ thoải mái. Đặc biệt, những
+            căn hộ penthouse sang trọng có diện tích lên tới 256 mét vuông, nằm
+            tại tầng cao nhất của mỗi tòa nhà, mỗi biệt thự này cho phép du
+            khách tận hưởng không gian riêng tư và có thể thu trọn cả đại dương
+            trong tầm mắt.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Điểm nhấn của khu nghỉ dưỡng Premier Residences Phú Quốc Emerald Bay
+            là bể bơi trung tâm tràn bờ rộng 5000 m² với nhiều cấp độ thoải dần
+            ra biển, từ đây bạn sẽ có cảm giác như với tay ra là chạm vào biển
+            cả bao la.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="seasons" class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 text-gray-800">
+      Những hình ảnh về các khu nghĩ dưỡng và hoạt động  tại Premier Residences Phú Quốc Emerald Bay
+
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div *ngFor="let season of seasons1" 
+          class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative group">
+          <div class="overflow-hidden">
+            <img [src]="season.image" [alt]="" 
+              class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+              onerror="this.src='https://via.placeholder.com/400x200'" />
+            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section id="tours" class="mb-16 mx-auto px-4">
+      <!-- <p class="text-xl text-black">Các tour gợi ý</p> -->
+
+      <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
+        Các Tour Khuyến Mãi
+      </h2>
+      <div class="max-w-7xl mx-auto">
+        <swiper-container
+          #swiper
+          [init]="false"
+          [slides-per-view]="3"
+          [space-between]="24"
+          [grab-cursor]="true"
+          [speed]="500"
+          [pagination]="false"
+          [navigation]="true"
+          [loop]="true"
+          class="!overflow-visible py-8 px-4"
+        >
+          <!-- Tour Bờ Đông Hoa Kỳ -->
+          <swiper-slide>
+            <div
+              class="tour-card bg-white rounded-xl shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-lg"
+            >
+              <div class="relative">
+                <img
+                  src="../../assets/images/photo2.webp"
+                  alt="Tour Bờ Đông Hoa Kỳ"
+                  class="w-full h-[200px] object-cover"
+                  onerror="this.src='https://via.placeholder.com/300x200'"
+                />
+              </div>
+
+              <div class="p-4">
+                <h3
+                  class="text-[15px] font-medium text-[#2D4271] mb-2 line-clamp-2 min-h-[40px]"
+                >
+                  Tour Bờ Đông Hoa Kỳ: New York - Philadelphia
+                </h3>
+
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Khởi hành:</span>
+                    <span>28/08/2023</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Thời gian:</span>
+                    <span>10N9Đ</span>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <div class="text-[#FD5056] font-bold text-xl">
+                    180,000,000đ
+                  </div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-gray-500 line-through text-sm">
+                      160,000,000đ
+                    </span>
+                    <span
+                      class="bg-[#FD5056] text-white px-1 py-0.5 rounded text-xs"
+                    >
+                      -5%
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  class="primary-button w-full mt-4 bg-[#2D4271] hover:bg-blue-800 text-white font-medium py-2.5 rounded text-sm transition-colors duration-300"
+                >
+                  Đặt ngay
+                </button>
+              </div>
+            </div>
+          </swiper-slide>
+
+          <!-- Tour Nhật Bản -->
+          <swiper-slide>
+            <div
+              class="tour-card bg-white rounded-xl shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-lg"
+            >
+              <div class="image-container relative">
+                <img
+                  src="../../assets/images/p-19.webp"
+                  alt="Tour Nhật Bản"
+                  class="w-full h-[200px] object-cover"
+                  onerror="this.src='https://via.placeholder.com/300x200'"
+                />
+              </div>
+
+              <div class="p-4">
+                <h3
+                  class="text-[15px] font-medium text-[#2D4271] mb-2 line-clamp-2 min-h-[40px]"
+                >
+                  Tour Nhật Bản 4N4Đ: Tokyo - Yamanashi
+                </h3>
+
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Khởi hành:</span>
+                    <span>05/07/2023</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Thời gian:</span>
+                    <span>4N4Đ</span>
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <div class="text-[#FD5056] font-bold text-xl">
+                    26,690,000đ
+                  </div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-gray-500 line-through text-sm">
+                      28,000,000đ
+                    </span>
+                    <span
+                      class="bg-[#FD5056] text-white px-1 py-0.5 rounded text-xs"
+                    >
+                      -5%
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  class="primary-button w-full mt-4 bg-[#2D4271] hover:bg-blue-800 text-white font-medium py-2.5 rounded text-sm transition-colors duration-300"
+                >
+                  Đặt ngay
+                </button>
+              </div>
+            </div>
+          </swiper-slide>
+
+          <!-- Tour Dubai -->
+          <swiper-slide>
+            <div
+              class="tour-card bg-white rounded-xl shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-lg"
+            >
+              <div class="image-container relative">
+                <img
+                  src="../../assets/images/p-20.webp"
+                  alt="Tour Dubai"
+                  class="w-full h-[200px] object-cover"
+                  onerror="this.src='https://via.placeholder.com/300x200'"
+                />
+              </div>
+
+              <div class="p-4">
+                <h3
+                  class="text-[15px] font-medium text-[#2D4271] mb-2 line-clamp-2 min-h-[40px]"
+                >
+                  Tour Cao Cấp Dubai 4N4Đ: Dubai - Abu Dhabi
+                </h3>
+
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Khởi hành:</span>
+                    <span>05/07/2023</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Thời gian:</span>
+                    <span>4N4Đ</span>
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <div class="text-[#FD5056] font-bold text-xl">
+                    31,990,000đ
+                  </div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-gray-500 line-through text-sm">
+                      34,000,000đ
+                    </span>
+                    <span
+                      class="bg-[#FD5056] text-white px-1 py-0.5 rounded text-xs"
+                    >
+                      -6%
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  class="primary-button w-full mt-4 bg-[#2D4271] hover:bg-blue-800 text-white font-medium py-2.5 rounded text-sm transition-colors duration-300"
+                >
+                  Đặt ngay
+                </button>
+              </div>
+            </div>
+          </swiper-slide>
+
+          <swiper-slide>
+            <div
+              class="tour-card bg-white rounded-xl shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-lg"
+            >
+              <div class="image-container relative">
+                <img
+                  src="../../assets/images/p-23.webp"
+                  alt="Tour Dubai"
+                  class="w-full h-[200px] object-cover"
+                  onerror="this.src='https://via.placeholder.com/300x200'"
+                />
+              </div>
+
+              <div class="p-4">
+                <h3
+                  class="text-[15px] font-medium text-[#2D4271] mb-2 line-clamp-2 min-h-[40px]"
+                >
+                  Tour Hàn Quốc 5N4Đ: Xứ Sở Kim Chi Seoul - Nami - Everland
+                </h3>
+
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Khởi hành:</span>
+                    <span>02/07/2023</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Thời gian:</span>
+                    <span>5N4Đ</span>
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <div class="text-[#FD5056] font-bold text-xl">
+                    23,090,000đ
+                  </div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-gray-500 line-through text-sm"> 0đ </span>
+                    <span
+                      class="bg-[#FD5056] text-white px-1 py-0.5 rounded text-xs"
+                    >
+                      -0%
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  class="primary-button w-full mt-4 bg-[#2D4271] hover:bg-blue-800 text-white font-medium py-2.5 rounded text-sm transition-colors duration-300"
+                >
+                  Đặt ngay
+                </button>
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div
+              class="tour-card bg-white rounded-xl shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-lg"
+            >
+              <div class="image-container relative">
+                <img
+                  src="../../assets/images/p-21.webp"
+                  alt="Tour Dubai"
+                  class="w-full h-[200px] object-cover"
+                  onerror="this.src='https://via.placeholder.com/300x200'"
+                />
+              </div>
+
+              <div class="p-4">
+                <h3
+                  class="text-[15px] font-medium text-[#2D4271] mb-2 line-clamp-2 min-h-[40px]"
+                >
+                  Tour Đài Loan 5N4Đ: HCM - Đào Viên - Công Viên Dã Liễu - Cao
+                  Hùng - Phật Quang Sơn
+                </h3>
+
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Khởi hành:</span>
+                    <span>05/07/2023</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Thời gian:</span>
+                    <span>5N4Đ</span>
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <div class="text-[#FD5056] font-bold text-xl">
+                    15,000,000đ
+                  </div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-gray-500 line-through text-sm">
+                      17,000,000đ
+                    </span>
+                    <span
+                      class="bg-[#FD5056] text-white px-1 py-0.5 rounded text-xs"
+                    >
+                      -9%
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  class="primary-button w-full mt-4 bg-[#2D4271] hover:bg-blue-800 text-white font-medium py-2.5 rounded text-sm transition-colors duration-300"
+                >
+                  Đặt ngay
+                </button>
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div
+              class="tour-card bg-white rounded-xl shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-lg"
+            >
+              <div class="image-container relative">
+                <img
+                  src="../../assets/images/p-22.webp"
+                  alt="Tour Dubai"
+                  class="w-full h-[200px] object-cover"
+                  onerror="this.src='https://via.placeholder.com/300x200'"
+                />
+              </div>
+
+              <div class="p-4">
+                <h3
+                  class="text-[15px] font-medium text-[#2D4271] mb-2 line-clamp-2 min-h-[40px]"
+                >
+                  Tour Trung Quốc 5N4Đ: Trương Gia Giới - Phượng Hoàng Cổ Trấn
+                </h3>
+
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Khởi hành:</span>
+                    <span>05/07/2023</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="text-gray-500">Thời gian:</span>
+                    <span>5N4Đ</span>
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <div class="text-[#FD5056] font-bold text-xl">
+                    16,990,000đ
+                  </div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-gray-500 line-through text-sm">
+                      18,000,000đ
+                    </span>
+                    <span
+                      class="bg-[#FD5056] text-white px-1 py-0.5 rounded text-xs"
+                    >
+                      -7%
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  class="primary-button w-full mt-4 bg-[#2D4271] hover:bg-blue-800 text-white font-medium py-2.5 rounded text-sm transition-colors duration-300"
+                >
+                  Đặt ngay
+                </button>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </div>
+    </section>
+    <!-- Cappadocia Section -->
+    <section id="cappadocia" class="mb-16">
+      <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">
+          Những điểm nổi bật
+        </h2>
+        <div class="space-y-4">
+        <p class="text-gray-600 leading-relaxed">
+          Premier Residences Phú Quốc Emerald Bay mang đến cho du khách nhiều lựa chọn ẩm thực hấp dẫn tại các nhà hàng và quầy bar.
+           Trong đó, nhà hàng Mercato chuyên phục vụ bữa ăn sáng buffet, mang đến cho du khách hương vị ẩm thực quốc tế cùng các món ăn đặc trưng của 
+           Việt Nam, nhà hàng rộng rãi với không gian ấm cúng, có cả khu vực chỗ ngồi trong nhà và ngoài trời, phù hợp cho những sở thích khác nhau của thực khách. 
+           Nhà hàng và bar Clubhouse nằm ngay bên biển và hồ bơi, bốn bề thoáng gió cho thực khách trải nghiệm hương vị biển ngay trong bữa ăn, quầy bar của nhà hàng
+           sẽ là điểm hẹn lý tưởng vào mỗi buổi chiều để thưởng thức những ly cocktail và các loại pizza. Bên cạnh đó, bạn cũng có thể trải nghiệm những phút giây thư giãn “cực chill” tại Pool Bar ngay cạnh hồ bơi.
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          Ngoài ra, khi đến với Premier Residences Phú Quốc Emerald Bay, quý khách còn được phục hồi năng lượng và tìm lại sự cân bằng với đa dạng các hoạt động giải trí và thể thao.
+          Bạn có thể tự do tham gia nhiều hoạt động hấp dẫn không thu phí như: các trò chơi thể thao trên biển (kayaking, lướt ván, bóng chuyền, bóng rổ…), 
+          khu tập thể hình, hồ bơi nhiều tầng. Hay có thêm nhiều trải nghiệm mới mẻ qua việc tham gia lớp học bơi, thuê xe đạp tự do khám phá, đặt tour khám phá Phú Quốc…
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          Với những du khách nhí, tại khu nghỉ dưỡng còn có thêm lựa chọn để các bé thỏa thích vui chơi tại khu vực câu lạc bộ trẻ em cùng bể bơi ngoài trời dành riêng cho bé.
+
+          Premier Residences Phú Quốc Emerald Bay cung cấp đa dạng cho các dịch vụ tổ chức tiệc cưới, hội họp… Từ không gian trang trí, đến trang thiết bị hiện đại, âm nhạc, đội ngũ nhân viên của khu nghỉ sẵn sàng thực hiện chỉn chu và tỉ mỉ theo yêu cầu đặc biệt của bạn.
+        </p>
+      </div>
+      </div>
+    </section>
+
+    <!-- Comment Section -->
+    <!-- <section id="in-image-content" class="mb-16">
+      <div class="relative h-96">
+        <img src="../../assets/images/in-image-content.jpg" alt="In-image content" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center text-white">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+              Viết bình luận của bạn
+            </h2>
+            <form class="mt-8 max-w-md mx-auto">
+              <div class="mb-4">
+                <input type="text" class="form-inputw-full px-4 py-2 rounded" placeholder="Họ và tên" />
+              </div>
+              <div class="mb-4">
+                <input type="email" class="form-inputw-full px-4 py-2 rounded" placeholder="Email" />
+              </div>
+              <div class="mb-4">
+                <textarea class="w-full px-4 py-2 rounded" rows="4" placeholder="Nội dung"></textarea>
+              </div>
+              <button type="submit"
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">
+                Gửi thông tin
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">
+      TIN LIÊN QUAN
+    </h2>
+  
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group">
+        <a href="/trave2" class="block relative">
+          <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
+            <img
+              src="../../assets/images/t-1.webp"
+              alt="Du hành ngược thời gian"
+              class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+              onerror="this.src='https://via.placeholder.com/400x300'"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="text-[15px] font-medium text-[#2D4271] mb-2 hover:text-blue-600 transition-colors duration-300 line-clamp-2">
+              Du hành ngược thời gian tại làng dân gian Naganneupseong...
+            </h3>
+            <div class="flex items-center gap-4 text-sm text-gray-500">
+              <div class="flex items-center gap-1">
+                <i class="far fa-calendar text-sm"></i>
+                <span>02/07/2023</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <i class="far fa-user text-sm"></i>
+                <span>Nguyễn Thị Kim Anh</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group">
+        <a href="/travel9" class="block relative">
+          <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
+            <img
+              src="../../assets/images/t-2.webp"
+              alt="Cắm trại ở Chư Nâm"
+              class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+              onerror="this.src='https://via.placeholder.com/400x300'"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="text-[15px] font-medium text-[#2D4271] mb-2 hover:text-blue-600 transition-colors duration-300 line-clamp-2">
+              Cắm trại ở Chư Nâm ngắm thiên đường mây ở độ cao
+            </h3>
+            <div class="flex items-center gap-4 text-sm text-gray-500">
+              <div class="flex items-center gap-1">
+                <i class="far fa-calendar text-sm"></i>
+                <span>02/07/2023</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <i class="far fa-user text-sm"></i>
+                <span>Nguyễn Thị Kim Anh</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group">
+        <a href="#" class="block relative">
+          <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
+            <img
+              src="../../assets/images/t-3.webp"
+              alt="Kinh nghiệm cắm trại"
+              class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+              onerror="this.src='https://via.placeholder.com/400x300'"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="text-[15px] font-medium text-[#2D4271] mb-2 hover:text-blue-600 transition-colors duration-300 line-clamp-2">
+              Kinh nghiệm cắm trại trên núi Bà Đen Tây Ninh cuối...
+            </h3>
+            <div class="flex items-center gap-4 text-sm text-gray-500">
+              <div class="flex items-center gap-1">
+                <i class="far fa-calendar text-sm"></i>
+                <span>02/07/2023</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <i class="far fa-user text-sm"></i>
+                <span>Nguyễn Thị Kim Anh</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+    <!-- Phần Tour gợi ý -->
+    <div class="mt-12 bg-gray-100 py-8">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
+          Tour gợi ý
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            *ngFor="let tour of suggestedTours"
+            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1"
+          >
+            <img
+              [src]="tour.image1"
+              [alt]="tour.name1"
+              class="w-full h-48 object-cover transition duration-300 transform hover:scale-105"
+            />
+            <div class="p-4">
+              <h3
+                class="font-bold text-lg mb-2 hover:text-blue-600 transition duration-300"
+              >
+                {{ tour.name1 }}
+              </h3>
+              <p class="text-sm text-gray-600 mb-2">
+                <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>Khởi hành:
+                {{ tour.startDate1 }}
+              </p>
+              <p class="text-sm text-gray-600 mb-2">
+                <i class="fas fa-clock mr-2 text-blue-500"></i>Thời gian:
+                {{ tour.duration1 }}
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <p class="text-gray-500 line-through">
+                  {{
+                    tour.originalPrice1 | currency : "VND" : "symbol" : "1.0-0"
+                  }}
+                </p>
+                <p class="text-xl font-bold text-red-600">
+                  {{
+                    tour.discountedPrice1
+                      | currency : "VND" : "symbol" : "1.0-0"
+                  }}
+                </p>
+                <span
+                  class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded"
+                  >-{{ tour.discount1 }}%</span
+                >
+              </div>
+              <button
+                class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring focus:ring-blue-200"
+              >
+                Đặt ngay
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

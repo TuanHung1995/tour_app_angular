@@ -15,7 +15,7 @@
   <!-- Dropdown du lịch -->
 <div class="relative group">
   <button class="text-gray-700 hover:text-blue-600 inline-flex items-center h-20 cursor-pointer group-hover:text-blue-600 group-hover:underline transition-all duration-200">
-    Du lịch
+    <a routerLink="/tours">Du lịch</a>
     <span class="ml-1">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
         <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -23,7 +23,7 @@
     </span>
   </button>
 
-  <div class="dropdown-menu absolute right-3 hidden w-[350px] bg-gray-300 border border-x-blue-400 rounded-lg shadow-lg group-hover:block p-2 transition-all duration-200">
+  <div class="dropdown-menu absolute right-3 hidden w-[350px] bg-slate-200 border border-x-blue-400 rounded-lg shadow-lg group-hover:block p-2 transition-all duration-200">
     <div class="grid grid-cols-2 gap-4">
       <!-- Du lịch trong nước -->
       <div>
@@ -31,7 +31,7 @@
           <img src="../../assets/images/2.webp" alt="Du lịch trong nước" 
                class="w-full h-32 object-cover rounded-lg transition-transform duration-300 group-hover/image:scale-110">
           <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent rounded-b-lg">
-            <h3 class="text-white text-center font-bold">Du lịch trong nước</h3>
+            <a href="/tour3"><h3 class="text-white text-center font-bold">Du lịch trong nước</h3></a>
           </div>
         </div>
         <ul class="space-y-2">
@@ -50,7 +50,7 @@
           <img src="../../assets/images/3.webp" alt="Du lịch nước ngoài" 
                class="w-full h-32 object-cover rounded-lg transition-transform duration-300 group-hover/image:scale-110">
           <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent rounded-b-lg">
-            <h3 class="text-white text-base font-bold">Du lịch nước ngoài</h3>
+          <a href="/tour4"><h3 class="text-white text-base font-bold">Du lịch nước ngoài</h3></a>
           </div>
         </div>
         <ul class="space-y-2">
