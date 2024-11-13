@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { TourService } from '../services/tour.service';
 import { NewsService } from '../services/news.service';
 import { Tour } from '../models/tour';
@@ -71,8 +72,8 @@ export class HomeContentComponent implements OnInit {
   bestTours: BestTour[] = [
     {
       id: 1,
-      name: 'Tour du lịch Quảng Bình',
-      image: '../../assets/images/quang_binh.webp',
+      name: 'Hà Nội',
+      image: '../../assets/images/cate_1.webp',
       startDate: '2022-06-01',
       duration: '4 ngày 3 đêm',
       price: 5000000,
@@ -80,8 +81,8 @@ export class HomeContentComponent implements OnInit {
     },
     {
       id: 2,
-      name: 'Tour du lịch Hồng Kông',
-      image: '../../assets/images/hong_kong.webp',
+      name: 'Đà Nẵng',
+      image: '../../assets/images/cate_2.webp',
       startDate: '2022-06-01',
       duration: '4 ngày 3 đêm',
       price: 5000000,
@@ -89,8 +90,8 @@ export class HomeContentComponent implements OnInit {
     },
     {
       id: 3,
-      name: 'Tour du lịch Tây Bắc',
-      image: '../../assets/images/tay_bac_sale.webp',
+      name: 'Đà Lạt',
+      image: '../../assets/images/cate_3.webp',
       startDate: '2022-06-01',
       duration: '4 ngày 3 đêm',
       price: 5000000,
@@ -98,8 +99,8 @@ export class HomeContentComponent implements OnInit {
     },
     {
       id: 4,
-      name: 'Tour du lịch Tây Bắc',
-      image: '../../assets/images/tay_bac.webp',
+      name: 'Phú Quốc',
+      image: '../../assets/images/cate_4.webp',
       startDate: '2022-06-01',
       duration: '4 ngày 3 đêm',
       price: 5000000,
@@ -107,8 +108,8 @@ export class HomeContentComponent implements OnInit {
     },
     {
       id: 5,
-      name: 'Tour du lịch Tây Bắc',
-      image: '../../assets/images/tay_bac.webp',
+      name: 'Châu Á',
+      image: '../../assets/images/cate_5.webp',
       startDate: '2022-06-01',
       duration: '4 ngày 3 đêm',
       price: 5000000,
@@ -116,8 +117,8 @@ export class HomeContentComponent implements OnInit {
     },
     {
       id: 6,
-      name: 'Tour du lịch Tây Bắc',
-      image: '../../assets/images/tay_bac.webp',
+      name: 'Châu Mỹ',
+      image: '../../assets/images/cate_6.webp',
       startDate: '2022-06-01',
       duration: '4 ngày 3 đêm',
       price: 5000000,
@@ -125,8 +126,8 @@ export class HomeContentComponent implements OnInit {
     },
     {
       id: 7,
-      name: 'Tour du lịch Tây Bắc',
-      image: '../../assets/images/tay_bac.webp',
+      name: 'Châu Âu',
+      image: '../../assets/images/cate_7.webp',
       startDate: '2022-06-01',
       duration: '4 ngày 3 đêm',
       price: 5000000,
@@ -134,8 +135,8 @@ export class HomeContentComponent implements OnInit {
     },
     {
       id: 8,
-      name: 'Tour du lịch Tây Bắc',
-      image: '../../assets/images/tay_bac.webp',
+      name: 'Châu Úc',
+      image: '../../assets/images/cate_8.webp',
       startDate: '2022-06-01',
       duration: '4 ngày 3 đêm',
       price: 5000000,
@@ -170,7 +171,8 @@ export class HomeContentComponent implements OnInit {
   latestNews: News[] = [];
 
   constructor(private tourService: TourService,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -204,6 +206,8 @@ export class HomeContentComponent implements OnInit {
     });
   }
 
-
+  viewTourDetails(id: number): void {
+    this.router.navigate(['/tour', id]);
+  }
 
 }
