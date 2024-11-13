@@ -74,4 +74,5 @@ export class TourService {
 
     return this.http.get<Tour[]>(`${this.apiUrl}/sort`, { params });
   }
+
 }

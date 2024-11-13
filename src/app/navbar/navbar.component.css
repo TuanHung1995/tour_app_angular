@@ -6,12 +6,12 @@
   align-items: center;
   color: #374151;
   font-weight: 500;
-  padding: 0 16px;
+  padding: 0 0;
   transition: all 0.3s ease;
 }
 
 /* Hiệu ứng gạch chân khi hover menu item chính */
-.relative.group:has(a[routerLink="/travel"]) > a::after {
+.inline-flex.items-center.h-20:has(a[routerLink="/travel"]) > a::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -23,7 +23,7 @@
   transform: translateX(-50%);
 }
 
-.relative.group:has(a[routerLink="/travel"]):hover > a::after {
+.inline-flex.items-center.h-20:has(a[routerLink="/travel"]):hover > a::after {
   width: 100%;
 }
 
@@ -89,14 +89,14 @@
 }
 
 /* Icon styling */
-.relative.group:has(a[routerLink="/travel"]) > a svg {
+.inline-flex.items-center.h-20:has(a[routerLink="/travel"]) > a svg {
   width: 18px;
   height: 18px;
   margin-left: 6px;
   transition: transform 0.3s ease;
 }
 
-.relative.group:has(a[routerLink="/travel"]):hover > a svg {
+.inline-flex.items-center.h-20:has(a[routerLink="/travel"]):hover > a svg {
   transform: rotate(180deg);
 }
 
@@ -165,4 +165,8 @@
 
 .dropdown-menu.show {
   display: block; /* Show the dropdown menu when needed */
+}
+
+.avatar{
+  filter: brightness(0.5);
 }

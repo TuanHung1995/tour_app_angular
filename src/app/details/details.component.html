@@ -1,0 +1,873 @@
+<div class="container mb-4">
+  <!-- Main Container -->
+  <div class="flex mt-5 gap-1 mx-[130px]">
+    <div class="p-6 max-w-5xl mx-auto bg-white">
+      <!-- Left Section: Image Gallery -->
+      <div class="grid grid-cols-6 gap-4">
+        <!-- Large Image -->
+        <div class="col-span-3">
+          <img
+            src="../../assets/images/photo1.webp"
+            alt="Main Image"
+            class="w-full h-72 object-cover rounded-md"
+          />
+        </div>
+
+        <!-- Small Images -->
+        <div class="col-span-3 grid grid-cols-2 gap-2">
+          <img
+            src="../../assets/images/photo1.webp"
+            alt="Image 1"
+            class="w-full h-[140px] object-cover rounded-md"
+          />
+          <img
+            src="../../assets/images/photo2.webp"
+            alt="Image 2"
+            class="w-full h-[140px] object-cover rounded-md"
+          />
+          <img
+            src="../../assets/images/photo3.webp"
+            alt="Image 3"
+            class="w-full h-[140px] object-cover rounded-md"
+          />
+          <div class="relative w-full h-[140px]">
+            <img
+              src="../../assets/images/photo4.webp"
+              alt="Image 4"
+              class="w-full h-full object-cover rounded-md"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center text-white font-semibold text-lg rounded-md"
+            >
+              +2
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rating and Information -->
+      <div class="flex items-center mt-6 mb-4 text-[15px] border-b-[1px] pb-5">
+        <span class="point font-bold mr-2 size-10 text-center">10</span>
+        <span class="ml-2 font-bold">Tuyệt vời</span>
+        <span class="ml-2">• 391 quan tâm •</span>
+        <button *ngIf="!followed" (click)="follow()" class="ml-2 hover:text-blue-600">Thêm vào yêu thích</button>
+        <button *ngIf="followed" (click)="unfollow()" class="ml-2 hover:text-blue-600">Bỏ yêu thích</button>
+      </div>
+
+      <!-- Date and Time Information -->
+      <div
+        class="grid grid-cols-2 gap-0 items-center max-w-[100%] mt-4 text-gray-500"
+      >
+        <div>
+          <div class="flex items-center mb-3 w-[95%]">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                />
+              </svg>
+            </span>
+            <span class=""
+              >Khởi hành: <span class="text-[#212529]">{{tour?.startDate | date: 'dd/MM/yyyy'}}</span></span
+            >
+          </div>
+          <div class="flex items-center mb-3 w-[95%]">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                class="size-4"
+              >
+                <path
+                  d="M10.0003 3.33334H4.16699C2.78366 3.33334 1.66699 4.45 1.66699 5.83334V12.5C1.66699 13.8833 2.78366 15 4.16699 15L3.33366 15.8333V16.6667H4.16699L5.83366 15H7.50033V10.8333H3.33366V5H10.8337V6.66667H12.5003V5.83334C12.5003 4.45 11.3837 3.33334 10.0003 3.33334ZM4.16699 11.6667C4.62533 11.6667 5.00033 12.0417 5.00033 12.5C5.00033 12.9583 4.62533 13.3333 4.16699 13.3333C3.70866 13.3333 3.33366 12.9583 3.33366 12.5C3.33366 12.0417 3.70866 11.6667 4.16699 11.6667ZM17.142 8.05C17.0253 7.71667 16.7087 7.5 16.3337 7.5H10.342C9.95866 7.5 9.65033 7.71667 9.52533 8.05L8.34199 11.475V16.0667C8.34199 16.3833 8.60033 16.6667 8.91699 16.6667H9.43366C9.75033 16.6667 10.0003 16.35 10.0003 16.0333V15H16.667V16.0333C16.667 16.35 16.9253 16.6667 17.242 16.6667H17.7503C18.067 16.6667 18.3253 16.3833 18.3253 16.0667L18.3337 14.925V11.475L17.142 8.05ZM10.342 8.33334H16.3337L17.192 10.8333H9.48366L10.342 8.33334ZM10.0003 13.3333C9.54199 13.3333 9.16699 12.9583 9.16699 12.5C9.16699 12.0417 9.54199 11.6667 10.0003 11.6667C10.4587 11.6667 10.8337 12.0417 10.8337 12.5C10.8337 12.9583 10.4587 13.3333 10.0003 13.3333ZM16.667 13.3333C16.2087 13.3333 15.8337 12.9583 15.8337 12.5C15.8337 12.0417 16.2087 11.6667 16.667 11.6667C17.1253 11.6667 17.5003 12.0417 17.5003 12.5C17.5003 12.9583 17.1253 13.3333 16.667 13.3333Z"
+                  fill="#76809B"
+                />
+              </svg>
+            </span>
+            <span class=""
+              >Tập chung:
+              <span class="text-[#212529]">10:00 ngày {{tour?.startDate | date: 'dd/MM/yyyy'}}</span></span
+            >
+          </div>
+        </div>
+        <div class="ml-0">
+          <div class="flex items-center mb-3 w-[70%]">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+            </span>
+            <span class=""
+              >Thời gian: <span class="text-[#212529]">{{tour?.duration}} ngày</span></span
+            >
+          </div>
+          <div class="flex items-center w-[70%]">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-4"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M7.91699 15H6.66699V7.5H7.91699V15ZM10.6253 15H9.37533V7.5H10.6253V15ZM13.3337 15H12.0837V7.5H13.3337V15ZM14.167 5H12.5003V2.5C12.5003 2.04166 12.1253 1.66666 11.667 1.66666H8.33366C7.87533 1.66666 7.50033 2.04166 7.50033 2.5V5H5.83366C4.91699 5 4.16699 5.75 4.16699 6.66666V15.8333C4.16699 16.75 4.91699 17.5 5.83366 17.5C5.83366 17.9583 6.20866 18.3333 6.66699 18.3333C7.12533 18.3333 7.50033 17.9583 7.50033 17.5H12.5003C12.5003 17.9583 12.8753 18.3333 13.3337 18.3333C13.792 18.3333 14.167 17.9583 14.167 17.5C15.0837 17.5 15.8337 16.75 15.8337 15.8333V6.66666C15.8337 5.75 15.0837 5 14.167 5ZM8.75033 2.91666H11.2503V5H8.75033V2.91666ZM14.167 15.8333H5.83366V6.66666H14.167V15.8333Z"
+                  fill="#76809B"
+                />
+              </svg>
+            </span>
+            <span class=""
+              >Số chỗ còn nhận <span class="text-[#212529]">6</span></span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Rating Section -->
+      <div class="bg-[#F7F9FF] mt-4 rounded-lg p-4 flex gap-3">
+        <div class="w-[30%]">
+          <b>Đánh giá</b>
+          (50 đánh giá xác thực)
+          <br />
+          <span
+            class="text-[#0979fd] text-[22px] mt-4 mb-2 px-6 py-4 border-0 rounded-lg inline-block bg-[#E2EEFF]"
+          >
+            <b>4.8</b>
+            /5
+          </span>
+          <br />
+          <b class="text-[19px] text-[#0979fd] mt-4">Đánh giá kinh ngạc</b>
+        </div>
+
+        <div class="mt-5 w-[70%] grid grid-cols-2 gap-4 text-gray-700">
+          <div class="flex flex-col gap-0 items-center">
+            <div>
+              <b class="text-[15px] mr-[185px]">Vệ sinh</b>
+              <span class="text-[#0979fd]">4.8</span>
+            </div>
+            <div class="w-[100%] bg-gray-300 h-2 rounded-full overflow-hidden">
+              <div
+                class="bg-blue-600 h-2 border-l-0 border-blue-600 rounded"
+                style="width: 96%"
+              ></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-0 items-center">
+            <div>
+              <b class="text-[15px] mr-[200px]">Vị trí</b>
+              <span class="text-[#0979fd]">4.7</span>
+            </div>
+            <div class="w-[100%] bg-gray-300 h-2 rounded-full overflow-hidden">
+              <div
+                class="bg-blue-600 h-2 border-l-0 border-blue-600 rounded"
+                style="width: 94%"
+              ></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-0 items-center">
+            <div>
+              <b class="text-[14px] mr-[140px]">Trang thiết bị</b>
+              <span class="text-[#0979fd]">4.6</span>
+            </div>
+            <div class="w-[100%] bg-gray-300 h-2 rounded-full overflow-hidden">
+              <div
+                class="bg-blue-600 h-2 border-l-0 border-blue-600 rounded"
+                style="width: 92%"
+              ></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-0 items-center">
+            <div>
+              <b class="text-[15px] mr-[180px]">Dịch vụ</b>
+              <span class="text-[#0979fd]">4.9</span>
+            </div>
+            <div class="w-[100%] bg-gray-300 h-2 rounded-full overflow-hidden">
+              <div
+                class="bg-blue-600 h-2 border-l-0 border-blue-600 rounded"
+                style="width: 98%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section: Booking Form -->
+    <div class="max-w-sm mr-auto bg-white">
+      <!-- Tour Information -->
+      <div class="text-left shadow-lg mb-5 p-6 rounded">
+        <h2 class="text-lg font-semibold text-gray-800">
+          Tour Châu Âu 10N9Đ: Khám Phá Pháp - Thụy Sĩ - Ý - Vatican
+        </h2>
+        <div class="relative">
+          <div class="text-sm text-gray-400 line-through">{{tour?.price}}đ</div>
+          <div class="text-2xl font-bold text-red-600">{{tour?.price}}đ</div>
+          <span class="text-red-600 font-bold size-4 rounded-md text-xs coupon"
+            >-6%</span
+          >
+        </div>
+      </div>
+
+      <div class="shadow-xl p-6 rounded order-customer">
+        <!-- Date Picker -->
+        <div>
+          <div class="mb-4">
+            <label for="date" class="block text-[15px] font-bold text-gray-700"
+              >Thời gian</label
+            >
+            <input
+              type="date"
+              id="date"
+              placeholder="Chọn ngày đi"
+              class="w-full mt-1 p-2 border focus:border-gray-300 border-gray-300 rounded-md"
+            />
+          </div>
+
+          <!-- Guest Selector -->
+          <div class="space-y-2">
+            <p class="text-[15px] font-bold text-gray-700">Loại khách</p>
+            <div class="flex items-center justify-between">
+              <div class="flex flex-col text-left">
+                <span class="text-gray-400 text-sm font-medium"
+                  ><p>Người lớn</p>
+                  <p>(Còn 3 chỗ)</p></span
+                >
+              </div>
+
+              <div class="flex items-center">
+                <button
+                  class="w-6 h-6 flex items-center justify-center border border-gray-300 text-gray-500 rounded-md"
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  disabled
+                  value="0"
+                  class="w-8 pl-[9px] text-center border-none"
+                />
+                <button
+                  class="w-6 h-6 flex items-center justify-center border border-gray-300 text-gray-500 rounded-md"
+                >
+                  +
+                </button>
+              </div>
+              <span class="text-gray-800">82.400.000đ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Amount -->
+        <div
+          class="amount flex items-center justify-between mt-2 mb-4 border-t-2 border-dashed pt-6"
+        >
+          <span></span>
+          <span></span>
+          <span class="font-semibold text-gray-700">Tổng tiền</span>
+          <span class="text-red-600 font-bold">82.400.000đ</span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="space-y-2">
+          <button
+            class="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg"
+          >
+            Đặt ngay
+          </button>
+          <button
+            class="w-full py-2 border border-blue-600 text-blue-600 font-semibold rounded-lg"
+          >
+            Liên hệ tư vấn
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div class="mx-[130px] max-w-screen-2xl box-border p-4 bg-white shadow-lg rounded-lg">
+    <!-- Tabs -->
+    <ul class="flex border-b border-gray-200 mb-4">
+      <li>
+        <button
+          class="tab-button w-96 relative text-[16px] px-4 py-2 font-bold hover:text-blue-600"
+          [class.text-blue-600]="activeTab === 'schedule'"
+          (click)="setActiveTab('schedule')"
+        >
+          📅 Lịch Trình Tour
+          <span
+            *ngIf="activeTab === 'schedule'"
+            class="tab-button-custome"
+          ></span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="tab-button w-96 relative text-[16px] px-4 py-2 font-bold hover:text-blue-600"
+          [class.text-blue-600]="activeTab === 'policy'"
+          (click)="setActiveTab('policy')"
+        >
+          📃 Chính Sách Tour
+          <span
+            *ngIf="activeTab === 'policy'"
+            class="tab-button-custome"
+          ></span>
+        </button>
+      </li>
+    </ul>
+
+    <div class="p-4 bg-gray-50 rounded-b-lg">
+      <!-- Content -->
+      <div *ngIf="activeTab === 'schedule'" class="flex space-x-8">
+        <!-- Left Column (Itinerary) -->
+        <div class="w-1/4">
+          <ul class="space-y-4 text-blue-600 font-semibold">
+            <li class="flex items-center">
+              <span
+                class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center"
+                >0</span
+              >
+              <span class="ml-2">Mô Tả</span>
+            </li>
+            <li class="flex items-center">
+              <span
+                class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center"
+                >1</span
+              >
+              <span class="ml-2">Ngày 1: TP.HCM – Paris (Ăn trên máy bay)</span>
+            </li>
+            <li class="flex items-center">
+              <span
+                class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center"
+                >2</span
+              >
+              <span class="ml-2"
+                >Ngày 2: Paris – Kinh đô ánh sáng (Ăn sáng, trưa, tối)</span
+              >
+            </li>
+            <li class="flex items-center">
+              <span
+                class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center"
+                >3</span
+              >
+              <span class="ml-2">Ngày 3: Paris – Reims – Mert</span>
+            </li>
+            <li class="flex items-center">
+              <span
+                class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center"
+                >4</span
+              >
+              <span class="ml-2"
+                >Ngày 4: Mert – Strasbourg – Colmar (Ăn sáng, trưa, tối)</span
+              >
+            </li>
+            <!-- Add more days as needed -->
+          </ul>
+        </div>
+
+        <!-- Right Column (Tour Details) -->
+        <div class="w-3/4">
+          <div class="space-y-4 text-gray-700">
+            <!-- Description -->
+            <div>
+              <h2 class="font-bold text-blue-600">Mô Tả</h2>
+              <p>
+                Khám Phá Châu Âu Quyến Rũ - Hãy tưởng tượng sự kết hợp hoàn hảo
+                của văn hóa, lịch sử, thiên nhiên và ẩm thực mang tính biểu
+                tượng. Chiêm ngưỡng những đại lộ rộng lớn của Paris, những món
+                ăn ngon từ Ý và những đỉnh núi đáng kinh ngạc của Thụy Sĩ.
+                Chuyến đi đến Pháp, Thụy Sĩ và Ý sẽ mang đến cho quý khách một
+                trải nghiệm ngoại mục với những kỳ quan của các địa danh.
+              </p>
+            </div>
+
+            <!-- Tour Highlights -->
+            <div>
+              <h2 class="font-bold text-blue-600">
+                Những Trải Nghiệm Thú Vị Trong Chương Trình
+              </h2>
+              <ul class="list-disc pl-6">
+                <li>Tháp Eiffel - Biểu tượng của Pháp.</li>
+                <li>Nhà thờ lớn thứ 4 Thế Giới - Notre Dame Strasbourg.</li>
+                <li>Thành phố Tình yêu Venice.</li>
+                <li>Tháp nghiêng Pisa.</li>
+                <li>Toà Thánh Vatican.</li>
+              </ul>
+            </div>
+
+            <!-- Readiness Information -->
+            <div>
+              <h2 class="font-bold text-blue-600">Bạn Có Sẵn Sàng</h2>
+              <p>
+                Một số điều kiện chung giúp Quý Khách nâng cao tỷ lệ xin Visa
+                Châu Âu thành công:
+              </p>
+              <ul class="list-disc pl-6">
+                <li>
+                  Đã từng đi du lịch các nước phát triển như Hàn Quốc, Nhật Bản,
+                  Mỹ...
+                </li>
+                <li>Công việc ổn định và thu nhập tốt.</li>
+                <li>Có tài sản đáng kể như nhà đất, xe hơi, sổ tiết kiệm.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Policy Content -->
+      <div *ngIf="activeTab === 'policy'">
+        <div id="tab-2" class="tab-content content_extab rte active">
+          <p><strong>I. GIÁ TOUR DU LỊCH:</strong></p>
+          <p>
+            Giá tour du lịch được tính theo tiền Đồng (Việt Nam – VNĐ). Trường
+            hợp khách thanh toán bằng USD sẽ được quy đổi ra VNĐ theo tỉ giá của
+            ngân hàng .Giá tour chỉ bao gồm những khoản được liệt kê một cách rõ
+            ràng trong phần “Bao gồm” trên các chương trình du lịch. OH!Travel
+            không có nghĩa vụ thanh toán bất cứ chi phí nào không nằm trong phần
+            “Bao gồm”.
+          </p>
+          <p><strong>II. HOÀN, HỦY TOUR VÀ PHÍ HỦY TOUR</strong></p>
+          <p><strong>1. Trường hợp bị hủy bỏ do OH!Travel</strong></p>
+          <p>
+            Nếu OH!Travel không thực hiện được chuyến du lịch, OH!Travel phải
+            báo ngay cho Quý khách hàng biết và thanh toán lại cho khách hàng
+            toàn bộ số tiền khách hàng đã đóng trong vòng 01 làm việc ngày kể từ
+            lúc việc thông báo hủy chuyến du lịch bằng tiền mặt hoặc chuyển
+            khoản.
+          </p>
+          <p><strong>2. Trường hợp bị hủy bỏ do khách hàng:</strong></p>
+          <p><strong>2.1 ĐỐI VỚI KHÁCH DU LỊCH NỘI ĐỊA:</strong></p>
+          <p><strong>2.1.1 DỊP LỄ, TẾT, CÁC SỰ KIỆN DU LỊCH LỚN:</strong></p>
+          <p>
+            – Trường hợp ngay sau khi Quý khách mua tour mà hủy chuyến do các lý
+            do: ốm, gia đình gặp sự cố không mong muốn nên xuất trình giấy tờ
+            liên quan và gửi email, thư có nội dung liên quan đến OH!Travel sớm
+            nhất có thể để chúng tôi cùng thương thảo với các đối tác đặt dịch
+            vụ cho tour của Quý khách. Quá trình thương thảo sẽ cố gắng hoàn lại
+            tiền mua tour nhiều nhất đến mức có thể, OH!Travel sẽ làm mọi thủ
+            tục để nhượng chuyến tour nếu khách hàng khác có nhu cầu để giảm
+            thiểu chi phí Hủy tour.
+          </p>
+          <p>
+            – Trường hợp ngay sau khi đặt tour Quý khách Hủy và thông báo về
+            OH!Travel sẽ theo quy định như sau:
+          </p>
+          <p>
+            + Trước 10 ngày đi tour (tính theo ngày làm việc) chịu phạt 30% tiền
+            land tour, tiền vé máy bay, tàu hỏa sẽ theo quy định của đơn vị vận
+            chuyển này.
+          </p>
+          <p>
+            + Trước 01 tuần tính đến ngày đi tour chụi phạt 40% tiền land tour,
+            tiền vé máy bay, tàu hỏa sẽ theo quy định của đơn vị vận chuyển này
+            .
+          </p>
+          <p>
+            + Trước 03 ngày tính đến ngày đi tour chịu phạt 80% tiền land tour,
+            tiền vé máy bay, tàu hỏa sẽ theo quy định của đơn vị vận chuyển này.
+          </p>
+          <p>
+            + Trước 02 ngày tính đến ngày đi tour chịu phạt 100% tiền land tour,
+            tiền vé máy bay, tàu hỏa sẽ theo quy định của đơn vị vận chuyển này.
+          </p>
+          <p>
+            – Trường hợp ngay sau khi Quý khách mua tour mà muốn chuyển ngày
+            sang một ngày khởi hành khác và có thông báo cho OH!Travel chúng tôi
+            sẽ có trách nhiệm như sau:
+          </p>
+          <p>
+            + Cố gắng hết sức để kiểm tra tình trạng dịch vụ và chuyển ngày miễn
+            phí cho Quý khách hàng, nếu chuyến đi có liên quan đến vé máy bay,
+            tàu hỏa chuyển ngày sẽ theo quy định của đơn vị vận chuyển này.
+          </p>
+          <p>
+            + Trường hợp không còn dịch vụ để chuyển ngày cho Quý khách thì Quý
+            khách phải chịu phạt theo quy định Hủy tour mục (2.1.1)
+          </p>
+          <p>
+            – Trường hợp sau khi mua tour Quý khách tự ý hủy chuyến du lịch
+            trong vòng 03 ngày trước khi khởi hành, hủy không báo trước hoặc đến
+            trễ sau giờ khởi hành phải hủy vé du lịch, Quý khách sẽ chịu phạt
+            100% trên giá vé du lịch.
+          </p>
+          <p><strong>2.1.2 NGÀY THƯỜNG</strong></p>
+          <p>
+            – Trường hợp ngay sau khi Quý khách mua tour mà hủy chuyến do các lý
+            do: ốm, gia đình gặp sự cố không mong muốn nên xuất trình giấy tờ
+            liên quan và gửi email, thư có nội dung liên quan đến OH!Travel sớm
+            nhất có thể để chúng tôi cùng thương thảo với các đối tác đặt dịch
+            vụ cho tour của Quý khách. Quá trình thương thảo sẽ cố gắng hoàn lại
+            tiền mua tour nhiều nhất đến mức có thể, OH!Travel sẽ làm mọi thủ
+            tục để nhượng chuyến tour nếu khách hàng khác có nhu cầu để giảm
+            thiểu chi phí Hủy tour.
+          </p>
+          <p>
+            – Trường hợp ngay sau khi đặt tour Quý khách Hủy và thông báo về
+            OH!Travel sẽ theo quy định như sau:
+          </p>
+          <p>
+            + Trước 10 ngày đi tour (tính theo ngày làm việc) chịu phạt 20% tiền
+            land tour, tiền vé máy bay, tàu hỏa sẽ theo quy định của đơn vị vận
+            chuyển này.
+          </p>
+          <p>
+            + Trước 01 tuần tính đến ngày đi tour chụi phạt 30% tiền land tour,
+            tiền vé máy bay, tàu hỏa sẽ theo quy định của đơn vị vận chuyển này
+            .
+          </p>
+          <p>
+            + Trước 03 ngày tính đến ngày đi tour chịu phạt 70% tiền land tour,
+            tiền vé máy bay, tàu hỏa sẽ theo quy định của đơn vị vận chuyển này.
+          </p>
+          <p>
+            + Trước 02 ngày tính đến ngày đi tour chịu phạt 100% tiền land tour,
+            tiền vé máy bay, tàu hỏa sẽ theo quy định của đơn vị vận chuyển này.
+          </p>
+          <p>
+            – Trường hợp ngay sau khi Quý khách mua tour mà muốn chuyển ngày
+            sang một ngày khởi hành khác và có thông báo cho OH!Travel chúng tôi
+            sẽ có trách nhiệm như sau:
+          </p>
+          <p>
+            +Cố gắng hết sức để kiểm tra tình trạng dịch vụ và chuyển ngày miễn
+            phí cho Quý khách hàng, nếu chuyến đi có liên quan đến vé máy bay,
+            tàu hỏa chuyển ngày sẽ theo quy định của đơn vị vận chuyển này.
+          </p>
+          <p>
+            +Trường hợp không còn dịch vụ để chuyển ngày cho Quý khách thì Quý
+            khách phải chịu phạt theo quy định Hủy tour ở trên.
+          </p>
+          <p>
+            – Trường hợp sau khi mua tour Quý khách tự ý hủy chuyến du lịch
+            trong vòng 03 ngày trước khi khởi hành, hủy không báo trước hoặc đến
+            trễ sau giờ khởi hành phải hủy tour du lịch, Quý khách sẽ chịu phạt
+            100% trên giá tour du lịch.
+          </p>
+          <p><strong>2.1.3 THANH TOÁN SAU KHI HỦY TOUR</strong></p>
+          <p>
+            – Sau khi hủy chuyến du lịch, Quý khách vui lòng đến nhận tiền trong
+            vòng 30 ngày, cung cấp số tài khoản để chúng tôi chuyển khoản, phí
+            chuyển khoản do Quý khách hàng chịu.
+          </p>
+          <p>Chúng tôi chỉ thanh toán trong thời gian nói trên.</p>
+          <p>
+            <strong
+              >2.1.4 TRƯỜNG HỢP MUA TOUR TRỰC TUYẾN TẠI HỆ THỐNG WEBSITE CỦA
+              OH!Travel:</strong
+            >
+          </p>
+          <p>
+            Việc thanh toán trực tuyến Quý khách hàng Hoàn, Hủy, Đổi tour theo
+            đúng quy định trên riêng chi phí chuyển tiền Hủy tour Quý khách hàng
+            sẽ chịu.
+          </p>
+          <p><strong>2.1.5 TRƯỜNG HỢP BẤT KHẢ KHÁNG:</strong></p>
+          <p>
+            Nếu chương trình du lịch bị hủy bỏ hoặc thay đổi bởi một trong hai
+            bên vì một lý do bất khả kháng (hỏa hoạn, thời tiết, tai nạn, thiên
+            tai, chiến tranh…), thì hai bên sẽ không chịu bất kỳ nghĩa vụ bồi
+            hoàn các tổn thất đã xảy ra và không chịu bất kỳ trách nhiệm pháp lý
+            nào. Tuy nhiên mỗi bên có trách nhiệm cố gắng tối đa để giúp đỡ bên
+            bị thiệt hại nhằm giảm thiểu các tổn thất gây ra vì lý do bất khả
+            kháng.
+          </p>
+          <p><strong>2.2 ĐỐI VỚI KHÁCH ĐI DU LỊCH QUỐC TẾ:</strong></p>
+          <p><strong>2.2.1 DỊP LỄ, TẾT, CÁC SỰ KIỆN DU LỊCH LỚN:</strong></p>
+          <p>
+            – Trường hợp ngay sau khi Quý khách mua tour mà hủy chuyến do các lý
+            do: ốm, gia đình gặp sự cố không mong muốn nên xuất trình giấy tờ
+            liên quan và gửi email, thư có nội dung liên quan đến OH!Travel sớm
+            nhất có thể để chúng tôi cùng thương thảo với các đối tác đặt dịch
+            vụ cho tour của Quý khách. Quá trình thương thảo sẽ cố gắng hoàn lại
+            tiền mua tour nhiều nhất đến mức có thể, OH!Travel sẽ làm mọi thủ
+            tục để nhượng chuyến tour nếu khách hàng khác có nhu cầu để giảm
+            thiểu chi phí Hủy tour.
+          </p>
+          <p>
+            – Trường hợp ngay sau khi đặt tour Quý khách Hủy và thông báo về
+            OH!Travel sẽ theo quy định như sau:
+          </p>
+          <p>
+            + Trước 20 ngày đi tour (tính theo ngày làm việc) chịu phạt 100%
+            tiền đặt cọc.
+          </p>
+          <p>
+            + Trường hợp huỷ chuyến du lịch trong vòng từ 7 – 19 ngày trước ngày
+            khởi hành, Quý khách sẽ chịu phạt 50% trên giá tour du lịch.
+          </p>
+          <p>
+            + Trường hợp huỷ chuyến du lịch trong vòng từ 4 – 6 ngày trước ngày
+            khởi hành, Quý khách sẽ chịu phạt 80% trên giá tour du lịch.
+          </p>
+          <p>
+            + Trường hợp huỷ chuyến du lịch trong vòng từ 2 – 3 ngày trước ngày
+            khởi hành, Quý khách sẽ chịu phạt 90% trên giá tour du lịch.
+          </p>
+          <p>
+            + Quý khách huỷ chuyến du lịch trong vòng 1 ngày trước ngày khởi
+            hành, Quý khách sẽ chịu phạt 100% trên giá tour du lịch.
+          </p>
+          <p>
+            – Trường hợp ngay sau khi Quý khách mua tour mà muốn chuyển ngày
+            sang một ngày khởi hành khác và có thông báo cho OH!Travel chúng tôi
+            sẽ có trách nhiệm như sau:
+          </p>
+          <p>
+            +Cố gắng hết sức để kiểm tra tình trạng dịch vụ và chuyển ngày miễn
+            phí cho Quý khách hàng, nếu chuyến đi có liên quan đến vé máy bay,
+            tàu hỏa chuyển ngày sẽ theo quy định của đơn vị vận chuyển này.
+          </p>
+          <p>
+            +Trường hợp không còn dịch vụ để chuyển ngày cho Quý khách thì Quý
+            khách phải chịu phạt theo quy định Hủy tour mục (2.2.1)
+          </p>
+          <p>
+            -Trường hợp sau khi mua tour Quý khách tự ý hủy chuyến du lịch trong
+            vòng 03 ngày trước khi khởi hành, hủy không báo trước hoặc đến trễ
+            sau giờ khởi hành phải hủy tour du lịch, Quý khách sẽ chịu phạt 100%
+            trên giá tour du lịch.
+          </p>
+          <p>2.2.2 NGÀY THƯỜNG:</p>
+          <p>
+            – Trường hợp ngay sau khi Quý khách mua tour mà hủy chuyến do các lý
+            do: ốm, gia đình gặp sự cố không mong muốn nên xuất trình giấy tờ
+            liên quan và gửi email, thư có nội dung liên quan đến OH!Travel sớm
+            nhất có thể để chúng tôi cùng thương thảo với các đối tác đặt dịch
+            vụ cho tour của Quý khách. Quá trình thương thảo sẽ cố gắng hoàn lại
+            tiền mua tour nhiều nhất đến mức có thể, OH!Travel sẽ làm mọi thủ
+            tục để nhượng chuyến tour nếu khách hàng khác có nhu cầu để giảm
+            thiểu chi phí Hủy tour.
+          </p>
+          <p>
+            – Trường hợp ngay sau khi đặt tour Quý khách Hủy và thông báo về
+            OH!Travel sẽ theo quy định như sau:
+          </p>
+          <p>
+            + Trường hợp huỷ chuyến du lịch trong vòng từ 5 – 8 ngày trước ngày
+            khởi hành, Quý khách sẽ chịu phạt 50% trên giá tour du lịch.
+          </p>
+          <p>
+            + Trường hợp huỷ chuyến du lịch trong vòng từ 2 – 4 ngày trước ngày
+            khởi hành, Quý khách sẽ chịu phạt 90% trên giá tour du lịch.
+          </p>
+          <p>
+            + Quý khách huỷ chuyến du lịch trong vòng 1 ngày trước ngày khởi
+            hành, Quý khách sẽ chịu phạt 100% trên giá tour du lịch.
+          </p>
+          <p>
+            – Trường hợp ngay sau khi Quý khách mua tour mà muốn chuyển ngày
+            sang một ngày khởi hành khác và có thông báo cho OH!Travel chúng tôi
+            sẽ có trách nhiệm như sau:
+          </p>
+          <p>
+            +Cố gắng hết sức để kiểm tra tình trạng dịch vụ và chuyển ngày miễn
+            phí cho Quý khách hàng, nếu chuyến đi có liên quan đến vé máy bay,
+            tàu hỏa chuyển ngày sẽ theo quy định của đơn vị vận chuyển này.
+          </p>
+          <p>
+            +Trường hợp không còn dịch vụ để chuyển ngày cho Quý khách thì Quý
+            khách phải chịu phạt theo quy định Hủy tour mục (2.2.1)
+          </p>
+          <p>
+            Quý khách muốn chuyển sang các tuyến du lịch khác phải báo trước 10
+            ngày trước ngày khởi hành và sẽ chịu phạt 20% tiền đặt cọc.
+          </p>
+          <p><strong>Lưu ý:</strong></p>
+          <p>
+            – Trường hợp huỷ tour do sự cố khách quan như thiên tai, dịch bệnh,
+            hoãn và huỷ chuyến của các phương tiện vận chuyển công cộng…
+            OH!Travel sẽ không chịu trách nhiệm bồi thường thêm bất kỳ chi phí
+            nào ngoài việc hoàn trả tiền tour.
+          </p>
+          <p>
+            – Trên đây là mức phạt hủy tối đa đã bao gồm các chi phí liên quan
+            đến việc chuẩn bị cho chuyến đi, chi phí này có thể được giảm tùy
+            theo điều kiện của từng nhà cung cấp dịch vụ cho OH!Travel
+          </p>
+          <p>
+            – Do tính chất phức tạp của việc xin visa nên các điều kiện hủy tour
+            du lịch trên đây không áp dụng đối với các chương trình đi Châu Âu,
+            Úc, Mỹ, Nga, Nhật Bản, Hàn Quốc, Ai Cập, Nam Phi, các chương trình
+            này sẽ có điều kiện hủy tour du lịch riêng cung cấp cho Quý khách
+            mua tour đó.
+          </p>
+          <p><strong>III. GIÁ TOUR DÀNH CHO TRẺ EM</strong></p>
+          <p>
+            – Trẻ em dưới 5 tuổi: Được miễn phí (ăn chung, ngủ chung với cha
+            mẹ). Hai người lớn chỉ được kèm 1 trẻ em dưới 5 tuổi, em thứ hai trở
+            lên phải mua ½ giá tour.
+          </p>
+          <p>
+            – Trẻ em từ 5 – 9 tuổi: Mua 50% giá tour (ăn riêng, ngủ chung với
+            cha mẹ). Hai người lớn chỉ được kèm 1 trẻ em 5 – 9 tuổi, em thứ hai
+            trở lên phải mua 1 suất giường đơn (Tuy nhiên có 1 số chương trình
+            giá vé trẻ em là 75-80%)
+          </p>
+          <p>– Trẻ em từ 10 tuổi trở lên: Mua một tour như người lớn.</p>
+          <p>
+            – Vé máy bay, tàu hỏa, phương tiện vận chuyển công cộng: Mua vé theo
+            quy định của của các đơn vị vận chuyển này.
+          </p>
+          <p>
+            <strong>IV. NHỮNG YÊU CẦU ĐẶC BIỆT TRONG CHUYẾN DU LỊCH</strong>
+          </p>
+          <p>
+            Các yêu cầu đặc biệt của Quý khách phải được báo trước cho OH!Travel
+            ngay tại thời điểm đăng ký bằng hình thức email, thư, fax, cung cấp
+            trực tiếp. OH!Travel sẽ gửi xác nhận thông tin và cố gắng đáp ứng
+            những yêu cầu này trong khả năng của mình song sẽ không chịu trách
+            nhiệm về bất kỳ sự từ chối cung cấp dịch vụ từ phía các nhà vận
+            chuyển, khách sạn, nhà hàng và các nhà cung cấp dịch vụ độc lập
+            khác. Mọi thông tin này sẽ được thông báo cho Quý khách trước ngày
+            khởi hành.
+          </p>
+          <p>
+            <strong
+              >V. DỊCH VỤ LƯU TRÚ (KHÁCH SẠN, RESORT, HOMESTAY, KHU NGHỈ
+              DƯỠNG)</strong
+            >
+          </p>
+          <p>
+            Được cung cấp trên cơ sở hợp đồng của OH!Travel với cơ sở lưu trú.
+            Tiêu chuẩn khách sạn được đặt tương ứng với mục “Bao gồm” trong
+            chương trình mua tour của Quý khách. Nếu cần thiết thay đổi về bất
+            kỳ lý do nào, khách sạn thay thế sẽ tương đương với tiêu chuẩn của
+            khách sạn ban đầu và sẽ được báo cho du khách trước khi khởi hành.
+            Những yêu cầu đặc biệt của Quý khách nên thông báo trước cho
+            OH!Travel và được đáp ứng tùy theo khả năng cung cấp của khách sạn,
+            khách hàng phải trả thêm tiền đối với các yêu cầu này (nếu có).
+            OH!Travel có quyền không đáp ứng những yêu cầu này nếu khách sạn từ
+            chối cung cấp dịch vụ. Mọi thông tin này sẽ được thông báo cho Quý
+            khách trước ngày khởi hành. Giờ nhận phòng tùy theo đặc thù riêng
+            của khách sạn thông thường là sau 13h00.
+          </p>
+          <p><strong>VI. DỊCH VỤ VẬN CHUYỂN</strong></p>
+          <p>
+            Phương tiện vận chuyển tùy thuộc theo từng chương trình du lịch.
+            OH!Travel cam kết thực hiện đúng tiêu chuẩn này đã nêu rõ trong phần
+            “Bao gồm” hay hợp đồng du lịch kèm theo.
+          </p>
+          <p>
+            Với những chương trình đi bằng phương tiện vận chuyển công cộng,
+            OH!Travel có quyền báo trước Quý khách về thay đổi giờ (nếu thời
+            gian cho phép) khởi hành cho phù hợp với yêu cầu của các nhà cung
+            cấp. OH!Travel không chịu trách nhiệm bồi hoàn và trách nhiệm pháp
+            lý với những thiệt hại về vật chất lẫn tinh thần do việc chậm trễ
+            giờ giấc khởi hành của các phương tiện vận chuyển công cộng hoặc sự
+            chậm trễ do chính hành khách gây ra. OH!Travel chỉ thực hiện hành vi
+            giúp đỡ để giảm bớt tổn thất kinh tế cho hành khách.
+          </p>
+          <p><strong>VII. HÀNH LÝ CÁ NHÂN MANG THEO CHUYẾN ĐI:</strong></p>
+          <p>
+            Quý khách có trách nhiệm quản lý hành lý cá nhân và các vật dụng của
+            mình trong suốt chuyến đi. Nếu khách hàng bị mất hay thất lạc hành
+            lý thì OH!Travel sẽ giúp hành khách liên lạc và khai báo với các bộ
+            phận liên quan truy tìm hành lý bị mất hay thất lạc. Việc bồi thường
+            hành lý bị mất hay thất lạc sẽ theo qui định của các đơn vị cung cấp
+            dịch vụ hoặc các đơn vị bảo hiểm (nếu có).
+          </p>
+          <p><strong>VIII. BẢO HIỂM DU LỊCH:</strong></p>
+          <p>
+            Giá dịch vụ du lịch trọn gói đã bao gồm bảo hiểm với mức đền bù cao
+            nhất là 50.000.000đ/khách Việt Nam – 50.000 USD/khách nước ngoài.
+            Bảo hiểm cho người cao tuổi sẽ được thỏa thuận theo từng chuyến đi
+            và ghi rõ trong phần “ Bao gồm”. Việc bồi thường (nếu có) sẽ do đơn
+            vị bảo hiểm thực hiện theo đúng quy định – qui tắc bảo hiểm dành cho
+            khách đi du lịch.
+          </p>
+          <p><strong>IX. NHẬN THÔNG TIN MUA TOUR :</strong></p>
+          <p>
+            Khách hàng có thể trực tiếp hoặc nhờ người đại diện đến đăng ký đi
+            du lịch và thanh toán, chuyển khoản tiền tour tại hai văn phòng của
+            Du lịch OH!Travel đã ghi rõ trong mục II. OH!Travel chỉ có trách
+            nhiệm cung cấp thông tin của chuyến đi cho khách hàng đến đăng ký
+            trực tiếp hoặc cho người đại diện, người liên hệ qua email, mua tour
+            trực tuyến trên hệ thống website của OH!Travel. Chúng tôi không chịu
+            bất cứ trách nhiệm nào trong trường hợp người đại diện không cung
+            cấp lại hoặc cung cấp không chính xác các thông tin của chuyến đi
+            cho khách hàng.
+          </p>
+          <p><strong>X. TRÁCH NHIỆM HAI BÊN VÀ CÁC CAM KẾT KHÁC:</strong></p>
+          <p><strong>1. VỀ PHÍA DU LỊCH OH!Travel</strong></p>
+          <p>– Đảm bảo đầy đủ mọi dịch vụ theo đúng như chương trình.</p>
+          <p>
+            – Tất cả thông tin thu thập từ khách hàng được phục cho việc điều
+            hành tour, mua bảo hiểm cho đoàn, đăng ký tại trú tạm vắng tại các
+            cơ sở lưu trú và phục vụ các yêu cầu tại điểm thăm quan
+          </p>
+          <p>
+            – Thông tin cá nhận về khách hàng được công ty lưu nội bộ ( tài liệu
+            báo cáo thuế, kết quả kinh doanh lữ hành)
+          </p>
+          <p>
+            – Khách hàng có quyền yêu cầu công ty thay đổi thông tin cá nhân để
+            cập nhật và phục vụ cho lần sử dụng dịch vụ của OH!Travel sau này
+          </p>
+          <p>– Cam kết bảo mật thông tin cá nhân khách hàng</p>
+          <p>
+            – Phổ biến đầy đủ các thông tin, quy định khi đi du lịch trước ngày
+            khởi hành
+          </p>
+          <p><strong>2. VỀ PHÍA KHÁCH HÀNG</strong></p>
+          <p>
+            – Đảm bảo thông tin đăng ký là chính xác, khi có thay đổi thông tin
+            phải trực tiếp liên hệ OH!Travel để được cập nhật. Chúng tôi không
+            chịu trách nhiệm đối với các trường hợp khách hàng thông tin không
+            chính xác (việc cung cấp thông tin hoàn toàn tự nguyện).
+          </p>
+          <p>
+            – Mang theo đầy đủ các giấy tờ tùy thân khi đi du lịch như Chứng
+            Minh Thư, Hộ Chiếu, Giấy Khai Sinh (đối với trẻ em), Giấy Hôn Thú
+            (đối với khách hàng chỉ mua dịch vụ khách sạn). Riêng đối với khách
+            Việt kiều khi sử dụng Hộ chiếu hoặc Thẻ Xanh, phải đem theo đầy đủ
+            Visa và Giấy tái xuất nhập Việt Nam.
+          </p>
+          <p>
+            – Trong trường hợp khách hàng dẫn theo trẻ em dưới 15 tuổi (không
+            phải con ruột) đi cùng trong chương trình, phải mang theo Giấy Ủy
+            Quyền của cha mẹ, có xác nhận của chính quyền địa phương.
+          </p>
+          <p>– Thanh toán đầy đủ đúng hạn.</p>
+          <p>
+            – Trong thời gian đi du lịch, khách hàng phải tuân thủ theo chương
+            trình, không được tự ý tách đoàn. Nếu có yêu cầu thay đổi phải thông
+            báo cho hướng dẫn viên hoặc đại diện của công ty OH!Travel
+          </p>
+          <p>
+            3. Du lịch OH!Travel giữ quyền thay đổi lộ trình hoặc hủy bỏ chuyến
+            đi du lịch bất cứ lúc nào mà chúng tôi thấy cần thiết vì sự thuận
+            tiện hoặc an toàn cho khách hàng. (yếu tố an toàn cho khách hàng
+            luôn đặt lên trên hết khi OH!Travel quyết định thay đổi lộ trình)
+          </p>
+          <p>
+            4. Trong quá trình thực hiện, nếu xảy ra tranh chấp sẽ được giải
+            quyết trên cơ sở thương lượng giữa hai bên. Nếu việc thương lượng
+            không đạt được kết quả, vụ việc sẽ được đưa ra tòa án theo đúng qui
+            định của pháp luật hiện hành. Mọi chi phí liên quan sẽ do bên thua
+            kiện chịu.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <app-description></app-description> -->
+</div>

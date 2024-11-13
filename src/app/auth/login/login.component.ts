@@ -8,6 +8,8 @@ import {
 import { AuthService } from '../../services/auth.service'; // Service call API
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -39,7 +41,23 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           // Success, save token to local storage and redirect to home page
           if (typeof window !== 'undefined') {
-            localStorage.setItem('token', response.accessToken);
+            const token = response.accessToken;
+            localStorage.setItem('token', token);
+            // // Giải mã token để lấy thông tin user
+            // const decodedToken: any = jwtDecode(token);
+            // const user: User = {
+            //   id: decodedToken.id,
+            //   fullname: decodedToken.fullname,
+            //   username: decodedToken.sub,
+            //   email: decodedToken.email,
+            //   phone: decodedToken.phone ?? '',
+            //   address: decodedToken.address ?? '',
+            //   role: decodedToken.roles.join(', '), // Chuyển mảng roles thành chuỗi
+            // };
+
+            // // Lưu thông tin user vào localStorage
+            // localStorage.setItem('user', JSON.stringify(user));
+
             this.router.navigate(['/home']);
           }
         },

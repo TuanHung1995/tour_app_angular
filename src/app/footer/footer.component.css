@@ -3,11 +3,15 @@
 }
 
 .footer-color {
-  background-color: #006CAA;
   background-image: url('../../assets/images/bg_footer.webp');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: 100% 100%;
+}
+
+.footer-bg,
+.footer-color {
+  background-color: #006CAA;
 }
 
 .copyright {
