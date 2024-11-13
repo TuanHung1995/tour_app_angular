@@ -56,7 +56,7 @@ interface Area {
     <!-- Main Content (only shown after loading) -->
     <div [class.opacity-0]="isLoading" [class.animate-fadeIn]="!isLoading">
     <!-- Breadcrumb navigation -->
-    <div class="bg-gray-50 px-6 py-3 border-b">
+    <div class="bg-gray-50 px-4 sm:px-6 py-3 border-b">
       <nav class="text-sm">
         <ol class="list-none p-0 inline-flex items-center space-x-2">
           <li class="flex items-center">
@@ -71,6 +71,14 @@ interface Area {
         </ol>
       </nav>
     </div>
+       <!-- Mobile View Toggle Button -->
+       <!-- <div class="lg:hidden p-4 flex justify-end">
+        <button 
+          (click)="toggleMobileView()"
+          class="px-4 py-2 bg-blue-500 text-white rounded-md text-sm">
+          {{ showMobileMap ? 'Xem danh sách' : 'Xem bản đồ' }}
+        </button>
+      </div> -->
      <div class="flex h-screen bg-gray-50">
       <!-- Left side: Location list -->
       <div class="w-80 bg-white border-r border-gray-100 flex flex-col">
