@@ -13,7 +13,7 @@
 
   <!-- Promotions Grid -->
   <div
-    class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4"
+    class="max-w-screen-xl mx-auto grid sm:grid-cols-1 md:grid-cols-3 gap-6 px-4"
   >
     <!-- Promotion 1 -->
     <a
@@ -74,34 +74,21 @@
     <a
       *ngFor="let tour of bestTours"
       href="#"
-      class="relative overflow-hidden rounded-lg shadow-lg group"
+      class="relative block banner ratio1 overflow-hidden rounded-lg shadow-lg group"
     >
       <!-- Image -->
       <img
         [src]="tour.image"
         [alt]="tour.name"
-        class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+        class="w-full h-64"
       />
       <!-- Background overlay & Text -->
-      <div
-        class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end text-center pb-2 p-4 transition-colors duration-500 group-hover:bg-opacity-70"
+      <span
+        class="absolute text-center"
       >
-        <h3 class="text-lg font-semibold text-white mb-1">{{ tour.name }}</h3>
-        <p class="text-sm text-white">
+        <b class="mb-2 text2line">{{ tour.name }}</b>
           Đã có {{ tour.total_customer }} lượt khách
-        </p>
-      </div>
-      <!-- Overlay hiệu ứng radial gradient khi hover -->
-      <div
-        class="absolute inset-0 bg-gray-400 opacity-0 transition-opacity duration-500 group-hover:opacity-70 group-hover:bg-opacity-50"
-        style="
-          background: radial-gradient(
-            circle,
-            rgba(180, 173, 173, 0.6) 10%,
-            transparent 100%
-          );
-        "
-      ></div>
+      </span>
     </a>
   </div>
 </div>
@@ -130,7 +117,7 @@
         class="w-full h-48 object-cover"
       />
       <div class="p-4">
-        <h3 class="font-semibold text-lg hover:text-blue-600">
+        <h3 (click)="viewTourDetails(tour.id)" class="font-semibold text-lg hover:text-blue-600">
           {{ tour.name }}
         </h3>
         <p class="text-sm text-gray-600">
@@ -168,7 +155,7 @@
         </div>
         <a
           href="#"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-[162px] py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-[158px] py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         >
           Đặt ngay
         </a>
@@ -201,7 +188,7 @@
         class="w-full h-48 object-cover"
       />
       <div class="p-4">
-        <h3 class="font-semibold text-lg hover:text-blue-600">
+        <h3 (click)="viewTourDetails(tour.id)" class="font-semibold text-lg hover:text-blue-600">
           {{ tour.name }}
         </h3>
         <div class="flex flex-col items-left text-sm text-gray-500 mt-2">
@@ -238,7 +225,7 @@
         </div>
         <a
           href="#"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-[110px] py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-[106px] py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         >
           Đặt ngay
         </a>
@@ -271,7 +258,7 @@
         class="w-full h-48 object-cover"
       />
       <div class="p-4">
-        <h3 class="font-semibold text-lg hover:text-blue-600">
+        <h3 (click)="viewTourDetails(tour.id)" class="font-semibold text-lg hover:text-blue-600">
           {{ tour.name }}
         </h3>
         <div class="flex flex-col items-left text-sm text-gray-500 mt-2">
@@ -308,15 +295,15 @@
         </div>
         <a
           href="#"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-[110px] py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm mobile:px-[50px] tablet:px-[70px] desktop:px-[106px] py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         >
           Đặt ngay
         </a>
+
       </div>
     </div>
   </div>
 </div>
-
 <div class="container mx-auto py-8 bg-white px-[115px]">
   <h2 class="text-3xl font-bold text-center mb-2 text-blue-600">
     Tin tức mới nhất

@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NgStyle } from '@angular/common';
 import { CommonModule } from '@angular/common';
@@ -38,7 +39,10 @@ export class NavbarComponent implements OnInit {
   userRole: string = '';
   defaultAvatar: string = 'path/to/default/avatar.png'; // Default avatar path
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // Get user and role information after login
@@ -48,6 +52,11 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   // link to another page when click span in mobile view

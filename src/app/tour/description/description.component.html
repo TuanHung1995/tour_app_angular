@@ -1,0 +1,126 @@
+<!-- <div class="container"> -->
+  <div class="mx-auto p-4 max-w-5xl bg-white shadow-lg rounded-lg">
+    <!-- Tabs -->
+    <div class="flex border-b border-gray-200 mb-4">
+      <button
+        class="tab-button relative px-4 py-2 font-medium hover:text-blue-600 focus:text-blue-600"
+        (click)="setActiveTab('schedule')"
+      >
+        📅 Lịch Trình Tour
+      </button>
+      <button
+        class="tab-button relative px-4 py-2 font-medium hover:text-blue-600 focus:text-blue-600"
+       (click)="setActiveTab('policy')"
+      >
+        📃 Chính Sách Tour
+      </button>
+    </div>
+
+    <div class="p-4 bg-gray-50 rounded-b-lg">
+      <!-- Content -->
+      <div *ngIf="activeTab === 'schedule'" class="flex space-x-8">
+        <!-- Left Column (Itinerary) -->
+        <div class="w-1/4">
+          <ul class="space-y-4 text-blue-600 font-semibold">
+            <li class="flex items-center">
+              <span
+                class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center"
+                >0</span
+              >
+              <span class="ml-2">Mô Tả</span>
+            </li>
+            <li class="flex items-center">
+              <span
+                class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center"
+                >1</span
+              >
+              <span class="ml-2">Ngày 1: TP.HCM – Paris (Ăn trên máy bay)</span>
+            </li>
+            <li class="flex items-center">
+              <span
+                class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center"
+                >2</span
+              >
+              <span class="ml-2"
+                >Ngày 2: Paris – Kinh đô ánh sáng (Ăn sáng, trưa, tối)</span
+              >
+            </li>
+            <li class="flex items-center">
+              <span
+                class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center"
+                >3</span
+              >
+              <span class="ml-2">Ngày 3: Paris – Reims – Mert</span>
+            </li>
+            <li class="flex items-center">
+              <span
+                class="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center"
+                >4</span
+              >
+              <span class="ml-2"
+                >Ngày 4: Mert – Strasbourg – Colmar (Ăn sáng, trưa, tối)</span
+              >
+            </li>
+            <!-- Add more days as needed -->
+          </ul>
+        </div>
+
+        <!-- Right Column (Tour Details) -->
+        <div class="w-3/4">
+          <div class="space-y-4 text-gray-700">
+            <!-- Description -->
+            <div>
+              <h2 class="font-bold text-blue-600">Mô Tả</h2>
+              <p>
+                Khám Phá Châu Âu Quyến Rũ - Hãy tưởng tượng sự kết hợp hoàn hảo
+                của văn hóa, lịch sử, thiên nhiên và ẩm thực mang tính biểu
+                tượng. Chiêm ngưỡng những đại lộ rộng lớn của Paris, những món
+                ăn ngon từ Ý và những đỉnh núi đáng kinh ngạc của Thụy Sĩ.
+                Chuyến đi đến Pháp, Thụy Sĩ và Ý sẽ mang đến cho quý khách một
+                trải nghiệm ngoại mục với những kỳ quan của các địa danh.
+              </p>
+            </div>
+
+            <!-- Tour Highlights -->
+            <div>
+              <h2 class="font-bold text-blue-600">
+                Những Trải Nghiệm Thú Vị Trong Chương Trình
+              </h2>
+              <ul class="list-disc pl-6">
+                <li>Tháp Eiffel - Biểu tượng của Pháp.</li>
+                <li>Nhà thờ lớn thứ 4 Thế Giới - Notre Dame Strasbourg.</li>
+                <li>Thành phố Tình yêu Venice.</li>
+                <li>Tháp nghiêng Pisa.</li>
+                <li>Toà Thánh Vatican.</li>
+              </ul>
+            </div>
+
+            <!-- Readiness Information -->
+            <div>
+              <h2 class="font-bold text-blue-600">Bạn Có Sẵn Sàng</h2>
+              <p>
+                Một số điều kiện chung giúp Quý Khách nâng cao tỷ lệ xin Visa
+                Châu Âu thành công:
+              </p>
+              <ul class="list-disc pl-6">
+                <li>
+                  Đã từng đi du lịch các nước phát triển như Hàn Quốc, Nhật Bản,
+                  Mỹ...
+                </li>
+                <li>Công việc ổn định và thu nhập tốt.</li>
+                <li>Có tài sản đáng kể như nhà đất, xe hơi, sổ tiết kiệm.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Policy Content -->
+      <div *ngIf="activeTab === 'policy'">
+        <h2 class="text-lg font-semibold">Chính Sách Tour</h2>
+        <p>Thông tin về chính sách tour...</p>
+        <!-- Add more policy details here -->
+      </div>
+    </div>
+  </div>
+<!-- </div> -->

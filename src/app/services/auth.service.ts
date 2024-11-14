@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment.development';
 import { Jwt } from '../models/jwt';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ import { throwError } from 'rxjs';
 export class AuthService {
   private apiUrl = environment.apiUrl + '/api/v1/auth'; // URL to auth api
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {}
 
   private user: any; // User data
 
@@ -25,12 +26,26 @@ export class AuthService {
     );
   }
 
+  register(credentials: { full_name: string; username: string; email: string; passrowd: string; phone: string; address: string}): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, credentials).pipe(
+      catchError((error) => {
+        console.error('Register request failed', error);
+        return throwError(() => new Error('Register failed'));
+      })
+    );
+  }
+
+  logout() {
+    this.localStorageService.removeItem('token');
+    this.localStorageService.removeItem('user');
+  }
+
   saveToken(token: string) {
-    localStorage.setItem('token', token);
+    this.localStorageService.setItem('token', token);
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    return this.localStorageService.getItem('token');
   }
 
   // Store user data after login
