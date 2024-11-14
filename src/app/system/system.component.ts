@@ -28,11 +28,36 @@ interface City {
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-  <div class="bg-white">
-    <!-- Loading Screen -->
-    <div *ngIf="isLoading" class="fixed inset-0 bg-white z-50">
-      <!-- Loading content remains the same -->
+  <!-- Loading Screen -->
+  <div *ngIf="isLoading" class="fixed inset-0 bg-white z-50">
+    <div class="flex flex-col items-center justify-center h-full">
+      <!-- Map Loading Animation -->
+      <div class="relative w-48 h-48 mb-8">
+        <div class="absolute inset-0 animate-pulse">
+          <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Map Pin Animation -->
+            <circle class="animate-ping" cx="50" cy="50" r="8" fill="#3B82F6" fill-opacity="0.4"/>
+            <circle cx="50" cy="50" r="6" fill="#3B82F6"/>
+            <!-- Circular Rings Animation -->
+            <circle class="animate-ripple-1" cx="50" cy="50" r="20" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.3"/>
+            <circle class="animate-ripple-2" cx="50" cy="50" r="35" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.2"/>
+            <!-- Map Grid Background -->
+            <path d="M20 20 H80 M20 40 H80 M20 60 H80 M20 80 H80" stroke="#E5E7EB" stroke-width="1"/>
+            <path d="M20 20 V80 M40 20 V80 M60 20 V80 M80 20 V80" stroke="#E5E7EB" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+      <!-- Loading Text -->
+      <div class="text-center">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Đang tải bản đồ</h2>
+        <p class="text-sm text-gray-500">Vui lòng đợi trong giây lát...</p>
+      </div>
+      <!-- Loading Progress Bar -->
+      <div class="w-48 h-1 bg-gray-200 rounded-full mt-4 overflow-hidden">
+        <div class="h-full bg-blue-500 rounded-full animate-progress"></div>
+      </div>
     </div>
+  </div>
 
     <!-- Main Content (only shown after loading) -->
     <div [class.opacity-0]="isLoading" [class.animate-fadeIn]="!isLoading">
@@ -181,7 +206,7 @@ interface City {
         </div>
       </div>
     </div>
-  </div>
+  
   `,
   styles: [`
     .select-style {
