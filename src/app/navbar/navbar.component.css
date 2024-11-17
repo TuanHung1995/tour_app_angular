@@ -170,3 +170,10 @@
 .avatar{
   filter: brightness(0.5);
 }
+.mobile-menu {
+  transition: all 0.3s ease-in-out;
+}
+
+.submenu {
+  transition: all 0.2s ease-in-out;
+}

@@ -11,6 +11,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { DetailsComponent } from './details/details.component';
 import { FollowedTourComponent } from './followed-tour/followed-tour.component';
 
+import { TravelListComponent } from './travel-list/travel-list.component';
+
 export const routes: Routes = [
   
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -25,5 +27,6 @@ export const routes: Routes = [
   {path: 'info', component: InfoComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'details', component: DetailsComponent},
-  {path: 'followed-tour', component: FollowedTourComponent}
+  {path: 'followed-tour', component: FollowedTourComponent},
+  {path: 'travel-list', component: TravelListComponent },
 ];

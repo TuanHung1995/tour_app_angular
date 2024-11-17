@@ -1,16 +1,12 @@
-import { NgIf } from '@angular/common';
+import { NgIf, NgStyle, CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { RouterOutlet } from '@angular/router';
-import { Router } from '@angular/router';
+import { RouterLink, Router, RouterOutlet } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { NgStyle } from '@angular/common';
-import { CommonModule } from '@angular/common';
 
- interface Destination{
+interface Destination {
   name: string;
   link: string;
- }
+}
 
 @Component({
   selector: 'app-navbar',
@@ -26,18 +22,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+  // Desktop dropdown states
   isDropdownOpen = false;
-
-  isDropdownMobileOpen = false;
-
-  // dropdown profile menu appears when user hover on profile icon
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
+  
+  // Mobile menu states
+  isMobileMenuOpen = false;
+  currentMobileView: 'main' | 'dulich' | 'camnang' | 'account' = 'main';
 
   user: any;
   userRole: string = '';
-  defaultAvatar: string = 'path/to/default/avatar.png'; // Default avatar path
+  defaultAvatar: string = 'path/to/default/avatar.png';
 
   constructor(
     private authService: AuthService,
@@ -45,9 +39,25 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Get user and role information after login
     this.user = this.authService.getUser();
     this.userRole = this.authService.getUserRole();
+  }
+
+  // Mobile menu toggles
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    if (!this.isMobileMenuOpen) {
+      this.currentMobileView = 'main';
+    }
+  }
+
+  setMobileView(view: 'main' | 'dulich' | 'camnang' | 'account') {
+    this.currentMobileView = view;
+  }
+
+  // Desktop dropdown toggle
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   isLoggedIn(): boolean {
@@ -57,12 +67,10 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+    this.toggleMobileMenu();
   }
 
-  // link to another page when click span in mobile view
-  
-  domesticDestinations:  Destination[] = [
-
+  domesticDestinations: Destination[] = [
     { name: 'Hà Nội', link: 'tour4' },
     { name: 'Đà Nẵng', link: '#' },
     { name: 'Đà Lạt', link: '#' },
@@ -70,11 +78,9 @@ export class NavbarComponent implements OnInit {
   ];
 
   internationalDestinations: Destination[] = [
-
     { name: 'Châu Á', link: '#' },
     { name: 'Châu Mỹ', link: '#' },
     { name: 'Châu Âu', link: '#' },
     { name: 'Châu Úc', link: '#' }
   ];
-
 }
