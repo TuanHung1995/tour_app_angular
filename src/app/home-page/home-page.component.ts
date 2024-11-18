@@ -13,7 +13,8 @@ import { HomeContentComponent } from "../home-content/home-content.component";
     HeaderComponent,
     NavbarComponent,
     IntroductionComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    FooterComponent
 ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'

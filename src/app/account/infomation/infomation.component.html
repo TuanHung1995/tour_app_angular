@@ -1,0 +1,36 @@
+<div class="container mx-auto p-6 flex">
+  <!-- Sidebar bên trái -->
+  <div class="w-1/4 p-4">
+    <h2 class="text-lg font-bold mb-4">TRANG TÀI KHOẢN</h2>
+    <p class="mb-2">
+      <span class="font-semibold">Xin chào,</span>
+      <span class="text-blue-600 font-bold">{{user.username}}</span>!
+    </p>
+    <ul class="space-y-2">
+      <li>
+        <a routerLink="/information" class="text-blue-600 hover:no-underline">Thông tin tài khoản</a>
+      </li>
+      <li>
+        <a routerLink="/ordered" class="text-gray-700 hover:no-underline hover:text-blue-600">Đơn hàng của bạn</a>
+      </li>
+      <li>
+        <a routerLink="/password" class="text-gray-700 hover:no-underline hover:text-blue-600">Đổi mật khẩu</a>
+      </li>
+      <li>
+        <a routerLink="/address" class="text-gray-700 hover:no-underline hover:text-blue-600">Sổ địa chỉ (1)</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Phần thông tin tài khoản bên phải -->
+  <div class="w-3/4 p-4">
+    <h2 class="text-lg font-bold mb-4">THÔNG TIN TÀI KHOẢN</h2>
+    <div class="space-y-2">
+      <p><span class="font-semibold">Họ tên:</span> {{user.full_name}}</p>
+      <p><span class="font-semibold">Email:</span> {{user.email}}</p>
+      <p><span class="font-semibold">Điện thoại:</span> {{user.phone}}</p>
+      <p *ngIf="user.company"><span class="font-semibold">Công ty:</span> {{user.company}}</p>
+      <p *ngIf="user.address"><span class="font-semibold">Địa chỉ:</span> {{user.address}}</p>
+    </div>
+  </div>
+</div>

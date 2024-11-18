@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../../environments/environment.development';
 import { Jwt } from '../models/jwt';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +14,25 @@ import { LocalStorageService } from './local-storage.service';
 export class AuthService {
   private apiUrl = environment.apiUrl + '/api/v1/auth'; // URL to auth api
 
-  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {}
+  constructor(
+    private http: HttpClient,
+    private localStorageService: LocalStorageService
+  ) {}
 
-  private user: any; // User data
+  user: User = {
+    id: 0,
+    fullname: '',
+    username: '',
+    email: '',
+    phone: '',
+    address: '',
+    role: '',
+  };
 
-  login(credentials: { usernameOrEmail: string; password: string }): Observable<Jwt> {
+  login(credentials: {
+    usernameOrEmail: string;
+    password: string;
+  }): Observable<Jwt> {
     return this.http.post<Jwt>(`${this.apiUrl}/login`, credentials).pipe(
       catchError((error) => {
         console.error('Login request failed', error);
@@ -26,7 +41,14 @@ export class AuthService {
     );
   }
 
-  register(credentials: { full_name: string; username: string; email: string; passrowd: string; phone: string; address: string}): Observable<any> {
+  register(credentials: {
+    full_name: string;
+    username: string;
+    email: string;
+    passrowd: string;
+    phone: string;
+    address: string;
+  }): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, credentials).pipe(
       catchError((error) => {
         console.error('Register request failed', error);
@@ -49,14 +71,16 @@ export class AuthService {
   }
 
   // Store user data after login
-  setUser(user: any): void {
+  setUser(user: User): void {
     this.user = user;
-    if(typeof window !== 'undefined') localStorage.setItem('user', JSON.stringify(user)); // Optional: Store in local storage
+    if (typeof window !== 'undefined')
+      localStorage.setItem('user', JSON.stringify(user)); // Optional: Store in local storage
   }
 
   // Get user data
-  getUser(): any {
-    if (typeof window !== 'undefined') return this.user || JSON.parse(localStorage.getItem('user') || '{}');
+  getUser(): any { 
+    if (typeof window !== 'undefined')
+      return this.user || JSON.parse(localStorage.getItem('user') || '{}');
   }
 
   // Check if the user is logged in
@@ -67,5 +91,15 @@ export class AuthService {
   // Get user role
   getUserRole(): string {
     return this.getUser()?.role || '';
+  }
+
+  // Reset password
+  resetPassword(credentials: {userId: number, oldPassword: string, newPassword: string, confirmPassword: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/reset-password`, credentials).pipe(
+      catchError((error) => {
+        console.error('Reset password request failed', error);
+        return throwError(() => new Error('Reset password failed'));
+      })
+    );
   }
 }

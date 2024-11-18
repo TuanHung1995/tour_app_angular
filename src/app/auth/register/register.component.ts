@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 
@@ -15,10 +15,9 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule, NgIf, RouterLink],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-
   registerForm!: FormGroup;
   errorMessage: string = '';
   notify: string = '';
@@ -44,11 +43,8 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
-          // Success, save token to local storage and redirect to home page
-          if (typeof window !== 'undefined') {
             this.notify = response;
             this.router.navigate(['/home']);
-          }
         },
         error: (error) => {
           // Error handling

@@ -77,17 +77,11 @@
       class="relative block banner ratio1 overflow-hidden rounded-lg shadow-lg group"
     >
       <!-- Image -->
-      <img
-        [src]="tour.image"
-        [alt]="tour.name"
-        class="w-full h-64"
-      />
+      <img [src]="tour.image" [alt]="tour.name" class="w-full h-64" />
       <!-- Background overlay & Text -->
-      <span
-        class="absolute text-center"
-      >
+      <span class="absolute text-center">
         <b class="mb-2 text2line">{{ tour.name }}</b>
-          Đã có {{ tour.total_customer }} lượt khách
+        Đã có {{ tour.total_customer }} lượt khách
       </span>
     </a>
   </div>
@@ -117,14 +111,20 @@
         class="w-full h-48 object-cover"
       />
       <div class="p-4">
-        <h3 (click)="viewTourDetails(tour.id)" class="font-semibold text-lg hover:text-blue-600">
+        <h3
+          (click)="viewTourDetails(tour.id)"
+          class="font-semibold text-lg hover:text-blue-600 hover:cursor-pointer"
+        >
           {{ tour.name }}
         </h3>
         <p class="text-sm text-gray-600">
           Hồ Tràm - Phan Thiết - Mũi Né - Công Viên Tropicana
         </p>
         <div class="flex items-center text-sm text-gray-500 mt-2">
-          <span class="mr-2">Khởi hành: 01/07/2023</span>
+          <span class="mr-2">
+            <i class="fas fa-calendar-alt mr-2"></i>
+            Khởi hành: {{ tour.startDate | date : "dd/MM/yyyy" }}</span
+          >
           <span class="flex items-center">
             <svg
               class="w-4 h-4 mr-1 text-gray-500"
@@ -135,16 +135,16 @@
                 d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 110 16 8 8 0 010-16zm-1 3v6l5 2 .75-1.5-4.25-1.75V7h-1.5z"
               />
             </svg>
-            Thời gian: 3 ngày
+            Thời gian: {{ tour.duration }} ngày
           </span>
         </div>
         <div class="flex items-center mt-2">
           <span class="line-through text-gray-500 text-sm">{{
-            tour.price + 100000
+            tour.price + tour.price * 0.1 | currency : "VND"
           }}</span>
-          <span class="text-red-500 font-semibold text-lg ml-2"
-            >{{ tour.price }}₫</span
-          >
+          <span class="text-red-500 font-semibold text-lg ml-2">{{
+            tour.price | currency : "VND"
+          }}</span>
           <span class="ml-2 text-red-600 text-sm">-9%</span>
         </div>
         <div
@@ -161,6 +161,40 @@
         </a>
       </div>
     </div>
+  </div>
+
+  <div class="flex justify-center mt-8">
+    <a
+      routerLink="/tours"
+      class="text-blue-600 font-medium text-sm px-2 py-2.5 cursor-pointer"
+    >
+      Xem tất cả
+    </a>
+    <span class="py-3">
+      <svg
+        fill="#2563eb"
+        class="size-4 text-blue-600"
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 330 330"
+        xml:space="preserve"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            id="XMLID_27_"
+            d="M15,180h263.787l-49.394,49.394c-5.858,5.857-5.858,15.355,0,21.213C232.322,253.535,236.161,255,240,255 s7.678-1.465,10.606-4.394l75-75c5.858-5.857,5.858-15.355,0-21.213l-75-75c-5.857-5.857-15.355-5.857-21.213,0 c-5.858,5.857-5.858,15.355,0,21.213L278.787,150H15c-8.284,0-15,6.716-15,15S6.716,180,15,180z"
+          ></path>
+        </g>
+      </svg>
+    </span>
   </div>
 </div>
 
@@ -188,7 +222,10 @@
         class="w-full h-48 object-cover"
       />
       <div class="p-4">
-        <h3 (click)="viewTourDetails(tour.id)" class="font-semibold text-lg hover:text-blue-600">
+        <h3
+          (click)="viewTourDetails(tour.id)"
+          class="font-semibold text-lg hover:text-blue-600 hover:cursor-pointer"
+        >
           {{ tour.name }}
         </h3>
         <div class="flex flex-col items-left text-sm text-gray-500 mt-2">
@@ -196,7 +233,7 @@
             ><i class="fas fa-calendar-alt mr-2"></i>Khởi hành:<span
               class="text-black"
             >
-              {{tour.startDate | date: 'dd/MM/yyyy'}}</span
+              {{ tour.startDate | date : "dd/MM/yyyy" }}</span
             ></span
           >
           <span class="flex items-center text-gray-400">
@@ -205,17 +242,17 @@
                 d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 110 16 8 8 0 010-16zm-1 3v6l5 2 .75-1.5-4.25-1.75V7h-1.5z"
               />
             </svg>
-            Thời gian: <span class="text-black">{{tour.duration}} ngày</span>
+            Thời gian: <span class="text-black">{{ tour.duration }} ngày</span>
           </span>
         </div>
         <div class="flex items-center mt-2">
           <span class="line-through text-gray-500 text-sm">{{
-            tour.price + 100000
+            tour.price + tour.price * 0.1 | currency : "VND"
           }}</span>
-          <span class="text-red-500 font-semibold text-lg ml-2"
-            >{{ tour.price }}₫</span
-          >
-          <span class="ml-2 text-red-600 text-sm">-9%</span>
+          <span class="text-red-500 font-semibold text-lg ml-2">{{
+            tour.price | currency : "VND"
+          }}</span>
+          <span class="ml-2 text-red-600 text-sm">-10%</span>
         </div>
         <div
           class="flex items-center justify-between mt-2 mb-4 text-sm text-gray-500"
@@ -231,6 +268,39 @@
         </a>
       </div>
     </div>
+  </div>
+  <div class="flex justify-center mt-8">
+    <a
+      routerLink="/tours"
+      class="text-blue-600 font-medium text-sm px-2 py-2.5 cursor-pointer"
+    >
+      Xem tất cả
+    </a>
+    <span class="py-3">
+      <svg
+        fill="#2563eb"
+        class="size-4 text-blue-600"
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 330 330"
+        xml:space="preserve"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            id="XMLID_27_"
+            d="M15,180h263.787l-49.394,49.394c-5.858,5.857-5.858,15.355,0,21.213C232.322,253.535,236.161,255,240,255 s7.678-1.465,10.606-4.394l75-75c5.858-5.857,5.858-15.355,0-21.213l-75-75c-5.857-5.857-15.355-5.857-21.213,0 c-5.858,5.857-5.858,15.355,0,21.213L278.787,150H15c-8.284,0-15,6.716-15,15S6.716,180,15,180z"
+          ></path>
+        </g>
+      </svg>
+    </span>
   </div>
 </div>
 
@@ -258,7 +328,10 @@
         class="w-full h-48 object-cover"
       />
       <div class="p-4">
-        <h3 (click)="viewTourDetails(tour.id)" class="font-semibold text-lg hover:text-blue-600">
+        <h3
+          (click)="viewTourDetails(tour.id)"
+          class="font-semibold text-lg hover:text-blue-600 hover:cursor-pointer"
+        >
           {{ tour.name }}
         </h3>
         <div class="flex flex-col items-left text-sm text-gray-500 mt-2">
@@ -266,7 +339,7 @@
             ><i class="fas fa-calendar-alt mr-2"></i>Khởi hành:<span
               class="text-black"
             >
-              {{tour.startDate | date: 'dd/MM/yyyy'}}</span
+              {{ tour.startDate | date : "dd/MM/yyyy" }}</span
             ></span
           >
           <span class="flex items-center text-gray-400">
@@ -275,17 +348,17 @@
                 d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 110 16 8 8 0 010-16zm-1 3v6l5 2 .75-1.5-4.25-1.75V7h-1.5z"
               />
             </svg>
-            Thời gian: <span class="text-black">{{tour.duration}} ngày</span>
+            Thời gian: <span class="text-black">{{ tour.duration }} ngày</span>
           </span>
         </div>
         <div class="flex items-center mt-2">
           <span class="line-through text-gray-500 text-sm">{{
-            tour.price + 100000
+            tour.price + tour.price * 0.1 | currency : "VND"
           }}</span>
-          <span class="text-red-500 font-semibold text-lg ml-2"
-            >{{ tour.price }}₫</span
-          >
-          <span class="ml-2 text-red-600 text-sm">-9%</span>
+          <span class="text-red-500 font-semibold text-lg ml-2">{{
+            tour.price | currency : "VND"
+          }}</span>
+          <span class="ml-2 text-red-600 text-sm">-10%</span>
         </div>
         <div
           class="flex items-center justify-between mt-2 mb-4 text-sm text-gray-500"
@@ -299,9 +372,41 @@
         >
           Đặt ngay
         </a>
-
       </div>
     </div>
+  </div>
+  <div class="flex justify-center mt-8">
+    <a
+      routerLink="/tours"
+      class="text-blue-600 font-medium text-sm px-2 py-2.5 cursor-pointer"
+    >
+      Xem tất cả
+    </a>
+    <span class="py-3">
+      <svg
+        fill="#2563eb"
+        class="size-4 text-blue-600"
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 330 330"
+        xml:space="preserve"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            id="XMLID_27_"
+            d="M15,180h263.787l-49.394,49.394c-5.858,5.857-5.858,15.355,0,21.213C232.322,253.535,236.161,255,240,255 s7.678-1.465,10.606-4.394l75-75c5.858-5.857,5.858-15.355,0-21.213l-75-75c-5.857-5.857-15.355-5.857-21.213,0 c-5.858,5.857-5.858,15.355,0,21.213L278.787,150H15c-8.284,0-15,6.716-15,15S6.716,180,15,180z"
+          ></path>
+        </g>
+      </svg>
+    </span>
   </div>
 </div>
 <div class="container mx-auto py-8 bg-white px-[115px]">

@@ -215,18 +215,22 @@
       <!-- Tour Information -->
       <div class="text-left shadow-lg mb-5 p-6 rounded">
         <h2 class="text-lg font-semibold text-gray-800">
-          Tour Châu Âu 10N9Đ: Khám Phá Pháp - Thụy Sĩ - Ý - Vatican
+          {{tour?.name}}
         </h2>
         <div class="relative">
-          <div class="text-sm text-gray-400 line-through">{{tour?.price}}đ</div>
-          <div class="text-2xl font-bold text-red-600">{{tour?.price}}đ</div>
+          <div class="text-sm text-gray-400 line-through">{{tour?.price | currency: 'VND'}}</div>
+          <div class="text-2xl font-bold text-red-600">{{tour?.price | currency: 'VND'}}</div>
           <span class="text-red-600 font-bold size-4 rounded-md text-xs coupon"
             >-6%</span
           >
         </div>
       </div>
 
-      <div class="shadow-xl p-6 rounded order-customer">
+      <form 
+        [formGroup]="cartForm"
+        (ngSubmit)="addToCart()"
+        class="shadow-xl p-6 rounded order-customer"
+      >
         <!-- Date Picker -->
         <div>
           <div class="mb-4">
@@ -235,10 +239,16 @@
             >
             <input
               type="date"
-              id="date"
               placeholder="Chọn ngày đi"
+              formControlName="date"
               class="w-full mt-1 p-2 border focus:border-gray-300 border-gray-300 rounded-md"
             />
+            <!-- <input 
+              type="number"
+              [value]="tour?.id" 
+              class="hidden"
+              formControlName="tourId"
+            > -->
           </div>
 
           <!-- Guest Selector -->
@@ -254,23 +264,26 @@
 
               <div class="flex items-center">
                 <button
+                  type="button"
+                  (click)="decreaseQuantity()"
                   class="w-6 h-6 flex items-center justify-center border border-gray-300 text-gray-500 rounded-md"
                 >
                   -
                 </button>
                 <input
                   type="number"
-                  disabled
-                  value="0"
-                  class="w-8 pl-[9px] text-center border-none"
+                  formControlName="quantity"
+                  class="w-10 pl-[9px] text-center focus:border-none focus:outline-none border-none"
                 />
                 <button
+                  type="button"
+                  (click)="increaseQuantity()"
                   class="w-6 h-6 flex items-center justify-center border border-gray-300 text-gray-500 rounded-md"
                 >
                   +
                 </button>
               </div>
-              <span class="text-gray-800">82.400.000đ</span>
+              <span class="text-gray-800">{{tour?.price | currency: 'VND'}}</span>
             </div>
           </div>
         </div>
@@ -282,23 +295,25 @@
           <span></span>
           <span></span>
           <span class="font-semibold text-gray-700">Tổng tiền</span>
-          <span class="text-red-600 font-bold">82.400.000đ</span>
+          <span class="text-red-600 font-bold">{{totalPrice | currency: 'VND'}}</span>
         </div>
 
         <!-- Action Buttons -->
         <div class="space-y-2">
           <button
+          type="submit"
             class="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg"
           >
             Đặt ngay
           </button>
           <button
+            type="button"
             class="w-full py-2 border border-blue-600 text-blue-600 font-semibold rounded-lg"
           >
             Liên hệ tư vấn
           </button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 
