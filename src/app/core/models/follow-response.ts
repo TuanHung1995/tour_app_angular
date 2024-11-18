@@ -1,4 +1,4 @@
-import { Tour } from '../models/tour';
+import { Tour } from './tour';
 
 export interface FollowResponse {
   tours: Tour[];

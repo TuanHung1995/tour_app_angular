@@ -1,0 +1,73 @@
+<div class="container mx-auto p-6">
+  <h2 class="text-2xl font-bold mb-4">Giỏ hàng của bạn</h2>
+
+  <!-- Bảng sản phẩm -->
+  <div *ngIf="numberItems != 0" class="bg-white shadow-lg rounded-lg p-4">
+    <table class="w-full text-left">
+      <thead>
+        <tr class="border-b">
+          <th class="py-3 text-gray-600">Thông tin sản phẩm</th>
+          <th class="py-3 text-gray-600">Đơn giá</th>
+          <th class="py-3 text-gray-600">Số lượng</th>
+          <th class="py-3 text-gray-600">Thành tiền</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b" *ngFor="let item of items">
+          <td class="py-4 flex items-center">
+            <img
+              [src]="item.tour.image"
+              alt="Tour image"
+              class="w-20 h-20 rounded-lg mr-4"
+            />
+            <div>
+              <p (click)="viewTourDetails(item.id)" class="font-semibold hover:text-blue-600 hover:cursor-pointer">
+                {{ item.tour.name }}
+              </p>
+              <p class="text-sm text-gray-500">Ngày đi: {{item.date | date: 'dd/MM/yyyy'}}</p>
+              <button (click)="removeItem(item.id)" class="text-blue-600 text-sm mt-1">Xóa</button>
+            </div>
+          </td>
+          <td class="py-4 text-red-600 font-bold">{{item.price | currency: 'VND'}}</td>
+          <td class="py-4">
+            <div class="flex items-center space-x-0">
+              <form [formGroup]="adjustForm" (ngSubmit)="decreaseQuantity(item)">
+                <button 
+                  type="submit"
+                  class="text-gray-700 py-0 px-2 border">
+                  -
+                </button>
+              </form>
+              <input
+                type="number"
+                [value]="item.quantity"
+                class="w-12 text-center border border-gray-300"
+              />
+              <form [formGroup]="adjustForm" (ngSubmit)="increaseQuantity(item)">
+                <button 
+                  type="submit"
+                  class="text-gray-700 py-0 px-2 border">
+                  +
+                </button>
+              </form>
+            </div>
+          </td>
+          <td class="py-4 text-red-600 font-bold">{{getTotalPrice(item) | currency: 'VND'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Thông báo giỏ hàng trống -->
+  <div *ngIf="numberItems == 0" class="text-[20px] py-[100px] text-center text-gray-400">Giỏ hàng của bạn đang trống</div>
+
+  <!-- Tổng tiền và nút thanh toán -->
+  <div *ngIf="numberItems != 0" class="flex justify-between items-center mt-6">
+    <p class="text-xl font-bold">Tổng tiền: {{getTotalItemPrice() | currency: 'VND'}}</p>
+    <button
+      class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600"
+    >
+      Thanh toán
+    </button>
+  </div>
+</div>

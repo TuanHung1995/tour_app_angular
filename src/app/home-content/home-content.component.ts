@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { TourService } from '../services/tour.service';
-import { NewsService } from '../services/news.service';
-import { Tour } from '../models/tour';
-import { News } from '../models/news';
+import { RouterLink } from '@angular/router';
+import { TourService } from '../core/services/tour.service';
+import { NewsService } from '../core/services/news.service';
+import { Tour } from '../core/models/tour';
+import { News } from '../core/models/news';
 
 interface BestTour {
   id: number;
@@ -16,17 +17,14 @@ interface BestTour {
   total_customer: number;
 }
 
-
 @Component({
   selector: 'app-home-content',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home-content.component.html',
   styleUrl: './home-content.component.css',
 })
 export class HomeContentComponent implements OnInit {
-
-
   // mockNews: News[] = [
   //   {
   //     id: 1,
@@ -170,10 +168,11 @@ export class HomeContentComponent implements OnInit {
   overseaTours: Tour[] = [];
   latestNews: News[] = [];
 
-  constructor(private tourService: TourService,
+  constructor(
+    private tourService: TourService,
     private newsService: NewsService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loadTours();
@@ -184,25 +183,29 @@ export class HomeContentComponent implements OnInit {
     this.tourService.getAllTours().subscribe({
       next: (data) => {
         this.tours = data;
-        console.log(data);
-        this.vietnamTours = this.tours.filter(tour => tour.category === 'VIETNAM');
-        this.overseaTours = this.tours.filter(tour => tour.category === 'OVERSEA');
+        // console.log(data);
+        this.vietnamTours = this.tours.filter(
+          (tour) => tour.category === 'VIETNAM'
+        );
+        this.overseaTours = this.tours.filter(
+          (tour) => tour.category === 'OVERSEA'
+        );
       },
       error: (error) => {
         console.error('Error loading tours', error);
-      }
+      },
     });
   }
 
   loadNews(): void {
     this.newsService.getAllNews().subscribe({
       next: (data) => {
-        this.latestNews = data;
-        console.log(data);
+        this.latestNews = data.slice(0, 3);
+        // console.log(data);
       },
       error: (error) => {
         console.error('Error loading news', error);
-      }
+      },
     });
   }
 
@@ -210,4 +213,15 @@ export class HomeContentComponent implements OnInit {
     this.router.navigate(['/tour', id]);
   }
 
+  // View overseas tours 
+  viewCategoryTours(category: string): void {
+    this.router.navigate(['/category'], {
+      queryParams: { category: category, status: 'avaiable' },
+    });
+  }
+
+  // View all tours
+  viewAllTours(): void {
+    this.router.navigate(['/tours']);
+  }
 }

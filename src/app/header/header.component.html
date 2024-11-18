@@ -21,20 +21,33 @@
       <div class="flex px-[270px]">
         <!-- DU LỊCH TRONG NƯỚC Tab -->
         <button
+          (click)="chooseCategory('VIETNAM')"
+          (click)="setActiveTab('vietnam')"
           class="tab-button relative bg-white font-medium text-[15px] px-3 py-4 text-black w-[200px] rounded-tl-lg hover:text-blue-600 focus:text-blue-600"
         >
           DU LỊCH TRONG NƯỚC
+          <span
+            *ngIf="activeTab === 'vietnam'"
+            class="tab-button-custome"
+          ></span>
         </button>
 
         <!-- DU LỊCH NƯỚC NGOÀI Tab -->
         <button
+          (click)="chooseCategory('OVERSEA')"
+          (click)="setActiveTab('oversea')"
           class="tab-button relative bg-white font-medium text-[15px] px-3 py-4 text-black w-[200px] hover:text-blue-600 focus:text-blue-600"
         >
           DU LỊCH NƯỚC NGOÀI
+          <span
+            *ngIf="activeTab === 'oversea'"
+            class="tab-button-custome"
+          ></span>
         </button>
 
         <!-- TRA CỨU BOOKING Tab -->
         <button
+          routerLink="/find-booking"
           class="tab-button relative bg-white font-medium text-[15px] px-3 py-4 text-black w-[200px] rounded-tr-lg hover:text-blue-600 focus:text-blue-600"
         >
           TRA CỨU BOOKING
@@ -43,6 +56,7 @@
 
       <!-- Form tìm kiếm -->
       <form
+        (ngSubmit)="searchTour()"
         class="bg-white rounded-lg shadow-lg flex flex-row gap-4 items-center py-6 px-8 text-black"
       >
         <div class="flex items-center justify-center space-x-4">
@@ -50,6 +64,7 @@
           <div class="flex-1 w-[275px]">
             <input
               type="text"
+              [(ngModel)]="keyword"
               placeholder="Từ khóa (Hà Nội, HCM)..."
               class="w-full border border-gray-300 rounded-lg p-4 focus:outline-none"
             />
@@ -82,12 +97,11 @@
             </div>
             <div class="flex-grow">
               <select
+                [(ngModel)]="location"
                 class="w-full p-5 pl-[8px] border-gray-300 rounded-tr-lg rounded-br-lg focus:outline-none"
               >
-                <option value="" disabled selected>Chọn điểm đi</option>
-                <option value="Hà Nội">Hà Nội</option>
-                <option value="Hồ Chí Minh">Hồ Chí Minh</option>
-                <option value="Đà Nẵng">Đà Nẵng</option>
+                <option value="" [selected]="location===''" class="text-gray-300">Chọn điểm đi</option>
+                <option *ngFor="let city of vietnameCites" [value]="city">{{city}}</option>
               </select>
             </div>
           </div>
@@ -119,12 +133,20 @@
             </div>
             <div class="flex-grow">
               <select
+                *ngIf="category==='VIETNAM'"
+                [(ngModel)]="destination"
                 class="w-full p-5 pl-[8px] border-gray-300 rounded-tr-lg rounded-br-lg focus:outline-none"
               >
-                <option value="" disabled selected>Chọn điểm đến</option>
-                <option value="Phú Quốc">Phú Quốc</option>
-                <option value="Nha Trang">Nha Trang</option>
-                <option value="Hạ Long">Hạ Long</option>
+                <option value="" selected class="text-gray-300">Chọn điểm đến</option>
+                <option  *ngFor="let city of vietnameCites" [value]="city">{{city}}</option>
+              </select>
+              <select
+                *ngIf="category==='OVERSEA'"
+                [(ngModel)]="destination"
+                class="w-full p-5 pl-[8px] border-gray-300 rounded-tr-lg rounded-br-lg focus:outline-none"
+              >
+                <option value="" selected class="text-gray-300">Chọn điểm đến</option>
+                <option *ngFor="let city of countries" [value]="city">{{city}}</option>
               </select>
             </div>
           </div>
@@ -133,7 +155,8 @@
           <div class="flex-1 w-[200px]">
             <input
               type="date"
-              value="2026-04-07"
+              [(ngModel)]="start_date"
+              placeholder="Ngày đi"
               class="w-full border border-gray-300 rounded-lg p-4 focus:outline-none"
             />
           </div>
