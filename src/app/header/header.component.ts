@@ -11,6 +11,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  dateValue: string = '';
   
 
 }
