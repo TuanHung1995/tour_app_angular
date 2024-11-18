@@ -18,20 +18,33 @@
       <div class="flex flex-col md:flex-row md:px-[270px]">
         <!-- DU LỊCH TRONG NƯỚC Tab -->
         <button
+          (click)="chooseCategory('VIETNAM')"
+          (click)="setActiveTab('vietnam')"
           class="tab-button relative bg-white font-medium text-[14px] md:text-[15px] px-3 py-3 md:py-4 text-black w-full md:w-[200px] rounded-t-lg md:rounded-tl-lg md:rounded-tr-none hover:text-blue-600 focus:text-blue-600"
         >
           DU LỊCH TRONG NƯỚC
+        <span
+            *ngIf="activeTab === 'vietnam'"
+            class="tab-button-custome"
+          ></span>
         </button>
 
         <!-- DU LỊCH NƯỚC NGOÀI Tab -->
         <button
+          (click)="chooseCategory('OVERSEA')"
+          (click)="setActiveTab('oversea')"
           class="tab-button relative bg-white font-medium text-[14px] md:text-[15px] px-3 py-3 md:py-4 text-black w-full md:w-[200px] hover:text-blue-600 focus:text-blue-600 border-t border-gray-200 md:border-t-0"
         >
           DU LỊCH NƯỚC NGOÀI
+        <span
+            *ngIf="activeTab === 'oversea'"
+            class="tab-button-custome"
+          ></span>
         </button>
 
         <!-- TRA CỨU BOOKING Tab -->
         <button
+          routerLink="/find-booking"
           class="tab-button relative bg-white font-medium text-[14px] md:text-[15px] px-3 py-3 md:py-4 text-black w-full md:w-[200px] rounded-b-lg md:rounded-tr-lg md:rounded-bl-none hover:text-blue-600 focus:text-blue-600 border-t border-gray-200 md:border-t-0"
         >
           TRA CỨU BOOKING
@@ -40,6 +53,7 @@
 
       <!-- Form tìm kiếm -->
       <form
+        (ngSubmit)="searchTour()"
         class="bg-white rounded-lg shadow-lg flex flex-col md:flex-row gap-4 items-start md:items-center py-6 px-4 md:px-8 text-black"
       >
         <div class="flex flex-col md:flex-row items-stretch md:items-center md:justify-center space-y-4 md:space-y-0 md:space-x-4 w-full">
@@ -47,6 +61,7 @@
           <div class="w-full md:w-[275px]">
             <input
               type="text"
+              [(ngModel)]="keyword"
               placeholder="Từ khóa (Hà Nội, HCM)..."
               class="w-full border border-gray-300 rounded-lg p-3 md:p-4 focus:outline-none"
             />
@@ -76,7 +91,8 @@
               </svg>
             </div>
             <div class="flex-grow">
-              <select class="w-full p-3 md:p-4 pl-[8px] border-gray-300 rounded-tr-lg rounded-br-lg focus:outline-none">
+                
+              <select [(ngModel)]="location" class="w-full p-3 md:p-4 pl-[8px] border-gray-300 rounded-tr-lg rounded-br-lg focus:outline-none">
                 <option value="" disabled selected>Chọn điểm đi</option>
                 <option value="Hà Nội">Hà Nội</option>
                 <option value="Hồ Chí Minh">Hồ Chí Minh</option>
@@ -120,7 +136,7 @@
               </svg>
             </div>
             <div class="flex-grow">
-              <select class="w-full p-3 md:p-4 pl-[8px] border-gray-300 rounded-tr-lg rounded-br-lg focus:outline-none">
+              <select [(ngModel)]="destination" class="w-full p-3 md:p-4 pl-[8px] border-gray-300 rounded-tr-lg rounded-br-lg focus:outline-none">
                 <option value="" disabled selected>Chọn điểm đến</option>
                 <option value="Phú Quốc">Phú Quốc</option>
                 <option value="Nha Trang">Nha Trang</option>
@@ -154,6 +170,7 @@
             </div>
             <input
               type="text"
+            [(ngModel)]="start_date"
               placeholder="Chọn ngày đi"
               onfocus="(this.type='date')"
               onblur="if(!this.value)this.type='text'"

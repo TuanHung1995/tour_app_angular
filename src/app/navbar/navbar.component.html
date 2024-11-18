@@ -113,27 +113,66 @@
     <a routerLink="/system" class="text-gray-700 hover:text-blue-600">Hệ thống</a>
   </div>
 
-  <!-- Desktop User Account and Contact -->
+  <!-- User Account and Contact -->
   <div class="hidden md:flex items-center space-x-6 h-20">
+    <!-- Account Dropdown -->
     <div class="relative group">
-      <button class="flex items-center space-x-1 text-gray-700 hover:text-blue-600">
-        <img src="//bizweb.dktcdn.net/100/489/447/themes/912592/assets/ava-w.svg?1727949731530"
-          class="w-[50px] h-[50px] p-1 rounded-full text-black avatar" />
-        <span>Tài khoản</span>
-        <span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-            <path fill-rule="evenodd"
+      <button
+        class="flex items-center h-20 space-x-1 text-gray-700 hover:text-blue-600"
+      >
+        <img
+          src="//bizweb.dktcdn.net/100/489/447/themes/912592/assets/ava-w.svg?1727949731530"
+          class="w-[50px] h-[50px] p-1 rounded-full text-black avatar"
+        />
+        <span *ngIf="!user">Tài khoản</span>
+        <span *ngIf="user">{{user.username}}</span>
+        <span
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="size-4"
+          >
+            <path
+              fill-rule="evenodd"
               d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
               clip-rule="evenodd" />
           </svg>
         </span>
       </button>
       <div
-        class="dropdown-menu absolute right-0 hidden w-48 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block">
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Thông tin tài khoản</a>
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Giỏ hàng <span>()</span></a>
-        <a routerLink="/followed-tour" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Tour yêu thích</a>
-        <a (click)="logout()" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Đăng xuất</a>
+        class="dropdown-menu absolute right-0 hidden w-80 p-2 bg-white rounded-lg shadow-3xl group-hover:block"
+      >
+        <a
+          *ngIf="user"
+          routerLink="/information"
+          class="block px-4 py-2 text-white text-center bg-blue-500 hover:bg-blue-700"
+          >Tài khoản</a
+        >
+        <a
+          *ngIf="!user"
+          routerLink="/login"
+          class="block px-4 py-2 text-white text-center bg-blue-500 hover:bg-blue-700"
+          >Đăng nhập</a
+        >
+        <a
+          *ngIf="!user"
+          routerLink="/register"
+          class="block px-4 py-1 text-gray-700 text-center hover:text-blue-600"
+          >Chưa có tài khoản? <span class="text-blue-600 hover:underline">Đăng ký</span> ngay</a
+        >
+        <a routerLink="/cart" class="block px-4 py-1 text-gray-700 text-center hover:text-blue-600"
+          >Giỏ hàng (<span class="text-blue-600">{{items}}</span>)</a
+        >
+        <a routerLink="/followed-tour" class="block px-4 py-1 text-gray-700 text-center hover:text-blue-600"
+          >Tour yêu thích (<span class="text-blue-600">{{numberFollows}}</span>)</a
+        >
+        <a
+          *ngIf="user"
+          (click)="logout()"
+          class="block px-4 py-1 text-gray-700 text-center hover:text-blue-600"
+          >Đăng xuất</a
+        >
       </div>
     </div>
 

@@ -1,0 +1,59 @@
+<div class="container mx-auto p-6 flex">
+  <!-- Sidebar bên trái -->
+  <div class="w-1/4 p-4">
+    <h2 class="text-lg font-bold mb-4">TRANG TÀI KHOẢN</h2>
+    <p class="mb-2">
+      <span class="font-semibold">Xin chào,</span>
+      <span class="text-blue-600 font-bold">{{user.username}}</span>!
+    </p>
+    <ul class="space-y-2">
+      <li>
+        <a routerLink="/information" class="text-blue-600 hover:no-underline">Thông tin tài khoản</a>
+      </li>
+      <li>
+        <a routerLink="/ordered" class="text-gray-700 hover:no-underline hover:text-blue-600">Đơn hàng của bạn</a>
+      </li>
+      <li>
+        <a routerLink="/password" class="text-gray-700 hover:no-underline hover:text-blue-600">Đổi mật khẩu</a>
+      </li>
+      <li>
+        <a routerLink="/address" class="text-gray-700 hover:no-underline hover:text-blue-600">Sổ địa chỉ (1)</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Phần thông tin tài khoản bên phải -->
+  <div class="w-3/4 p-4">
+    <h2 class="text-lg font-bold mb-4">ĐƠN HÀNG CỦA BẠN</h2>
+    <div class="overflow-x-auto">
+      <table *ngIf="order" class="w-full border-collapse">
+        <thead>
+          <tr class="text-white">
+            <th class="px-4 py-1 bg-blue-700 text-center border-r-[1.5px] border-l-[1.5px] border-gray-300">Đơn hàng</th>
+            <th class="px-4 py-1 bg-blue-700 text-center border-r-[1.5px] border-gray-300">Ngày</th>
+            <th class="px-4 py-1 bg-blue-700 text-center border-r-[1.5px] border-gray-300">Địa chỉ</th>
+            <th class="px-4 py-1 bg-blue-700 text-center border-r-[1.5px] border-gray-300">Giá trị đơn hàng</th>
+            <th class="px-4 py-1 bg-blue-700 text-center border-r-[1.5px] border-gray-300">TT thanh toán</th>
+            <th class="px-4 py-1 bg-blue-700 text-center border-r-[1.5px] border-gray-300">TT vận chuyển</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  class="border-b border-gray-300">
+            <td class="px-4 py-2 text-center border-r-[1.5px] border-l-[1.5px] border-gray-300">
+              <a href="#" class="text-blue-600 hover:underline">#1008</a>
+            </td>
+            <td class="px-4 py-2 text-center border-r-[1.5px] border-gray-300">11/11/2024</td>
+            <td class="px-4 py-2 text-center border-r-[1.5px] border-gray-300">Vietnam, Quận 5, TP Hồ Chí Minh, Vietnam</td>
+            <td class="px-4 py-2 text-center border-r-[1.5px] border-gray-300">82.440.000₫</td>
+            <td class="px-4 py-2 text-center border-r-[1.5px] border-gray-300 text-yellow-600 font-semibold">Chưa thanh toán</td>
+            <td class="px-4 py-2 text-center border-r-[1.5px] border-gray-300">Chưa chuyển</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="order" class="text-[20px] py-[100px] text-center text-gray-400">Bạn chưa có đơn hàng nào</div>
+
+
+    </div>
+  </div>
+</div>

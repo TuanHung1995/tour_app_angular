@@ -1,10 +1,10 @@
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { TourService } from '../services/tour.service';
-import { RouterLink } from '@angular/router';
+import { TourService } from '../core/services/tour.service';
+import { RouterLink, Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
-import { Tour } from '../models/tour';
+import { Tour } from '../core/models/tour';
 
 // interface Tour {
 //   id: number;
@@ -34,7 +34,7 @@ interface TourDetail {
   templateUrl: './tour.component.html',
   styleUrl: './tour.component.css',
 })
-export class TourComponent implements OnInit{
+export class TourComponent implements OnInit {
   tours: Tour[] = [
     // { id: 1, name: 'Tour Châu Âu 9N8Đ: Đức - Hà Lan - Bỉ - Pháp - Thụy Sỹ', image: '../../assets/images/photo1.webp', startDate: '28/08/2023', duration: '9N8Đ', originalPrice: 0,  price: 136800000, discount: 0 },
     // { id: 2, name: 'Tour Bờ Đông Hoa Kỳ 10N9Đ: New York - Philadelphia -...', image: '../../assets/images/photo2.webp', startDate: '28/08/2023', duration: '10N9Đ', originalPrice: 0, price: 160000000, discount:0 },
@@ -48,12 +48,10 @@ export class TourComponent implements OnInit{
     // { id: 10, name: 'Tour Ninh Bình 1N : Hà Nội - Bái Đính - Tràng An', image:  '../../assets/images/photo10.webp', startDate: '23/08/2023', duration: '1N',originalPrice: 0, price:830000, discount:0},
     // { id: 11, name: 'Tour Hà Nội 1N: Tham Quan Phố Cổ Hà Nội', image:  '../../assets/images/photo11.webp', startDate: '23/08/2023', duration: '1N', originalPrice:0, price:700000, discount:0},
     // { id: 12, name: 'Tour Miền Bắc 4N3Đ: HCM - Hạ Long - Sapa - Hà Khẩu Trung Quốc', image: '../../assets/images/photo12.webp', startDate: '05/07/2023', duration: '1N',originalPrice:19000000, price:17000000, discount:11},
-
   ];
 
   paginatedTours: Tour[] = [];
 
- 
   brands: string[] = ['lvivu', 'Traveloka', 'Viettravel'];
   tourTypes: string[] = [
     'Tour Châu Á',
@@ -107,11 +105,12 @@ export class TourComponent implements OnInit{
 
   sortOptions: string[] = ['Giá tăng dần', 'Giá giảm dần', 'Ngày khởi hành'];
 
-  ngOnInit():void {
+
+
+  ngOnInit(): void {
     this.loadTours(); // Gọi hàm để lấy dữ liệu khi component khởi tạo
     // Initialize data or fetch from service
   }
-  
 
   formatPrice(price: number): string {
     return price.toLocaleString('vi-VN', {
@@ -166,19 +165,18 @@ export class TourComponent implements OnInit{
     },
   ];
 
-  constructor(private tourService: TourService) {}
+  constructor(private tourService: TourService, private router: Router) {}
 
   status: string = 'available';
   location: string = 'Nha Trang';
   destination: string = 'Ho Chi Minh';
-  minPrice: number = 0;;
+  minPrice: number = 0;
   maxPrice: number = 1000000000;
   direction: string = 'asc';
   sortBy: string = 'id';
   page: number = 1;
   size: number = 10;
 
- 
   loadTours(): void {
     // this.tourService.sortTours(
     //   this.status,
@@ -203,7 +201,7 @@ export class TourComponent implements OnInit{
         this.tours = tours;
         this.paginateTours();
       },
-      error: (err) => console.error
+      error: (err) => console.error,
     });
   }
 
@@ -232,22 +230,23 @@ export class TourComponent implements OnInit{
   // }
 
   currentPage: number = 1;
-  toursPerPage: number = 3;
+  toursPerPage: number = 9;
   pages: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   start: number = this.currentPage + 8;
   end: number = this.start + 9;
 
   totalPage(): number[] {
     const totalPage = Math.ceil(this.tours.length / 9);
-    return Array(totalPage).fill(0).map((_, index) => index + 1);
+    return Array(totalPage)
+      .fill(0)
+      .map((_, index) => index + 1);
   }
 
   getPaginatedTours(start: any): Tour[] {
-    
     return this.tours.slice(start, this.end);
     // this.page = page;
   }
- 
+
   paginateTours(): void {
     const start = (this.currentPage - 1) * this.toursPerPage;
     const end = start + this.toursPerPage;
@@ -264,5 +263,4 @@ export class TourComponent implements OnInit{
       this.paginateTours();
     }
   }
-
 }

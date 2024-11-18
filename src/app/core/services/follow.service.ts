@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { Tour } from '../models/tour';
 import { HttpParams } from '@angular/common/http';
@@ -8,17 +8,20 @@ import { Follow } from '../models/follow';
 import { FollowResponse } from '../models/follow-response';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FollowService {
-
   private apiUrl = environment.apiUrl + '/api/v1/follow';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Lấy tất cả các follow
   getAllFollows(): Observable<FollowResponse> {
     return this.http.get<FollowResponse>(this.apiUrl);
+  }
+
+  getFollows(): Observable<Follow[]> {
+    return this.http.get<Follow[]>(`${this.apiUrl}/dto`);
   }
 
   // Lấy follow theo ID

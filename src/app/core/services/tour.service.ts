@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { Tour } from '../models/tour';
 import { HttpParams } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TourService {
-
   private apiUrl = environment.apiUrl + '/api/v1/tours';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Lấy tất cả các tour
   getAllTours(): Observable<Tour[]> {
@@ -40,27 +39,44 @@ export class TourService {
   }
 
   // Phân trang tour theo trạng thái
-  getAllToursByStatus(status: string, page: number, size: number): Observable<any> {
+  getAllToursByStatus(
+    status: string,
+    page: number,
+    size: number
+  ): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/page`, {
       params: {
         status: status,
         page: page.toString(),
-        size: size.toString()
-      }
+        size: size.toString(),
+      },
     });
   }
 
   // Lấy tour theo danh mục và trạng thái
-  getAllToursByCategoryAndStatus(category: string, status: string): Observable<Tour[]> {
+  getAllToursByCategoryAndStatus(
+    category: string,
+    status: string
+  ): Observable<Tour[]> {
     return this.http.get<Tour[]>(`${this.apiUrl}/category`, {
       params: {
         category: category,
-        status: status
-      }
+        status: status,
+      },
     });
   }
 
-  sortTours(status: string, location: string, destination: string, minPrice: number, maxPrice: number, direction: string, sortBy: string, page: number, size: number): Observable<Tour[]> {
+  sortTours(
+    status: string,
+    location: string,
+    destination: string,
+    minPrice: number,
+    maxPrice: number,
+    direction: string,
+    sortBy: string,
+    page: number,
+    size: number
+  ): Observable<Tour[]> {
     let params = new HttpParams()
       .set('status', status)
       .set('location', location)
@@ -74,5 +90,4 @@ export class TourService {
 
     return this.http.get<Tour[]>(`${this.apiUrl}/sort`, { params });
   }
-
 }

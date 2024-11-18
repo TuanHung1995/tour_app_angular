@@ -5,11 +5,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '../../services/auth.service'; // Service call API
+import { AuthService } from '../../core/services/auth.service'; // Service call API
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { jwtDecode } from 'jwt-decode';
-import { User } from '../../models/user';
+import { User } from '../../core/models/user';
 
 
 @Component({
@@ -45,19 +45,20 @@ export class LoginComponent implements OnInit {
             const token = response.accessToken;
             localStorage.setItem('token', token);
             // // Giải mã token để lấy thông tin user
-            // const decodedToken: any = jwtDecode(token);
-            // const user: User = {
-            //   id: decodedToken.id,
-            //   fullname: decodedToken.fullname,
-            //   username: decodedToken.sub,
-            //   email: decodedToken.email,
-            //   phone: decodedToken.phone ?? '',
-            //   address: decodedToken.address ?? '',
-            //   role: decodedToken.roles.join(', '), // Chuyển mảng roles thành chuỗi
-            // };
+            const decodedToken: any = jwtDecode(token);
+            const user: User = {
+             id:  decodedToken.userId,
+            // localStorage.setItem('id', id);
+              fullname: decodedToken.fullname,
+              username: decodedToken.sub,
+              email: decodedToken.email,
+              phone: decodedToken.phone,
+              address: decodedToken.address,
+              role: decodedToken.roles.join(', '), // Chuyển mảng roles thành chuỗi
+            };
 
             // // Lưu thông tin user vào localStorage
-            // localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('user', JSON.stringify(user));
 
             this.router.navigate(['/home']);
           }
