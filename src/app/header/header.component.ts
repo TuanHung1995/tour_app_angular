@@ -19,6 +19,7 @@ import { SearchService } from '../core/services/search.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  dateValue: string = '';
 
 
 

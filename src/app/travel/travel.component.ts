@@ -31,11 +31,11 @@ export class TravelComponent implements OnInit {
     date: '02/07/2023',
     author: 'Nguyễn Thị Kim Anh',
     description: 'Với lịch sử gần 700 năm, ngôi làng pháo đài Naganeupseong của Hàn Quốc khiến người ta ngỡ ngàng bởi thời gian dường như ngừng lại ở nơi đây...',
-    link: '/travel2'
+    link: '/travel/1'
   };
   newsItems: NewsItem[] = [
-    { id: 2, title: 'Cắm trại ở Chu Nậm ngắm thiên đường mây ở độ cao', image: '../../assets/images/t-2.webp', date: '02/07/2023', author: 'Nguyễn Thị Kim Anh', link: '/travel8' },
-    { id: 3, title: 'Kinh nghiệm cắm trại trên núi Bà Đen Tây Ninh cuối tuần...', image: '../../assets/images/t-3.webp', date: '02/07/2023', author: 'Nguyễn Thị Kim Anh', link: '/travel9' },
+    { id: 2, title: 'Cắm trại ở Chu Nậm ngắm thiên đường mây ở độ cao', image: '../../assets/images/t-2.webp', date: '02/07/2023', author: 'Nguyễn Thị Kim Anh', link: '/travel-list' },
+    { id: 3, title: 'Kinh nghiệm cắm trại trên núi Bà Đen Tây Ninh cuối tuần...', image: '../../assets/images/t-3.webp', date: '20/07/2023', author: 'Lê Thanh Hà', link: '/travel/3' },
     { id: 4, title: 'Tháng 7 nên đi du lịch ở đâu Việt Nam là lý tưởng nhất?', image: '../../assets/images/t-4.webp', date: '02/07/2023', author: 'Nguyễn Thị Kim Anh', link:'/travel10' },
   ];
 

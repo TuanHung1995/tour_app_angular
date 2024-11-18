@@ -1,0 +1,235 @@
+<div class="bg-white">
+    <div class="container mx-auto p-4">
+        <div class="flex items-center text-gray-500 text-sm mb-4">
+            <a href="/home" class="hover:text-blue-500">Trang chủ</a>
+            <span class="mx-2">›</span>
+            <span>Tin tức</span>
+        </div>
+        <div class="min-h-screen bg-gradient-to-br to-indigo-50 py-8">
+            <div class="container mx-auto px-4">
+                <!-- Hero Section -->
+                <section class="mb-16 text-center" *ngIf="!selectedTravel">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-indigo-900 animate-fade-in-down">
+                        Khám Phá Điểm Đến Mới
+                    </h1>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in-up delay-200">
+                        Hành trình khám phá những vùng đất mới, trải nghiệm văn hóa độc đáo
+                        và tạo nên những kỷ niệm đáng nhớ
+                    </p>
+                </section>
+
+                <!-- Travel Detail Section -->
+                <section *ngIf="selectedTravel" class="mb-16 bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <!-- Back Button -->
+                    <div class="p-4">
+                        <button (click)="closeDetail()"
+                            class="flex items-center text-indigo-600 hover:text-indigo-800 transition-colors">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Quay lại danh sách
+                        </button>
+                    </div>
+
+                    <!-- Location Header -->
+                    <div class="relative h-[400px]">
+                        <img [src]="selectedTravel.mainImage" [alt]="selectedTravel.title"
+                            class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
+                      <!-- Location Header -->
+<div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+    <div class="max-w-3xl">
+        <h1 class="text-4xl font-bold mb-3 animate-fade-in-up">
+            {{ selectedTravel.title }}
+        </h1>
+        <div class="flex items-center gap-4 text-white/90 mb-4 animate-fade-in-up delay-200">
+            <div class="flex items-center hover:translate-x-1 transition-transform duration-300">
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                <span>{{ selectedTravel.location }}</span>
+            </div>
+            <div class="flex items-center hover:translate-x-1 transition-transform duration-300">
+                <i class="fas fa-award mr-2"></i>
+                <span>{{ selectedTravel.heritage }}</span>
+            </div>
+            <div class="flex items-center hover:translate-x-1 transition-transform duration-300">
+                <i class="fas fa-clock mr-2"></i>
+                <span>{{ selectedTravel.opening }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+                    </div>
+
+                    <!-- Location Content -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
+                        <!-- Main Content -->
+                        <div class="lg:col-span-2 space-y-6">
+                            <div class="prose max-w-none">
+                                <h2 class="text-2xl font-bold text-gray-800 mb-4">Tổng Quan</h2>
+                                <p class="text-gray-600 leading-relaxed">
+                                    {{ selectedTravel.overview }}
+                                </p>
+
+                                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">
+                                    Điểm Nổi Bật
+                                </h3>
+                                <ul class="space-y-3">
+                                    <li *ngFor="let highlight of selectedTravel.highlights; let i = index" 
+                                        class="flex items-start animate-fade-in-up"
+                                        [style.animation-delay]="i * 100 + 'ms'">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                        <span class="hover:translate-x-1 transition-transform duration-300">{{ highlight }}</span>
+                                    </li>
+                                </ul>
+
+                                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">
+                                    Hoạt Động Đề Xuất
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div *ngFor="let activity of selectedTravel.activities"
+                                        class="bg-indigo-50 rounded-lg p-4">
+                                        <h4 class="font-medium text-indigo-900 mb-2">
+                                            {{ activity.title }}
+                                        </h4>
+                                        <p class="text-sm text-gray-600">
+                                            {{ activity.description }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div class="lg:col-span-1">
+                            <!-- Quick Info -->
+                            <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                                    Thông Tin Cần Biết
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-calendar-alt w-8 text-indigo-600"></i>
+                                        <div>
+                                            <p class="font-medium">Thời gian tham quan tốt nhất</p>
+                                            <p class="text-sm text-gray-600">
+                                                {{ selectedTravel.quickInfo.bestTime }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-clock w-8 text-indigo-600"></i>
+                                        <div>
+                                            <p class="font-medium">Giờ mở cửa</p>
+                                            <p class="text-sm text-gray-600">
+                                                {{ selectedTravel.quickInfo.openingHours }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-ticket-alt w-8 text-indigo-600"></i>
+                                        <div>
+                                            <p class="font-medium">Giá vé</p>
+                                            <p class="text-sm text-gray-600">
+                                                Người lớn:
+                                                {{
+                                                selectedTravel.quickInfo.prices.adult
+                                                | currency : "VND" : "symbol" : "1.0-0"
+                                                }}<br />
+                                                Trẻ em:
+                                                {{
+                                                selectedTravel.quickInfo.prices.child
+                                                | currency : "VND" : "symbol" : "1.0-0"
+                                                }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Weather -->
+                            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white mb-6">
+                                <h3 class="text-lg font-semibold mb-4">Thời Tiết Hôm Nay</h3>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <i class="fas fa-sun text-4xl mb-2"></i>
+                                        <p class="text-2xl font-bold">
+                                            {{ selectedTravel.weather.temperature }}°C
+                                        </p>
+                                        <p class="text-sm">
+                                            {{ selectedTravel.weather.condition }}
+                                        </p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-sm">
+                                            Độ ẩm: {{ selectedTravel.weather.humidity }}%
+                                        </p>
+                                        <p class="text-sm">
+                                            Gió: {{ selectedTravel.weather.windSpeed }} km/h
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Gallery -->
+                            <div class="bg-white rounded-xl overflow-hidden">
+                                <h3 class="text-lg font-semibold p-6 pb-4">Hình Ảnh</h3>
+                                <div class="grid grid-cols-2 gap-2 p-2">
+                                    <img *ngFor="let image of selectedTravel.galleryImages" [src]="image"
+                                        class="rounded-lg w-full h-24 object-cover cursor-pointer hover:opacity-75 transition" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Travel List Grid -->
+                <section class="mb-16" *ngIf="!selectedTravel">
+                    <h2 class="text-3xl font-bold mb-8 text-indigo-900 flex items-center">
+                        <span class="mr-3">🌏</span> Điểm Đến Nổi Bật
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                        <div *ngFor="let travel of travels"
+                            class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
+                            (click)="showDetail(travel)">
+                            <!-- Existing travel card content -->
+                            <div class="relative">
+                                <img [src]="travel.mainImage" [alt]="travel.title"
+                                    class="w-full h-56 object-cover transition-transform duration-300 hover:scale-110" />
+                                <div
+                                    class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-medium text-indigo-600">
+                                    {{ travel.heritage }}
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3
+                                    class="text-xl font-semibold mb-3 text-gray-800 transition-all duration-300 hover:text-indigo-600 hover:translate-x-1">
+                                    {{ travel.title }}
+                                </h3>
+                                <p class="text-gray-600 mb-4 line-clamp-2 group-hover:text-gray-900 transition-colors duration-300">
+                                    {{ travel.description }}
+                                </p>
+                                <div class="flex items-center text-sm text-gray-500 mb-3 hover:text-indigo-500 transition-all duration-300 hover:translate-x-1">
+                                    <i class="fas fa-map-marker-alt text-indigo-500 mr-2"></i>
+                                    <span>{{ travel.location }}</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-500 mb-3 hover:text-indigo-500 transition-all duration-300 hover:translate-x-1">
+                                    <i class="fas fa-clock text-indigo-500 mr-2"></i>
+                                    <span>{{ travel.opening }}</span>
+                                </div>
+                                <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <img src="https://api.dicebear.com/7.x/initials/svg?seed={{
+                        travel.author
+                      }}" class="w-8 h-8 rounded-full mr-2" [alt]="travel.author" />
+                                        <span class="text-sm font-medium text-gray-700">{{
+                                            travel.author
+                                            }}</span>
+                                    </div>
+                                    <span class="text-sm text-gray-500">{{ travel.date }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

@@ -431,7 +431,7 @@ Du lịch Singapore tháng 7,8,9 với nhiều sự kiện hấp dẫn</span>
   
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group">
-        <a href="/trave2" class="block relative">
+        <a href="/travel2" class="block relative">
           <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
             <img
               src="../../assets/images/t-1.webp"
@@ -459,7 +459,7 @@ Du lịch Singapore tháng 7,8,9 với nhiều sự kiện hấp dẫn</span>
       </div>
   
       <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group">
-        <a href="/travel9" class="block relative">
+        <a href="/travel8" class="block relative">
           <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
             <img
               src="../../assets/images/t-2.webp"
@@ -487,7 +487,7 @@ Du lịch Singapore tháng 7,8,9 với nhiều sự kiện hấp dẫn</span>
       </div>
   
       <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group">
-        <a href="#" class="block relative">
+        <a href="/travel9" class="block relative">
           <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
             <img
               src="../../assets/images/t-3.webp"

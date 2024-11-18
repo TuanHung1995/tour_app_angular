@@ -1,5 +1,6 @@
-import { NgIf } from '@angular/common';
+import { NgIf, NgStyle, CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+
 import { RouterLink } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
@@ -25,14 +26,12 @@ interface Destination {
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
+  // Desktop dropdown states
   isDropdownOpen = false;
-
-  isDropdownMobileOpen = false;
-
-  // dropdown profile menu appears when user hover on profile icon
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
+  
+  // Mobile menu states
+  isMobileMenuOpen = false;
+  currentMobileView: 'main' | 'dulich' | 'camnang' | 'account' = 'main';
 
   user: any;
   userRole: string = '';
@@ -86,6 +85,23 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  // Mobile menu toggles
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    if (!this.isMobileMenuOpen) {
+      this.currentMobileView = 'main';
+    }
+  }
+
+  setMobileView(view: 'main' | 'dulich' | 'camnang' | 'account') {
+    this.currentMobileView = view;
+  }
+
+  // Desktop dropdown toggle
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
@@ -93,9 +109,8 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+    this.toggleMobileMenu();
   }
-
-  // link to another page when click span in mobile view
 
   domesticDestinations: Destination[] = [
     { name: 'Hà Nội', link: 'tour4' },
@@ -111,3 +126,4 @@ export class NavbarComponent implements OnInit {
     { name: 'Châu Úc', link: '#' },
   ];
 }
+

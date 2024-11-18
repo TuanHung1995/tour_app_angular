@@ -29,6 +29,8 @@ import { FindBookingComponent } from './find-booking/find-booking.component';
 import { SearchComponent } from './search/search.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
+import { TravelListComponent } from './travel-list/travel-list.component';
+
 export const routes: Routes = [
   
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -44,7 +46,7 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'details', component: DetailsComponent},
   {path: 'followed-tour', component: FollowedTourComponent},
-  {path: 'travel10', component: Travel10Component},
+  {path: 'travel-list', component: TravelListComponent },
   {path: 'cart', component: CartComponent},
   {path: 'information', component: InfomationComponent},
   {path: 'ordered', component: OrderedComponent},
